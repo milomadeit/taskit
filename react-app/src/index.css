@@ -1,0 +1,13 @@
+/* TODO Add site wide styles */
+body {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.p-error {
+  color: red;
+  margin: 0;
+}
