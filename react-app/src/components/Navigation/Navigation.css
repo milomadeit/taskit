@@ -1,7 +1,104 @@
+.navigation-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333333;
+  height: 50px;
+  padding: 0 30px;
+}
+
+.navigation-active-link {
+  text-decoration: none;
+  color: white !important;
+}
+
+.navigation-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: 100%;
+  color: #cccccc;
+  padding: 0 16px;
+}
+.navigation-link:hover {
+  background-color: #111111;
+
+}
+
+.navigation-home-button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white !important;
+}
+
 .profile-dropdown {
-	position: absolute;
-  }
-  
-  .hidden {
-	display: none;
-  }
+  position: absolute;
+  right: 28px;
+  top: 50px;
+  padding: 12px;
+  display: flex;
+  flex-flow: column;
+  background-color: white;
+  border-right: 1px solid #666;
+  border-left: 1px solid #666;
+  border-bottom: 1px solid #666;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.hidden {
+  display: none;
+}
+
+.profile-user-details {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  justify-content: space-evenly;
+}
+
+.signout-btn {
+  border: none;
+  color: #333333;
+  background-color: #f58b55;
+  height: 25px;
+  border-radius: 4px;
+}
+
+.profile-button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.nav-signIn-signUp-div {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.nav-sign-in-up-btn {
+  color: white;
+  height: 30px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.nav-sign-in-btn {
+  background-color: #433e3c;
+  border: 1px solid #666;
+  width: 65px;
+}
+.nav-sign-up-btn {
+  background-color: #ff5500;
+  width: 120px;
+}
+#cclogo{
+  width:200px;
+  height: 40px;
+}

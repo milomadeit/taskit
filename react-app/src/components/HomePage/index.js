@@ -7,8 +7,7 @@ function HomePage () {
 		<div className="coming-soon">
 			<img src={cc} alt='cocreate'/>
 			<h1>
-			CoCreate coming soon
-
+			CoCreate
 			</h1>
 		</div>
 	)
