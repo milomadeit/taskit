@@ -18,12 +18,20 @@ def CreateProject():
 	
 
 	if form.validate_on_submit():
+
+		typeBool = request.form.get('is_public')
+
+		if typeBool == 'true':
+			typeBool = True
+		if typeBool == 'false':
+			typeBool = False
+
 		new_project = Project(
 		name=request.form.get('name'),
 		creator_id=current_user.id,
 		description=request.form.get('description'),
-		due_date=request.form.get('due_date')
-		is_public=request.form.get('is_public')
+		due_date=request.form.get('due_date'),
+		is_public=typeBool
 		)
 		db.session.add(new_project)
 		db.session.commit()
@@ -32,7 +40,7 @@ def CreateProject():
 
 		if not response_data:
 			return jsonify({'error': 'cannot create project in database'})
-		return jsonify(response_data), 200
+		return jsonify({"ok": response_data}), 200
 	
 	if form.errors:
             # print(form.errors)
