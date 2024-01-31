@@ -21,8 +21,14 @@ class User(db.Model, UserMixin):
     tasks = db.relationship('Task', back_populates='creator', cascade="all, delete-orphan" )
     badges = db.relationship('Badge', back_populates='creator', cascade="all, delete-orphan" )
     files = db.relationship('File', back_populates='creator', cascade="all, delete-orphan" )
-    collab_send = db.relationship('CollabRequest', back_populates='sender', cascade="all, delete-orphan")
-    collab_rec = db.relationship('CollabRequest', back_populates='receiver', cascade="all, delete-orphan")
+    collab_send = db.relationship('CollabRequest', 
+                                  foreign_keys="[CollabRequest.sender_id]", 
+                                  back_populates='sender', 
+                                  cascade="all, delete-orphan")
+    collab_rec = db.relationship('CollabRequest', 
+                                 foreign_keys="[CollabRequest.receiver_id]", 
+                                 back_populates='receiver', 
+                                 cascade="all, delete-orphan")
 
     @property
     def password(self):
