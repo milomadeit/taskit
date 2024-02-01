@@ -62,9 +62,10 @@ class Project(db.Model):
     creator_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     description = db.Column(db.String(250))
     status = db.Column(db.String(25))
-    due_date = db.Column(db.DateTime())
+    due_date = db.Column(db.String())
     is_public = db.Column(db.Boolean())
     is_completed = db.Column(db.Boolean, default=False)
+    task_count = db.Column(db.Integer, default=0)
 
     creator = db.relationship('User', back_populates='projects')
     collabs = db.relationship('CollabRequest', back_populates='project', cascade="all, delete-orphan")
