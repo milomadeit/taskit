@@ -1,10 +1,18 @@
 const NEW_PROJECT = 'projects/NEW_PROJECT';
 const ALL_PROJECTS = 'projects/ALL_PROJECTS'
 const USER_PROJECTS = 'projects/USER_PROJECTS'
+const UPDATE_PROJECT = 'projects/UPDATE_PROJECT'
 
 const newProject = (project) => {
 	return {
 		type: NEW_PROJECT,
+		project
+	}
+}
+
+const storeUpdateProject = (project) => {
+	return {
+		type: UPDATE_PROJECT,
 		project
 	}
 }
@@ -31,6 +39,22 @@ export const createProject = (project) => async (dispatch) => {
 	if (response.ok) {
 		const project_data = await response.json();
 		dispatch(newProject(project_data))
+		return project_data
+	} else {
+		const errorData = await response.json();
+		console.log(errorData);
+		return errorData
+	}
+}
+
+export const updateProject = (project) => async (dispatch) => {
+	const response = await fetch(`/api/projects/:projectId/update`, {
+		method: "PUT",
+		body: project
+	})
+	if (response.ok) {
+		const project_data = await response.json();
+		dispatch(storeUpdateProject(project_data))
 		return project_data
 	} else {
 		const errorData = await response.json();
@@ -95,6 +119,13 @@ export default function ProjectReducer(state = initialState, action ) {
 			return {
 				...state,
 				allProjects: {...state.allProjects, ...all_projects}
+			}
+		};
+		case UPDATE_PROJECTS: {
+			const project = action.project
+			return {
+				...state,
+				allProjects: {...state.allProjects, [project.id]: project}
 			}
 		};
 		case USER_PROJECTS: {
