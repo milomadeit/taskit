@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { createProject } from '../../../store/projects';
 
-function CreateProject() {
+function UpdateProject() {
     const [projectName, setProjectName] = useState("");
     const [description, setDescription] = useState("");
     const [dueDate, setDueDate] = useState("");
@@ -50,7 +50,7 @@ function CreateProject() {
 
 		  try {
 			const result = await dispatch(createProject(formData));
-			if (result) {
+			if (result.ok) {
 				history.push("/");
 			} else {
 				console.log('nooooppeeee')
@@ -99,4 +99,4 @@ function CreateProject() {
     );
 }
 
-export default CreateProject;
+export default UpdateProject;
