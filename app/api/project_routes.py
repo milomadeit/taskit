@@ -89,9 +89,48 @@ def UpdateProject(projectId):
             return jsonify(form.errors), 400
 	
 
+@project_routes.route('/current', methods=['GET'])
+def AllUserProjects():
+	if not current_user:
+		return jsonify({'error': 'you must be logged in to view these projects'}), 403 
+	
+
+	user_projects = Project.query.filter_by(creator_id=current_user.id).all()
+
+	if current_user.id != user_projects.id:
+		return jsonify({'error': ' you did not create these projects'}), 403
+
+	if user_projects:
+		project_list = [{'id': project.id, 'name': project.name, 'creator_id':project.creator_id, 'description': project.description, 'due_date': project.due_date, 'is_public': project.is_public } for project in user_projects]
+		return jsonify(project_list), 200
+	
+	return jsonify({'error': 'could not get projects'})
+
+
+@project_routes.route('/<int:projectId>', methods=['DELETE'])
+def DeleteProject(projectId):
+	project = Project.query.filter_by(id=projectId).first()
+
+	if not current_user:
+		return jsonify({'error': 'you musst be logged in to delete projects'}), 403
+	
+	if current_user.id != project.creator_id:
+		return jsonify({'error': 'you are not the creator of this project'}), 403
+	
+	try:
+		db.session.delete(project)
+		db.session.commit()
+		return jsonify({'message': 'song deleted successfully'}), 200
+
+	except Exception as e:
+		print(e)
+		db.session.rollback()
+		return jsonify({'error': 'An error occurred during deletion'}), 500
+
+
 @project_routes.route('', methods=['GET'])
 def AllProjects():
-	all_projects = Project.query.all()
+	all_projects = Project.query.filter_by(is_public=True).all()
 
 	if all_projects:
 		project_list = [{'id': project.id, 'name': project.name, 'creator_id':project.creator_id, 'description': project.description, 'due_date': project.due_date, 'is_public': project.is_public } for project in all_projects]

@@ -21,7 +21,7 @@ function CreateProject() {
 		}
 		setIsMounted(true);
 		setLoading(false)
-	  }, [dispatch, user.id, user, history]);
+	  }, [dispatch, user, history]);
 
 
 	  if (loading) {

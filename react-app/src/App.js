@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
@@ -9,9 +9,13 @@ import HomePage from "./components/HomePage";
 import CreateProject from "./components/Projects/CreateProject";
 
 
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user);
+
+
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -29,14 +33,14 @@ function App() {
             <SignupFormPage />
           </Route>
 
+          {sessionUser && (<Route path="/projects/new">
+            <CreateProject />
+          </Route>
+          )}
+
           <Route exact path="/">
             <HomePage />
           </Route>
-
-          <Route path="/projects/new">
-            <CreateProject />
-          </Route>
-
         </Switch>
 
       )}
