@@ -65,6 +65,7 @@ class Project(db.Model):
     due_date = db.Column(db.String())
     is_public = db.Column(db.Boolean())
     is_completed = db.Column(db.Boolean, default=False)
+    task_count = db.Column(db.Integer, default=0)
 
     creator = db.relationship('User', back_populates='projects')
     collabs = db.relationship('CollabRequest', back_populates='project', cascade="all, delete-orphan")

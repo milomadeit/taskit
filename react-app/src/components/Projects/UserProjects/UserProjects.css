@@ -1,0 +1,90 @@
+.project-card-div {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-project-card {
+    position: relative; /* Add this line */
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 16px;
+    padding: 20px;
+    transition: box-shadow 0.3s;
+    width: 700px;
+}
+
+.project-actions {
+    position: absolute;
+    bottom: 25px; 
+    right: 20px; 
+    display: flex;
+}
+.project-actions > button {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+.user-project-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+}
+
+.user-project-title {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.user-project-detail {
+    color: #666;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.user-project-public {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+
+.edit-project-button, .delete-project-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    font-size: 10px;
+    height: 20px;
+}
+
+.edit-project-button {
+    background-color: #4CAF50; /* Green for edit */
+}
+
+.edit-project-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.delete-project-button {
+    background-color: #f44336; /* Red for delete */
+}
+
+.delete-project-button:hover {
+    background-color: #da190b; /* Darker red on hover */
+}
+
+.button {
+    
+}

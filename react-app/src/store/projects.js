@@ -2,6 +2,7 @@ const NEW_PROJECT = 'projects/NEW_PROJECT';
 const ALL_PROJECTS = 'projects/ALL_PROJECTS'
 const USER_PROJECTS = 'projects/USER_PROJECTS'
 const UPDATE_PROJECT = 'projects/UPDATE_PROJECT'
+const DELETE_PROJECT = 'projects/DELETE_PROJECT'
 
 const newProject = (project) => {
 	return {
@@ -31,6 +32,13 @@ const storeUserProjects = (projects) => {
 	}
 }
 
+const removerProject = (projectId) => {
+	return {
+		type: DELETE_PROJECT,
+		projectId
+	}
+}
+
 export const createProject = (project) => async (dispatch) => {
 	const response = await fetch(`/api/projects/new`, {
 		method: "POST",
@@ -47,8 +55,8 @@ export const createProject = (project) => async (dispatch) => {
 	}
 }
 
-export const updateProject = (project) => async (dispatch) => {
-	const response = await fetch(`/api/projects/:projectId/update`, {
+export const updateProject = (projectId, project) => async (dispatch) => {
+	const response = await fetch(`/api/projects/${projectId}`, {
 		method: "PUT",
 		body: project
 	})
@@ -101,43 +109,85 @@ export const getUserProjects = () => async (dispatch) => {
 	}
 }
 
+export const deleteProject = (projectId) => async (dispatch) => {
+	const response = await fetch(`/api/projects/${projectId}`, {
+		method: 'DELETE',
+		headers: {
+			"Content-Type": "application/json",
+		  },
+	})
+
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(removerProject())
+		return data
+	} else {
+		const errorData = await response.json();
+		return errorData
+	}
+}
+
 
 const initialState = {allProjects:{}, userProjects: {}}
-export default function ProjectReducer(state = initialState, action ) {
-	switch (action.type) {
-		case NEW_PROJECT: {
-			const new_project = action.project
+export default function projectReducer(state = initialState, action ) {
+    switch (action.type) {
+        case NEW_PROJECT: {
+			const { project } = action;
 			return {
 				...state,
-				allProjects:{ ...state.allProjects, [new_project.id]: new_project}
-			}
+				allProjects: {
+					...state.allProjects,
+					[project.id]: project
+				}
+			};
 		}
-		case ALL_PROJECTS: {
-			const all_projects = action.projects.reduce(
-				(acc, project) => ({...acc, [project.id]:project }), {}
-			);
+		
+
+        case ALL_PROJECTS: {
+			const projects = action.projects.reduce((acc, project) => {
+				acc[project.id] = project;
+				return acc;
+			}, {});
 			return {
 				...state,
-				allProjects: {...state.allProjects, ...all_projects}
-			}
+				allProjects: projects
+			};
 		};
-		case UPDATE_PROJECTS: {
-			const project = action.project
+		
+        case UPDATE_PROJECT: {
+			const updatedProject = action.project;
 			return {
 				...state,
-				allProjects: {...state.allProjects, [project.id]: project}
-			}
+				allProjects: {
+					...state.allProjects,
+					[updatedProject.id]: updatedProject
+				}
+			};
 		};
-		case USER_PROJECTS: {
-			const all_projects = action.projects.reduce(
-				(acc, project) => ({...acc, [project.id]:project }), {}
-			);
+		
+
+        case USER_PROJECTS: {
+			const projects = action.projects.reduce((acc, project) => {
+				acc[project.id] = project;
+				return acc;
+			}, {});
 			return {
 				...state,
-				userProjects: {...state.userProjects, ...all_projects}
-			}
+				userProjects: projects
+			};
 		};
-		default:
-			return state;
-	}
+		case DELETE_PROJECT: {
+			const newAllProjects = {...state.allProjects}
+			delete newAllProjects[action.projectId]
+			return {
+				...state,
+				allProjects: newAllProjects
+			}
+
+		}
+		
+
+        default:
+            return state;
+    }
 }

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { createProject } from '../../../store/projects';
+import { useModal } from '../../../context/Modal';
+import './CreateProject.css'
 
 function CreateProject() {
     const [projectName, setProjectName] = useState("");
@@ -14,6 +16,10 @@ function CreateProject() {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.session.user);
+	const { closeModal } = useModal();
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	
 
 	useEffect(() => {
 		if(!user) {
@@ -51,9 +57,9 @@ function CreateProject() {
 		  try {
 			const result = await dispatch(createProject(formData));
 			if (result) {
-				history.push("/");
+				closeModal();
+				history.push("/projects/user");
 			} else {
-				console.log('nooooppeeee')
 			  	return result.data
 	  
 			}
@@ -70,7 +76,7 @@ function CreateProject() {
 
 
     return (
-        <div>
+        <div className='create-project-main-div'>
             <form onSubmit={handleSubmit}>
                 <div className='project-form-inputs'>
                     <label className='project-name-label'>Project Name</label>
