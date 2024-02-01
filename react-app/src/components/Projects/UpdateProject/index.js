@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { createProject } from '../../../store/projects';
+import { useHistory, useParams } from 'react-router-dom';
+import {updateProject } from '../../../store/projects';
+import { getUserProjects } from '../../../store/projects';
 
 function UpdateProject() {
-    const [projectName, setProjectName] = useState("");
-    const [description, setDescription] = useState("");
-    const [dueDate, setDueDate] = useState("");
-    const [isPublic, setIsPublic] = useState(false);
+	const {projectId} = useParams()
+	const project = useSelector((state) => state.projectReducer.userProjects[parseInt(projectId)])
+    const [projectName, setProjectName] = useState(project?.name || '');
+    const [description, setDescription] = useState(project?.description || '');
+    const [dueDate, setDueDate] = useState(project?.due_date || '');
+    const [isPublic, setIsPublic] = useState(project?.is_public || '');
 	const [errors, setErrors] = useState({});
 	const [loading, setLoading] = useState(true);
 	const [isMounted, setIsMounted] = useState(false);
@@ -16,13 +19,12 @@ function UpdateProject() {
 	const user = useSelector((state) => state.session.user);
 
 	useEffect(() => {
-		if(!user) {
-		  history.push('/login')
-		}
-		setIsMounted(true);
-		setLoading(false)
-	  }, [dispatch, user.id, user, history]);
-
+        if (!user) {
+            history.push('/login');
+            return;
+        }
+        dispatch(getUserProjects()).then(() => setLoading(false));
+    }, [dispatch, user, history]);
 
 	  if (loading) {
 		return (<div> Loading...</div>)
@@ -49,11 +51,10 @@ function UpdateProject() {
 		  if (isMounted) setLoading(true);
 
 		  try {
-			const result = await dispatch(createProject(formData));
-			if (result.ok) {
-				history.push("/");
+			const result = await dispatch(updateProject(project.id, formData));
+			if (result) {
+				history.push("/projects/user");
 			} else {
-				console.log('nooooppeeee')
 			  	return result.data
 	  
 			}
