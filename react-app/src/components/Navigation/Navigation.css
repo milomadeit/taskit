@@ -1,79 +1,77 @@
+
 .navigation-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #09213a;
-  height: 50px;
+  height: 60px;
   padding: 0 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
-.navigation-active-link {
-  text-decoration: none;
-  color: white !important;
-}
-
-.navigation-link {
+.navigation-link, .navigation-home-button {
   display: flex;
   align-items: center;
   text-decoration: none;
-  height: 100%;
-  color: #cccccc;
+  color: #cccccc; 
   padding: 0 16px;
 }
-.navigation-link:hover {
-  background-color: #111111;
 
+.navigation-link:hover, .navigation-home-button:hover {
+  box-shadow: 0 2px 4px rgba(0. 0. 0. 0.9);
+  transform: scale(1.02)
 }
 
-.navigation-home-button {
-  font-size: 20px;
-  font-weight: bold;
+.navigation-active-link {
   color: white !important;
 }
 
 .profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   right: 28px;
-  top: 50px;
-  padding: 12px;
-  display: flex;
-  flex-flow: column;
-  background-color: white;
-  border-right: 1px solid #666;
-  border-left: 1px solid #666;
-  border-bottom: 1px solid #666;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+  top: 60px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 100;
 }
+
+.profile-dropdown li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  margin-right: 40px;
+  list-style-type: none;
+}
+
+.profile-dropdown li:hover {
+ cursor: pointer;
+}
+
+.dropdown-logout{
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #9994e9;
+  height: 35px;
+}
+
+.dropdown-logout:hover {
+  background-color: darkred;
+}
+
 
 .hidden {
   display: none;
-}
-
-.profile-user-details {
-  margin-bottom: 12px;
-  display: flex;
-  flex-direction: column;
-  height: 50px;
-  justify-content: space-evenly;
-}
-
-.signout-btn {
-  border: none;
-  color: #333333;
-  background-color: #f58b55;
-  height: 25px;
-  border-radius: 4px;
-}
-
-.profile-button {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
 }
 
 .nav-signIn-signUp-div {
@@ -82,23 +80,45 @@
   width: 200px;
 }
 
-.nav-sign-in-up-btn {
+.main-modal-button {
   color: white;
-  height: 30px;
   border: none;
   border-radius: 4px;
+  padding: 8px 8px;
   font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #9994e9;
+  height: 35px;
 }
-.nav-sign-in-btn {
-  background-color: #433e3c;
-  border: 1px solid #666;
-  width: 65px;
+
+.main-modal-button:hover, .signout-btn:hover {
+  background-color: #43a047; 
 }
-.nav-sign-up-btn {
-  background-color: #ff5500;
-  width: 120px;
+
+.profile-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  
 }
-#cclogo{
-  width:200px;
+
+.profile-button:hover {
+  transform: scale(1.25);
+}
+
+#cclogo {
+  width: 200px;
   height: 40px;
+}
+
+.fa-user-circle {
+  font-size: 30px;
+  color: darkorange
+}
+
+.fa-user-circle:hover {
+  color: lightblue;
+  transition: color 0.3s ease;
 }

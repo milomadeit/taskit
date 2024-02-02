@@ -74,7 +74,8 @@ def UpdateProject(projectId):
 		project.creator_id = current_user.id or project.creator_id 
 		project.description = request.form.get('description') or project.description 
 		project.due_date = request.form.get('due_date') or project.due_date
-		project.is_public = typeBool or project.is_public 
+		project.is_public = typeBool
+
 	
 		db.session.commit()
 
@@ -101,7 +102,7 @@ def AllUserProjects():
 		return jsonify({'error': ' you did not create these projects'}), 403
 
 	if user_projects:
-		project_list = [{'id': project.id, 'name': project.name, 'creator_id':project.creator_id, 'description': project.description, 'due_date': project.due_date, 'is_public': project.is_public } for project in user_projects]
+		project_list = [{'id': project.id, 'name': project.name, 'creator_id':project.creator_id, 'description': project.description, 'due_date': project.due_date, 'is_public': project.is_public, 'task_count': project.task_count } for project in user_projects]
 	
 		return jsonify(project_list), 200
 	
@@ -134,7 +135,7 @@ def AllProjects():
 	all_projects = Project.query.filter_by(is_public=True).all()
 
 	if all_projects:
-		project_list = [{'id': project.id, 'name': project.name, 'creator_id':project.creator_id, 'description': project.description, 'due_date': project.due_date, 'is_public': project.is_public } for project in all_projects]
+		project_list = [{'id': project.id, 'name': project.name, 'creator_id':project.creator_id, 'description': project.description, 'due_date': project.due_date, 'is_public': project.is_public, 'task_count': project.task_count } for project in all_projects]
 		return jsonify(project_list), 200
 	
 	return jsonify({'error': 'could not get projects'})

@@ -9,6 +9,8 @@ import HomePage from "./components/HomePage";
 import CreateProject from "./components/Projects/CreateProject";
 import UserProjects from "./components/Projects/UserProjects";
 import UpdateProject from "./components/Projects/UpdateProject";
+import ProjectDetails from "./components/Projects/ProjectDetails";
+import CreateTask from "./components/Tasks/CreateTask";
 
 
 function App() {
@@ -34,6 +36,17 @@ function App() {
             <SignupFormPage />
           </Route>
 
+          {sessionUser && (<Route exact path="/projects/user">
+            <UserProjects />
+          </Route>
+          )}
+
+          {sessionUser && (<Route path="/projects/tasks/new">
+            <CreateTask />
+          </Route>
+          )}
+          
+
           {sessionUser && (<Route path="/projects/:projectId/update">
             <UpdateProject />
           </Route>
@@ -44,10 +57,10 @@ function App() {
           </Route>
           )}
 
-          {sessionUser && (<Route exact path="/projects/user">
-            <UserProjects />
-          </Route>
-          )}
+          {sessionUser && (<Route exact path="/projects/:projectId/">
+              <ProjectDetails />
+            </Route>
+            )}
 
           <Route exact path="/">
             <HomePage />

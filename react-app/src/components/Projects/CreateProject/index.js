@@ -17,7 +17,7 @@ function CreateProject() {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.session.user);
 	const { closeModal } = useModal();
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	// const [isModalOpen, setIsModalOpen] = useState(false);
 
 	
 
