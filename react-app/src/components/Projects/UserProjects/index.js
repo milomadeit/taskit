@@ -18,7 +18,7 @@ function UserProjects() {
 		setIsLoading(false)
 
 
-	}, [dispatch, currentUser, history, projects])
+	}, [dispatch, currentUser, history])
 
 	if (!currentUser) {
 		return <Redirect to="/" />;
@@ -29,7 +29,7 @@ function UserProjects() {
 
 	return (
 		<div>
-			<ProjectCard />
+			<ProjectCard projects={projects} />
 		</div>
 	);
 	

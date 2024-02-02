@@ -5,14 +5,14 @@ import './UserProjects.css'
 import { getUserProjects } from "../../../store/projects";
 import OpenModalButton from "../../DeleteModalButton"
 import DeleteProject from "../DeleteProject";
-import { deleteProject } from "../../../store/projects";
+// import { deleteProject } from "../../../store/projects";
 
 
-function ProjectCard() {
+function ProjectCard({projects}) {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const currentUser = useSelector((state) => state.session.user)
-	const projects = useSelector((state) => state.projectReducer.userProjects)
+	// const projects = useSelector((state) => state.projectReducer.userProjects)
 	const [isLoading, setIsLoading] = useState('true')
 
 	console.log(useSelector((state) => state))
@@ -31,6 +31,13 @@ function ProjectCard() {
         history.push(`/projects/${projectId}/update`);
     };
 
+	const navigateToProject = (projectId, project) => {
+		history.push({
+			pathname: `/projects/${projectId}`,
+			state: {project: project}
+		})
+	}
+
 
 	function formatDate(dateString) {
 		const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: true };
@@ -41,7 +48,7 @@ function ProjectCard() {
 	return (
 		<div className="project-card-div">
 		{Object.values(projects).map((project) => (
-			<div key={project.id} className="user-project-card">
+			<div onClick={() => navigateToProject(project.id, project)} key={project.id} className="user-project-card">
 				<h2 className="user-project-title">{project.name}</h2>
 				<p className="user-project-detail">{project.description}</p>
 				<p className="user-project-detail">{formatDate(project.due_date)}</p>
@@ -49,7 +56,7 @@ function ProjectCard() {
 					{project.is_public ? 'Public' : 'Private'}
 				</p>
 				{currentUser && currentUser.id === project.creator_id && (
-					<div className="project-actions">
+					<div onClick={(e) => e.stopPropagation()} className="project-actions">
 						<button className="edit-project-button" onClick={(e) => handleEdit(e, project.id)}>Edit</button>
 						<OpenModalButton  className="delete-project-button" buttonText="Delete" modalComponent={<DeleteProject projectId={project.id}/>} />
 					</div>

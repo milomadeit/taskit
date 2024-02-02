@@ -13,7 +13,7 @@ function UpdateProject() {
     const [isPublic, setIsPublic] = useState(project?.is_public || '');
 	const [errors, setErrors] = useState({});
 	const [loading, setLoading] = useState(true);
-	const [isMounted, setIsMounted] = useState(false);
+	// const [isMounted, setIsMounted] = useState(true);
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.session.user);
@@ -48,7 +48,7 @@ function UpdateProject() {
 		  formData.append('is_public', isPublic) 
 		  formData.append('due_date', dueDate)
 
-		  if (isMounted) setLoading(true);
+		//   if (isMounted) setLoading(true);
 
 		  try {
 			const result = await dispatch(updateProject(project.id, formData));
