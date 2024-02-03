@@ -14,15 +14,12 @@ function ProjectCard({projects}) {
 	const currentUser = useSelector((state) => state.session.user)
 	const projects_2 = useSelector((state) => state.projectReducer.userProjects)
 	const [loading, setLoading] = useState('true')
-	const projects_list = Object.values(projects)
-
-	console.log(useSelector((state) => state))
 	
 	useEffect(() => {
 		dispatch(getUserProjects())
 		setLoading(!loading)
 
-	}, [dispatch], projects_2)
+	}, [dispatch])
 
 	if (loading) return <div>Loading...</div>
 

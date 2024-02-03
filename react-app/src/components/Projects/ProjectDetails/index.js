@@ -1,31 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, useLocation, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './ProjectDetails.css';
 import { getProjectTasks } from '../../../store/tasks';
-import TaskCard from '../../Tasks/TaskCards';
+// import TaskCard from '../../Tasks/TaskCards';
 import TaskCarousel from '../../Tasks/TaskCards/TaskCarousel';
 import { getUserProjects } from '../../../store/projects';
 
 function ProjectDetails() {
-  const location = useLocation();
+
   const history = useHistory();
   const dispatch = useDispatch();
   const {projectId} = useParams();
-//   location.state.project || 
+
   const project = useSelector((state) => state.projectReducer.userProjects[parseInt(projectId)]);
   const [loading, setLoading] = useState(false);
   const tasks = useSelector((state) => state.tasksReducer.projectTasks);
   const task_array = Object.values(tasks);
+  const taskCount = useSelector(state => state.tasksReducer.taskCount)
   
 
   useEffect(() => {
     setLoading(true);
-	dispatch(getUserProjects()).then(dispatch(getProjectTasks(project?.id)).then(() => setLoading(false)))
+    dispatch(getUserProjects())
+    dispatch(getProjectTasks(project?.id))
+    setLoading(false)
 	
-  }, [dispatch, project?.id]);
+  }, [dispatch, project?.id, taskCount]);
 
-  if (!project) {
+
+  if (!project || loading) {
 	return (<div>Loading...</div>)
   }
 
@@ -80,7 +84,7 @@ function ProjectDetails() {
 	  <p className="project-description">{project.description}</p>
       </div>
       <div>
-        <TaskCarousel task_array={task_array} />
+        <TaskCarousel key={task_array.length} task_array={task_array} project={project} />
       </div>
       <div className='project-details-buttons'>
         <button className="add-task-button" onClick={() => navigateToCreateTask()}>

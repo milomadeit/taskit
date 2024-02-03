@@ -18,12 +18,12 @@ const storeUpdateProject = (project) => {
 	}
 }
 
-const storeProjects = (projects) => {
-	return {
-		type: ALL_PROJECTS,
-		projects
-	}
-}
+// const storeProjects = (projects) => {
+// 	return {
+// 		type: ALL_PROJECTS,
+// 		projects
+// 	}
+// }
 
 const storeUserProjects = (projects) => {
 	return {
@@ -32,7 +32,7 @@ const storeUserProjects = (projects) => {
 	}
 }
 
-const removerProject = (projectId) => {
+const removeProject = (projectId) => {
 	return {
 		type: DELETE_PROJECT,
 		projectId
@@ -50,7 +50,7 @@ export const createProject = (project) => async (dispatch) => {
 		return project_data
 	} else {
 		const errorData = await response.json();
-		console.log(errorData);
+		
 		return errorData
 	}
 }
@@ -66,7 +66,7 @@ export const updateProject = (projectId, project) => async (dispatch) => {
 		return project_data
 	} else {
 		const errorData = await response.json();
-		console.log(errorData);
+	
 		return errorData
 	}
 }
@@ -81,11 +81,14 @@ export const getAllProjects = () => async (dispatch) => {
 
 	if (response.ok) {
 		const projects = await response.json()
-		dispatch(storeProjects(projects))
+		if (projects.length > 0 ) {
+			dispatch(storeUserProjects(projects))
+			return projects;	
+		} 
 		return projects;
 	} else {
 		const errorData = await response.json();
-		console.log(errorData);
+	
 		return errorData
 	}
 }
@@ -100,11 +103,13 @@ export const getUserProjects = () => async (dispatch) => {
 
 	if (response.ok) {
 		const projects = await response.json()
-		dispatch(storeUserProjects(projects))
+		if (projects.length > 0) {
+			dispatch(storeUserProjects(projects))
+			return projects;	
+		} 
 		return projects;
 	} else {
 		const errorData = await response.json();
-		console.log(errorData);
 		return errorData
 	}
 }
@@ -119,7 +124,8 @@ export const deleteProject = (projectId) => async (dispatch) => {
 
 	if (response.ok) {
 		const data = await response.json();
-		dispatch(removerProject())
+		dispatch(removeProject(projectId))
+		dispatch(getUserProjects())
 		return data
 	} else {
 		const errorData = await response.json();
@@ -179,9 +185,13 @@ export default function projectReducer(state = initialState, action ) {
 		case DELETE_PROJECT: {
 			const newAllProjects = {...state.allProjects}
 			delete newAllProjects[action.projectId]
+			const newUserProjects = {...state.userProjects}
+			delete newUserProjects[action.projectId]
 			return {
 				...state,
-				allProjects: newAllProjects
+				allProjects: newAllProjects,
+				userProjects: newUserProjects,
+
 			}
 
 		}

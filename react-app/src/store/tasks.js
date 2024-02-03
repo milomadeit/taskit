@@ -25,10 +25,10 @@ const storeAllTasks = (tasks) => {
 	}
 }
 
-const storeDeleteTask = (task) => {
+const storeDeleteTask = (taskId) => {
 	return {
 		type: DELETE_TASK,
-		task
+		taskId
 	}
 }
 
@@ -38,8 +38,8 @@ export const createTask = (task, projectId) => async (dispatch) => {
 		body: task
 	})
 	if (response.ok) {
-		const taskData = response.json();
-		// dispatch(storeNewTask)
+		const taskData = await response.json();
+		dispatch(storeNewTask(taskData))
 		return { ok: true, data: taskData };
 	} else {
 		const errorData = response.json();
@@ -47,18 +47,33 @@ export const createTask = (task, projectId) => async (dispatch) => {
 	}
 }
 
-export const updateTasks = (task, projectId) => async (dispatch) => {
-	const response = await fetch(`/api/tasks/${projectId}`, {
-		method: 'POST',
+export const updateTask = (task, taskId) => async (dispatch) => {
+	const response = await fetch(`/api/tasks/${taskId}`, {
+		method: 'PUT',
 		body: task
 	})
 	if (response.ok) {
-		const taskData = response.json();
-		dispatch(storeUpdateTask)
-		return { ok: true, data: taskData };
+		const task = await response.json();
+		dispatch(storeUpdateTask(task))
+		return { ok: true, data: task };
 	} else {
-		const errorData = response.json();
+		const errorData = await response.json();
 		return { ok: false, data: errorData};
+	}
+}
+
+export const deleteTask = (taskId, projectId) => async (dispatch) => {
+	const response = await fetch(`/api/tasks/${taskId}`, {
+		method: 'DELETE'
+	})
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(storeDeleteTask(taskId))
+		dispatch(getProjectTasks(projectId))
+		return data
+	} else {
+		const errorData = await response.json();
+		return errorData
 	}
 }
 
@@ -68,7 +83,11 @@ export const getProjectTasks = (projectId) => async (dispatch) => {
 	})
 	if (response.ok) {
 		const allTasks = await response.json();
-		dispatch(storeAllTasks(allTasks))
+
+		if (allTasks.length > 0) {
+			dispatch(storeAllTasks(allTasks))
+			return allTasks;
+		}
 		return allTasks;
 	} else {
 		const errorData = await response.json();
@@ -76,48 +95,49 @@ export const getProjectTasks = (projectId) => async (dispatch) => {
 	}
 }
 
+
 const initialState = {
-	projectTasks: {}
-}
+    projectTasks: {},
+    taskCount: 0, 
+};
 
 const tasksReducer = (state = initialState, action) => {
     switch (action.type) {
         case NEW_TASK:
             return {
                 ...state,
-                tasks: {
-                    ...state.tasks,
-                    [action.task.id]: action.task
-                }
+                projectTasks: {
+                    ...state.projectTasks,
+                    [action.task.id]: action.task,
+                },
+                taskCount: state.taskCount + 1,
             };
+        case DELETE_TASK:
+			const newAllTasks = {...state.projectTasks}
+			delete newAllTasks[action.taskId]
 
-        case UPDATE_TASK:
             return {
                 ...state,
-                tasks: {
-                    ...state.tasks,
-                    [action.task.id]: { ...state.tasks[action.task.id], ...action.task }
-                }
+                projectTasks: newAllTasks,
+                taskCount: state.taskCount - 1, 
             };
-
         case GET_TASKS:
+
             const allTasks = action.tasks.reduce((acc, task) => {
                 acc[task.id] = task;
                 return acc;
             }, {});
             return {
                 ...state,
-                projectTasks: {
-                    ...state.tasks,
-                    ...allTasks
-                }
+                projectTasks: allTasks,
+                taskCount: action.tasks.length,
             };
 
-        case DELETE_TASK:
-		default:
-			return state;
-	}
-}
+        default:
+            return state;
+    }
+};
+
 			
     
 export default tasksReducer;

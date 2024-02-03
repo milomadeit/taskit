@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TaskCard from '.';
 import './TaskCarousel.css'; 
 
-function TaskCarousel({ task_array }) {
+function TaskCarousel({ task_array, project }) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const goPrev = () => {
@@ -18,7 +18,6 @@ function TaskCarousel({ task_array }) {
     };
 
 	const curr_task = task_array[currentIndex]
-	console.log(curr_task)
 
 
     return (
@@ -28,7 +27,7 @@ function TaskCarousel({ task_array }) {
 				<div className="carousel-div">
 					<button className='prev-next-button' onClick={goPrev}>&lt;</button>
 					<div className="carousel-slide">
-						<TaskCard curr_task={curr_task} />
+						<TaskCard curr_task={curr_task} project={project} />
 					</div>
 					
 					<button className='prev-next-button' onClick={goNext}>&gt;</button>
