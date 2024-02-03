@@ -39,7 +39,7 @@
 }
 
 
-.task-edit-button, .task-delete-button {
+.task-edit-button, .task-delete-, .modal-delete-task {
 	border: none; 
     border-radius: 50px; 
 	width: 30px;
@@ -49,9 +49,10 @@
   	text-decoration: none;
 	font-size: 10px;
 	background-color: rgb(171, 164, 247);
+	margin-right: 5px;
 }
 
-.task-edit-button:hover {
+.task-edit-button:hover, .modal-delete-task:hover {
 	background-color: darkblue;
 	color: lightblue;
 }

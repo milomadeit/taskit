@@ -18,7 +18,6 @@ function TaskCarousel({ task_array, project }) {
     };
 
 	const curr_task = task_array[currentIndex]
-	console.log(curr_task)
 
 
     return (
