@@ -12,18 +12,19 @@ function ProjectCard({projects}) {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const currentUser = useSelector((state) => state.session.user)
-	// const projects = useSelector((state) => state.projectReducer.userProjects)
-	const [isLoading, setIsLoading] = useState('true')
+	const projects_2 = useSelector((state) => state.projectReducer.userProjects)
+	const [loading, setLoading] = useState('true')
+	const projects_list = Object.values(projects)
 
 	console.log(useSelector((state) => state))
 	
 	useEffect(() => {
 		dispatch(getUserProjects())
-		setIsLoading(!isLoading)
+		setLoading(!loading)
 
-	}, [dispatch])
+	}, [dispatch], projects_2)
 
-	if (isLoading) return <div>Loading...</div>
+	if (loading) return <div>Loading...</div>
 
 	const handleEdit = (e, projectId) => {
 		e.stopPropagation();

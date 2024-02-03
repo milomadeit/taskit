@@ -10,10 +10,11 @@ function DeleteProject({projectId}) {
 	const dispatch = useDispatch();
 
 
-	const handleOnClickDelete = (projectId) => {
-		dispatch(deleteProject(projectId))
-		dispatch(getUserProjects())
+	const handleOnClickDelete = async (projectId) => {
+		await dispatch(deleteProject(projectId))
+		await dispatch(getUserProjects())
 		closeModal()
+	
 	
 	}
 	const handleCloseModal = () => {

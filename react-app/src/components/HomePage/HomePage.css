@@ -17,8 +17,9 @@
 .main-home-div > h1 {
     margin-top: -25px;
     font-size: 2.5rem;
-    color: #333;
+    color: #31183d;
 }
+
 
 .button {
     padding: 10px 20px; 
@@ -40,3 +41,5 @@
     transform: translateY(1px);
 
 }
+
+
