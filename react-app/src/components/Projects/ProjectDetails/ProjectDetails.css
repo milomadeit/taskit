@@ -4,6 +4,7 @@
 	display: flex;
 	justify-content: center;
   }
+
   
   .main-project-details-div {
 
@@ -12,70 +13,69 @@
 	align-items: center;
 	background-color: rgb(255, 255, 255);
 	padding: 20px;
-	margin-top: 5em;
+	margin-top: 20px;
 	border-radius: 10px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	width: 500px;
+
+  }
+
+  .project-info {
+	display: flex;
+	flex-direction: row;
+	margin-top: 0px;
+
   }
   
   .project-name {
-	font-size: 24px;
+	font-size: 20px;
 	color: darkblue;
 	text-align: left;
 	margin-right: 60px;
   }
   
   .project-description {
-	font-size: 18px;
+	font-size: 14px;
 	color: rgb(55, 32, 85);
   }
   
-  .project-detail {
-	font-size: 16px;
-	color: grey;
-	text-align: right; 
-  }
-  
-  .project-public {
-	font-size: 16px;
-	font-weight: bold;
-	margin-top: -15px;
-	text-align: right;
-  }
-  
-  .task-count {
-	font-size: 16px;
-	color: black;
-	margin-top: -15px
-  }
-  
-  
-  
-  .project-info {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	justify-content: center;
-
-  }
-
   .project-name-div {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
-	margin-top: -20px;
-	margin-left: -8px;
-	margin-right: 20px;
-  }
-  
-  .detail-span {
-	margin-top: -10px;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-  }
-
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: flex-start;
+	  margin-top: -20px;
+	  margin-left: 0px;
+	  margin-right: 80px;
+	}
+	
+	.project-public {
+		font-size: 12px;
+		font-weight: bold;
+		margin-top: -10px;
+		text-align: right;
+	}
+	
+	.task-count {
+		font-size: 12px;
+		color: black;
+		margin-top: 0px
+	}
+	
+	
+	.detail-span {
+		margin-top: -30px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		justify-content: center;
+	}
+	.project-detail {
+	  font-size: 12px;
+	  color: grey;
+	  text-align: right; 
+	}
+	
   .project-description-div {
 	display: flex;
 	flex-direction: column;
@@ -92,18 +92,19 @@
   .add-task-button {
 	background-color: darkorange;
 	color: white;
-	font-size: 14px;
+	font-size: 10px;
 	padding: 10px 20px;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
 	margin-left: 5px;
 	margin-right: 5px;
-	width: 140px;
+	width: 120px;
   }
   
   .add-task-button:hover {
 	background-color: orange;
+	transform: translateY(-2px);  
   }
 
 .nav-to-create, .nav-to-user-proj {
@@ -116,7 +117,8 @@
 	border-radius: 5px; 
 	cursor: pointer; 
 	transition: background-color 0.3s, transform 0.1s;
-	width: 140px; 
+	width: 120px; 
+	font-size: 10px;
 
 }
 
@@ -126,6 +128,6 @@
 }
 
 .nav-to-create:hover {
-	background-color: orange;
+	background-color: rgb(22, 166, 80);
     transform: translateY(-2px); 
 }

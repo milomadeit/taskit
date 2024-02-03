@@ -19,7 +19,7 @@
 }
 
 .task-card-task-name {
-    font-size: 15px; 
+    font-size: 12px; 
     color: #0f355d;
     margin-bottom: 10px;
 	display: -webkit-box;
@@ -28,7 +28,7 @@
 }
 
 .task-card-task-description {
-    font-size: 14px;
+    font-size: 10px;
     color: #524770; 
     margin-bottom: 15px; 
     overflow: hidden;
@@ -39,4 +39,19 @@
 }
 
 
+.task-edit-button, .task-delete-button {
+	border: none; 
+    border-radius: 50px; 
+	width: 30px;
+	height: 30px;
+    cursor: pointer; 
+	text-align: center;
+  	text-decoration: none;
+	font-size: 10px;
+	background-color: rgb(171, 164, 247);
+}
 
+.task-edit-button:hover {
+	background-color: darkblue;
+	color: lightblue;
+}
