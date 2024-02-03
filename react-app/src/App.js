@@ -11,6 +11,7 @@ import UserProjects from "./components/Projects/UserProjects";
 import UpdateProject from "./components/Projects/UpdateProject";
 import ProjectDetails from "./components/Projects/ProjectDetails";
 import CreateTask from "./components/Tasks/CreateTask";
+import UpdateTask from "./components/Tasks/UpdateTask";
 
 
 function App() {
@@ -38,6 +39,11 @@ function App() {
 
           {sessionUser && (<Route exact path="/projects/user">
             <UserProjects />
+          </Route>
+          )}
+
+          {sessionUser && (<Route path="/projects/tasks/edit/:taskId/">
+            <UpdateTask />
           </Route>
           )}
 

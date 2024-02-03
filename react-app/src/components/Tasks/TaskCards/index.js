@@ -2,13 +2,15 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import './TaskCard.css'
 
-function TaskCard({curr_task}) {
+function TaskCard({curr_task, project}) {
 	const history = useHistory();
+
+	const task = curr_task;
 
 	const handleEditTask = (taskId) => {
 		history.push({
 			pathname: `/projects/tasks/edit/${taskId}`,
-			state: {curr_task:curr_task}
+			state: {task:task, project:project}
 		})
 	}
 

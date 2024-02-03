@@ -81,7 +81,10 @@ export const getAllProjects = () => async (dispatch) => {
 
 	if (response.ok) {
 		const projects = await response.json()
-		dispatch(storeProjects(projects))
+		if (projects.length > 0 ) {
+			dispatch(storeUserProjects(projects))
+			return projects;	
+		} 
 		return projects;
 	} else {
 		const errorData = await response.json();
@@ -100,7 +103,10 @@ export const getUserProjects = () => async (dispatch) => {
 
 	if (response.ok) {
 		const projects = await response.json()
-		dispatch(storeUserProjects(projects))
+		if (projects.length > 0) {
+			dispatch(storeUserProjects(projects))
+			return projects;	
+		} 
 		return projects;
 	} else {
 		const errorData = await response.json();

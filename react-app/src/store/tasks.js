@@ -39,7 +39,7 @@ export const createTask = (task, projectId) => async (dispatch) => {
 	})
 	if (response.ok) {
 		const taskData = response.json();
-		// dispatch(storeNewTask)
+		dispatch(storeNewTask)
 		return { ok: true, data: taskData };
 	} else {
 		const errorData = response.json();
@@ -47,17 +47,17 @@ export const createTask = (task, projectId) => async (dispatch) => {
 	}
 }
 
-export const updateTasks = (task, projectId) => async (dispatch) => {
-	const response = await fetch(`/api/tasks/${projectId}`, {
-		method: 'POST',
+export const updateTask = (task, taskId) => async (dispatch) => {
+	const response = await fetch(`/api/tasks/${taskId}`, {
+		method: 'PUT',
 		body: task
 	})
 	if (response.ok) {
-		const taskData = response.json();
-		dispatch(storeUpdateTask)
-		return { ok: true, data: taskData };
+		const task = await response.json();
+		dispatch(storeUpdateTask(task))
+		return { ok: true, data: task };
 	} else {
-		const errorData = response.json();
+		const errorData = await response.json();
 		return { ok: false, data: errorData};
 	}
 }
@@ -93,12 +93,12 @@ const tasksReducer = (state = initialState, action) => {
 
         case UPDATE_TASK:
             return {
-                ...state,
-                tasks: {
-                    ...state.tasks,
-                    [action.task.id]: { ...state.tasks[action.task.id], ...action.task }
-                }
-            };
+				...state,
+				projectTasks: {
+				  ...state.projectTasks, // Update projectTasks, not tasks
+				  [action.task.id]: { ...state.projectTasks[action.task.id], ...action.task }
+				}
+			  };
 
         case GET_TASKS:
             const allTasks = action.tasks.reduce((acc, task) => {
@@ -106,12 +106,12 @@ const tasksReducer = (state = initialState, action) => {
                 return acc;
             }, {});
             return {
-                ...state,
-                projectTasks: {
-                    ...state.tasks,
-                    ...allTasks
-                }
-            };
+				...state,
+				projectTasks: {
+				  ...state.projectTasks, // Update projectTasks, not tasks
+				  ...allTasks
+				}
+			  };
 
         case DELETE_TASK:
 		default:

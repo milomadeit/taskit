@@ -80,7 +80,7 @@ function ProjectDetails() {
 	  <p className="project-description">{project.description}</p>
       </div>
       <div>
-        <TaskCarousel task_array={task_array} />
+        <TaskCarousel task_array={task_array} project={project} />
       </div>
       <div className='project-details-buttons'>
         <button className="add-task-button" onClick={() => navigateToCreateTask()}>
