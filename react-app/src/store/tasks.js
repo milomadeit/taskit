@@ -39,7 +39,7 @@ export const createTask = (task, projectId) => async (dispatch) => {
 	})
 	if (response.ok) {
 		const taskData = response.json();
-		// dispatch(storeNewTask)
+		dispatch(storeNewTask)
 		return { ok: true, data: taskData };
 	} else {
 		const errorData = response.json();
