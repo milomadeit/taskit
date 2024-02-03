@@ -41,7 +41,7 @@ function App() {
           </Route>
           )}
 
-          {sessionUser && (<Route path="/projects/tasks/new">
+          {sessionUser && (<Route path="/projects/tasks/:projectId/new">
             <CreateTask />
           </Route>
           )}
