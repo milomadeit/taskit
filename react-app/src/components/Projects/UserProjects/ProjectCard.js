@@ -6,6 +6,7 @@ import { getUserProjects } from "../../../store/projects";
 import OpenModalButton from "../../DeleteModalButton"
 import DeleteProject from "../DeleteProject";
 // import { deleteProject } from "../../../store/projects";
+import PopOutMenu from "../../PopOutMenu";
 
 
 function ProjectCard({projects}) {
@@ -50,13 +51,18 @@ function ProjectCard({projects}) {
 				<h2 className="user-project-title">{project.name}</h2>
 				<p className="user-project-detail">{project.description}</p>
 				<p className="user-project-detail">{formatDate(project.due_date)}</p>
+				{project.task_count > 0 && (<p className="projects-task-count" >{project.task_count} TASK{project.task_count > 1 ? 'S' : ''}</p>)}
+				{project.task_count === 0 && (<p className="projects-task-count" >NO TASKS</p>)}
 				<p className={`user-project-public ${project.is_public ? 'public' : 'private'}`}>
 					{project.is_public ? 'Public' : 'Private'}
 				</p>
 				{currentUser && currentUser.id === project.creator_id && (
 					<div onClick={(e) => e.stopPropagation()} className="project-actions">
-						<button className="edit-project-button" onClick={(e) => handleEdit(e, project.id)}>Edit</button>
-						<OpenModalButton  className="delete-project-button" buttonText="Delete" modalComponent={<DeleteProject projectId={project.id}/>} />
+						<PopOutMenu>
+							<button className="edit-project-button" onClick={(e) => handleEdit(e, project.id)}>Edit</button>
+							<OpenModalButton  className="delete-project-button" buttonText="Delete" modalComponent={<DeleteProject projectId={project.id}/>} />
+
+						</PopOutMenu>
 					</div>
 				)}
 			</div>

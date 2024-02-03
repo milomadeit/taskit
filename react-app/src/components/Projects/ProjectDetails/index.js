@@ -83,8 +83,18 @@ function ProjectDetails() {
       <div className='project-description-div'>
 	  <p className="project-description">{project.description}</p>
       </div>
-      <div>
-        <TaskCarousel key={task_array.length} task_array={task_array} project={project} />
+      <div className='project-details-center-div'>
+        <div className='project-details-mid-div-1'>
+          <h4>Files</h4>
+          <p>No files uploaded</p>
+        </div>
+        <div className='project-details-mid-div-2'>
+          <TaskCarousel key={task_array.length} task_array={task_array} project={project} />
+        </div>
+        <div className='project-details-mid-div-3'>
+          {/* <h4>You havent invited anyone to collaborate yet!</h4>
+          <button>invite a friend to create with you</button> */}
+        </div>
       </div>
       <div className='project-details-buttons'>
         <button className="add-task-button" onClick={() => navigateToCreateTask()}>

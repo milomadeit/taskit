@@ -17,6 +17,7 @@
     padding: 20px;
     transition: box-shadow 0.3s;
     width: 700px;
+    margin-top: 0;
 }
 
 .project-actions {
@@ -59,32 +60,63 @@
     justify-content: center;
     color: white;
     font-weight: bold;
-    padding: 10px 20px;
-    margin: 5px;
+    /* margin: 5px; */
+    margin-top: 5px;
+    margin-bottom: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.1s;
     font-size: 10px;
     height: 20px;
+    
 }
 
 .edit-project-button {
-    background-color: #4CAF50; /* Green for edit */
+    background-color: transparent; 
+    color: darkblue
 }
 
 .edit-project-button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049; 
+    color: whitesmoke;
 }
 
 .delete-project-button {
-    background-color: #f44336; /* Red for delete */
+    background-color:  transparent;
+    color: darkred
 }
 
 .delete-project-button:hover {
-    background-color: #da190b; /* Darker red on hover */
+    background-color: #da190b; 
+    color: whitesmoke
 }
 
-.button {
-    
+
+.projects-page-create-project-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-page-create-project-button {
+    padding: 10px 20px; 
+    margin: 25px 5px; 
+    background-color: #0f355d; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.1s; 
+}
+
+.project-page-create-project-button:hover {
+    background-color: #7fb7f2; 
+    transform: translateY(-2px); 
+}
+
+.project-page-create-project-button:active {
+    transform: translateY(1px);
+
 }
