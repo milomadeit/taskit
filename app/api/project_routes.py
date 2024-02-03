@@ -103,6 +103,9 @@ def AllUserProjects():
 
 	if user_projects:
 		project_list = [{'id': project.id, 'name': project.name, 'creator_id':project.creator_id, 'description': project.description, 'due_date': project.due_date, 'is_public': project.is_public, 'task_count': project.task_count } for project in user_projects]
+
+		if len(project_list) < 1:
+			return jsonify([]), 200
 	
 		return jsonify(project_list), 200
 	
@@ -114,7 +117,7 @@ def DeleteProject(projectId):
 	project = Project.query.filter_by(id=projectId).first()
 
 	if not current_user:
-		return jsonify({'error': 'you musst be logged in to delete projects'}), 403
+		return jsonify({'error': 'you must be logged in to delete projects'}), 403
 	
 	if current_user.id != project.creator_id:
 		return jsonify({'error': 'you are not the creator of this project'}), 403
@@ -122,10 +125,9 @@ def DeleteProject(projectId):
 	try:
 		db.session.delete(project)
 		db.session.commit()
-		return jsonify({'message': 'song deleted successfully'}), 200
+		return jsonify({'message': 'project deleted successfully'}), 200
 
 	except Exception as e:
-		print(e)
 		db.session.rollback()
 		return jsonify({'error': 'An error occurred during deletion'}), 500
 
@@ -136,6 +138,10 @@ def AllProjects():
 
 	if all_projects:
 		project_list = [{'id': project.id, 'name': project.name, 'creator_id':project.creator_id, 'description': project.description, 'due_date': project.due_date, 'is_public': project.is_public, 'task_count': project.task_count } for project in all_projects]
+
+		if len(project_list) < 1:
+			return jsonify([]), 200
+
 		return jsonify(project_list), 200
 	
 	return jsonify({'error': 'could not get projects'})
