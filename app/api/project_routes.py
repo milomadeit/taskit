@@ -98,8 +98,8 @@ def AllUserProjects():
 
 	user_projects = Project.query.filter_by(creator_id=current_user.id).all()
 
-	if current_user.id != user_projects[0].creator_id:
-		return jsonify({'error': ' you did not create these projects'}), 403
+	# if current_user.id != user_projects[0].creator_id:
+	# 	return jsonify({'error': ' you did not create these projects'}), 403
 
 	if user_projects:
 		project_list = [{'id': project.id, 'name': project.name, 'creator_id':project.creator_id, 'description': project.description, 'due_date': project.due_date, 'is_public': project.is_public, 'task_count': project.task_count } for project in user_projects]
