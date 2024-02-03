@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
-from ..models import db, Task
+from ..models import db, Task, Project
 from ..forms import TaskForm
 
 task_routes = Blueprint('tasks', __name__)
@@ -24,7 +24,9 @@ def CreateTask(projectId):
 		)
 		db.session.add(new_task)
 
-		current_user.task_count += 1
+		project = Project.query.filter_by(id=projectId).first()
+		print(project.to_dict(), 'YOOOOOOO')
+		project.task_count += 1
 		db.session.commit()
 
 		return jsonify(new_task.to_dict()), 200
@@ -32,3 +34,44 @@ def CreateTask(projectId):
 	if form.errors:
             # print(form.errors)
             return jsonify(form.errors), 400
+
+
+@task_routes.route('/<int:taskId>', methods=['POST'])
+@login_required
+def UpdateTask(taskId):
+	task = Task.query.filter_by(id=taskId).first()
+
+	if not current_user:
+		return jsonify({'error': 'you must be logged in to create a task'}), 403
+	
+	if current_user.id != task.creator_id:
+		return jsonify({'error': 'you must be the task creator to update the task'}), 403
+	
+	form = TaskForm(request.form);
+	form['csrf_token'].data = request.cookies['csrf_token']
+
+	if form.validate_on_submit():
+		
+		task.name = request.form.get('name') or task.name
+		task.description = request.form.get('description') or task.description
+		task.project_id = request.form.get('project_id') or task.project_id
+		task.creator_id = current_user.id or task.creator_id
+
+		db.session.commit()
+
+		return jsonify(task.to_dict()), 200
+	
+	if form.errors:
+            # print(form.errors)
+            return jsonify(form.errors), 400
+	
+
+
+@task_routes.route('/<int:projectId>', methods=['GET'])
+@login_required
+def GetUserTasks(projectId):
+	all_tasks = Task.query.filter_by(project_id=projectId, creator_id=current_user.id)
+
+	task_list = [{'id': task.id, 'name': task.name, 'description': task.description, 'creator_id': task.creator_id, 'is_completed': task.is_completed } for task in all_tasks]
+
+	return jsonify(task_list), 200

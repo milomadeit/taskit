@@ -58,22 +58,23 @@ function ProjectDetails() {
 	<div className='project-container'>
     <div className="main-project-details-div">
       <div className="project-info">
-		<div className='project-name-div'>
-        <h2 className="project-name">{project.name}</h2>
-        <p className="task-count">
-          {project.task_count < 1
-            ? 'No tasks to complete'
-            : project.task_count + ' tasks to complete'}
-        </p>
-		</div>
-	  <span className='detail-span'>
-	  <p className="project-detail">{formatDate(project.due_date)}</p>
-        <p
-          className={`project-public ${project.is_public ? 'public' : 'private'}`}
-        >
-          {project.is_public ? 'Public' : 'Private'}
-        </p>
-	  </span>
+		
+        <div className='project-name-div'>
+            <h2 className="project-name">{project.name}</h2>
+            <p className="task-count">
+              {project.task_count < 1
+                ? 'No tasks to complete'
+                : project.task_count + ' tasks to complete'}
+            </p>
+        </div>
+
+        <div className='detail-span'>
+          <p className="project-detail">{formatDate(project.due_date)}</p>
+          <p className={`project-public ${project.is_public ? 'public' : 'private'}`}>
+              {project.is_public ? 'Public' : 'Private'}
+          </p>
+        </div>
+
       </div>
       <div className='project-description-div'>
 	  <p className="project-description">{project.description}</p>
