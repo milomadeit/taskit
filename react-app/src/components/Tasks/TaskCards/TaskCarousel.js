@@ -22,18 +22,24 @@ function TaskCarousel({ task_array }) {
 
 
     return (
-		<div>
+		<div className='carousel-container'>
 			{ task_array.length > 0 ? (
-				<div className="carousel-container">
-					<button onClick={goPrev}>&lt;</button>
+				<>
+				<div className="carousel-div">
+					<button className='prev-next-button' onClick={goPrev}>&lt;</button>
 					<div className="carousel-slide">
 						<TaskCard curr_task={curr_task} />
 					</div>
-					<p>{currentIndex + 1} of {task_array.length}</p>
-					<button onClick={goNext}>&gt;</button>
+					
+					<button className='prev-next-button' onClick={goNext}>&gt;</button>
+
 				</div>
+				<div>
+					<p className='carousel-index'> {currentIndex + 1} of {task_array.length}</p>
+				</div>
+				</>
 	
-				) : (<div></div>)
+				) : (<div className='hidden'></div>)
 			}
 
 		</div>

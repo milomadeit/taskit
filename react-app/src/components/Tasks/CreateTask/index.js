@@ -40,7 +40,10 @@ function CreateTask() {
 		try {
 			const result = await dispatch(createTask(formData, projectId));
 			if (result.ok) {
-			  history.push("/");
+			  history.push({
+				pathname: `/projects/${projectId}`,
+				state: {projectId}
+			});
 			} else {
 			  return result.data
 	  

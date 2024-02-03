@@ -1,0 +1,131 @@
+
+
+.project-container {
+	display: flex;
+	justify-content: center;
+  }
+  
+  .main-project-details-div {
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgb(255, 255, 255);
+	padding: 20px;
+	margin-top: 5em;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	width: 500px;
+  }
+  
+  .project-name {
+	font-size: 24px;
+	color: darkblue;
+	text-align: left;
+	margin-right: 60px;
+  }
+  
+  .project-description {
+	font-size: 18px;
+	color: rgb(55, 32, 85);
+  }
+  
+  .project-detail {
+	font-size: 16px;
+	color: grey;
+	text-align: right; 
+  }
+  
+  .project-public {
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: -15px;
+	text-align: right;
+  }
+  
+  .task-count {
+	font-size: 16px;
+	color: black;
+	margin-top: -15px
+  }
+  
+  
+  
+  .project-info {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
+
+  }
+
+  .project-name-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	margin-top: -20px;
+	margin-left: -8px;
+	margin-right: 20px;
+  }
+  
+  .detail-span {
+	margin-top: -10px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+  }
+
+  .project-description-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+  }
+
+  .project-details-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+  .add-task-button {
+	background-color: darkorange;
+	color: white;
+	font-size: 14px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-left: 5px;
+	margin-right: 5px;
+	width: 140px;
+  }
+  
+  .add-task-button:hover {
+	background-color: orange;
+  }
+
+.nav-to-create, .nav-to-user-proj {
+	padding: 10px 20px; 
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: #0f355d; 
+	color: white; 
+	border: none; 
+	border-radius: 5px; 
+	cursor: pointer; 
+	transition: background-color 0.3s, transform 0.1s;
+	width: 140px; 
+
+}
+
+ .nav-to-user-proj:hover {
+	background-color: #7fb7f2; 
+    transform: translateY(-2px);  
+}
+
+.nav-to-create:hover {
+	background-color: orange;
+    transform: translateY(-2px); 
+}
