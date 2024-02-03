@@ -16,7 +16,7 @@
 	margin-top: 20px;
 	border-radius: 10px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-	width: 500px;
+	width: 900px;
 
   }
 
@@ -44,9 +44,9 @@
 	  flex-direction: column;
 	  justify-content: center;
 	  align-items: flex-start;
-	  margin-top: -20px;
+	  margin-top: -30px;
 	  margin-left: 0px;
-	  margin-right: 80px;
+	  margin-right: 600px;
 	}
 	
 	.project-public {
@@ -59,7 +59,7 @@
 	.task-count {
 		font-size: 12px;
 		color: black;
-		margin-top: 0px
+		margin-top: -10px
 	}
 	
 	
@@ -130,4 +130,20 @@
 .nav-to-create:hover {
 	background-color: rgb(22, 166, 80);
     transform: translateY(-2px); 
+}
+
+.project-details-center-div {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.project-details-mid-div-1, .project-details-mid-div-2, .project-details-mid-div-3 {
+	width: 300px
+}
+
+.project-details-mid-div-1 > p {
+	margin-top: -10px;
+	width: 100px
 }

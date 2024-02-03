@@ -5,6 +5,8 @@ import './UserProjects.css'
 import { getUserProjects } from "../../../store/projects";
 import ProjectCard from "./ProjectCard";
 
+
+
 function UserProjects() {
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -26,9 +28,18 @@ function UserProjects() {
 
 	if (isLoading) return <div>Loading...</div>
 
+	const navigateToCreate = () => {
+		history.push('/projects/new')
+	}
+
 
 	return (
 		<div>
+			<div className="projects-page-create-project-button">
+				<button className='project-page-create-project-button' onClick={() => navigateToCreate()}>
+						Create New Project
+				</button>
+			</div>
 			<ProjectCard projects={projects} />
 		</div>
 	);

@@ -77,29 +77,30 @@ function CreateProject() {
 
     return (
         <div className='create-project-main-div'>
-            <form onSubmit={handleSubmit}>
+            <form className='create-project-form' onSubmit={handleSubmit}>
                 <div className='project-form-inputs'>
                     <label className='project-name-label'>Project Name</label>
                     <input type='text' placeholder='Project Name' value={projectName} onChange={(e) => setProjectName(e.target.value)} />
-					{errors.projectName && (<p>{errors.projectName}</p>)}
+					{errors.projectName && (<p className='errors-p'>{errors.projectName}</p>)}
                 </div>
                 <div className='project-form-inputs'>
                     <label className='project-description-label'>Description</label>
                     <textarea placeholder='Description' value={description} onChange={(e) => setDescription(e.target.value)} />
-					{errors.description && (<p>{errors.description}</p>)}
+					{errors.description && (<p className='errors-p' >{errors.description}</p>)}
                 </div>
                 <div className='project-form-inputs'>
                     <label className='project-due-date-label'>Due Date</label>
                     <input type='datetime-local' value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
-					{errors.dueDate && (<p>{errors.dueDate}</p>)}
+					{errors.dueDate && (<p className='errors-p' >{errors.dueDate}</p>)}
                 </div>
-                <div className='project-form-inputs'>
-                    <label className='project-is-public-label'>Public</label>
+                <div className='project-form-inputs public-private'>
+                    <label className='project-is-public-label'>Public:</label>
                     <input type='checkbox' checked={isPublic} onChange={() => handleIsPublic()} />
                 </div>
 				<div>
-					<button type='submit'>Submit</button>
+					<button className='submit-project-button'  type='submit'>Submit</button>
 				</div>
+				<div className='empty'>{}</div>
             </form>
         </div>
     );

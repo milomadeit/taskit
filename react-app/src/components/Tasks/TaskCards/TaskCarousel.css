@@ -22,8 +22,9 @@
 	width: 40px;
 	height: 40px;
 	cursor: pointer;
-	margin: 0 20px;
+	margin: 0 -15px;
 	outline: none;
+	z-index: 0;
   }
   
   .prev-next-button:hover {
