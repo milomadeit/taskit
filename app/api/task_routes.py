@@ -25,7 +25,6 @@ def CreateTask(projectId):
 		db.session.add(new_task)
 
 		project = Project.query.filter_by(id=projectId).first()
-		print(project.to_dict(), 'YOOOOOOO')
 		project.task_count += 1
 		db.session.commit()
 
@@ -36,7 +35,7 @@ def CreateTask(projectId):
             return jsonify(form.errors), 400
 
 
-@task_routes.route('/<int:taskId>', methods=['POST'])
+@task_routes.route('/<int:taskId>', methods=['PUT'])
 @login_required
 def UpdateTask(taskId):
 	task = Task.query.filter_by(id=taskId).first()
@@ -72,6 +71,32 @@ def UpdateTask(taskId):
 def GetUserTasks(projectId):
 	all_tasks = Task.query.filter_by(project_id=projectId, creator_id=current_user.id)
 
-	task_list = [{'id': task.id, 'name': task.name, 'description': task.description, 'creator_id': task.creator_id, 'is_completed': task.is_completed } for task in all_tasks]
+	task_list = [{'id': task.id, 'name': task.name, 'description': task.description, 'creator_id': task.creator_id, 'is_completed': task.is_completed, 'project_id': task.project_id } for task in all_tasks]
+
+	if len(task_list) < 1:
+			return jsonify([]), 200
 
 	return jsonify(task_list), 200
+
+
+@task_routes.route('/<int:taskId>', methods=['DELETE'])
+@login_required
+def DeleteTask(taskId):
+	task = Task.query.filter_by(id=taskId).first()
+
+
+	if current_user.id != task.creator_id:
+		return jsonify({'error': 'you are not the creator of this project'}), 403
+	
+
+	try:
+		project = Project.query.filter_by(id=task.project_id).first()
+		project.task_count -= 1
+		db.session.delete(task)
+		db.session.commit()
+		return jsonify({'message': 'task deleted successfully'}), 200
+
+	except Exception as e:
+		print(e)
+		db.session.rollback()
+		return jsonify({'error': 'An error occurred during deletion'}), 500
