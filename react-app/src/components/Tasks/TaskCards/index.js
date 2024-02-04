@@ -24,10 +24,11 @@ function TaskCard({curr_task, project}) {
 		
 			<p className='task-card-task-description'>{curr_task?.description}</p>
 			</div>
-			<div>
+			<div className='task-details-bottom-div'>
 				<span>
 				<p className='task-card-task-finished'>{curr_task?.is_completed ? "Done" : "Not Done"}</p>
 				</span>
+				<div>
 				<button className='task-edit-button' onClick={() => handleEditTask(curr_task.id)}><i class="fa-regular fa-pen-to-square"></i></button>
 				<OpenModalButton className='modal-delete-task'
               	buttonText={
@@ -35,6 +36,8 @@ function TaskCard({curr_task, project}) {
               }
               modalComponent={<DeleteTask curr_task={curr_task} project={project} />}
             />
+
+				</div>
 				{/* <button className='task-delete-button'>Delete</button>	 */}
 				{/* <button className='task-delete-button'><i className="fa fa-ellipsis"></i></button> */}
 			</div>

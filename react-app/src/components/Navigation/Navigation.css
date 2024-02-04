@@ -38,6 +38,8 @@
   border-radius: 25px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   z-index: 100;
+  margin-top: -15px;
+  width: 100px;
 }
 
 .profile-dropdown li {
@@ -62,7 +64,9 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   background-color: #9994e9;
-  height: 35px;
+  height: 30px;
+  margin-top: ;
+  width: 100px;
 }
 
 .dropdown-logout:hover {

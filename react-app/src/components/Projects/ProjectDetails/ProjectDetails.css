@@ -64,7 +64,7 @@
 	
 	
 	.detail-span {
-		margin-top: -30px;
+		margin-top: -15px;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
@@ -107,29 +107,34 @@
 	transform: translateY(-2px);  
   }
 
+  .project-details-actions {
+	display: flex;
+	margin-top: -10px;
+  }
+
+
 .nav-to-create, .nav-to-user-proj {
-	padding: 10px 20px; 
-	margin-left: 5px;
-	margin-right: 5px;
-	background-color: #0f355d; 
-	color: white; 
+	background-color: transparent; 
+	color: darkblue; 
 	border: none; 
 	border-radius: 5px; 
 	cursor: pointer; 
-	transition: background-color 0.3s, transform 0.1s;
-	width: 120px; 
+	transition: background-color 0.3s, transform 0.1s; 
 	font-size: 10px;
+	height: 20px;
+	margin-bottom: 5px;
+	font-weight: bold;
 
 }
-
+	
  .nav-to-user-proj:hover {
 	background-color: #7fb7f2; 
-    transform: translateY(-2px);  
+    /* transform: translateY(-2px);   */
 }
 
 .nav-to-create:hover {
 	background-color: rgb(22, 166, 80);
-    transform: translateY(-2px); 
+    /* transform: translateY(-2px);  */
 }
 
 .project-details-center-div {

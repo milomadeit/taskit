@@ -3,9 +3,12 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './ProjectDetails.css';
 import { getProjectTasks } from '../../../store/tasks';
-// import TaskCard from '../../Tasks/TaskCards';
+import TaskCard from '../../Tasks/TaskCards';
 import TaskCarousel from '../../Tasks/TaskCards/TaskCarousel';
 import { getUserProjects } from '../../../store/projects';
+import PopOutMenu from '../../PopOutMenu';
+import OpenModalButton from '../../DeleteModalButton'
+import DeleteProject from '../DeleteProject';
 
 function ProjectDetails() {
 
@@ -58,6 +61,12 @@ function ProjectDetails() {
     history.push(`/projects/tasks/${project.id}/new`);
   };
 
+  const handleEdit = (e, projectId) => {
+		e.stopPropagation();
+        // navigate to edit page with projectId
+        history.push(`/projects/${projectId}/update`);
+    };
+
   return (
 	<div className='project-container'>
     <div className="main-project-details-div">
@@ -77,6 +86,16 @@ function ProjectDetails() {
           <p className={`project-public ${project.is_public ? 'public' : 'private'}`}>
               {project.is_public ? 'Public' : 'Private'}
           </p>
+          <div className='project-details-actions'>
+						<PopOutMenu>
+              <button className='nav-to-create' onClick={() => navigateToCreate()}>Create Project</button>
+					    <button className="nav-to-user-proj" onClick={() => navigateToUserProjects()}>Current Projects</button>
+							<button className="edit-project-button" onClick={(e) => handleEdit(e, project.id)}>Edit</button>
+							<OpenModalButton  className="delete-project-button" buttonText="Delete" modalComponent={<DeleteProject projectId={project.id}/>} />
+						</PopOutMenu>
+
+          </div>
+				
         </div>
 
       </div>
@@ -100,12 +119,7 @@ function ProjectDetails() {
         <button className="add-task-button" onClick={() => navigateToCreateTask()}>
           Add Task
         </button>
-        <button className='nav-to-create' onClick={() => navigateToCreate()}>
-					Create Project
-					</button>
-					{/* <OpenModalButton className='button' modalComponent={<CreateProject/>} buttonText='Create A Project' /> */}
-					<button className="nav-to-user-proj" onClick={() => navigateToUserProjects()}>Current Projects</button>
-
+          
       </div>
     </div>
 
