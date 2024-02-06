@@ -5,6 +5,7 @@ const GET_TASKS = 'tasks/GET_TASKS'
 const DELETE_TASK = 'tasks/DELETE_TASK'
 const ADD_TASK = 'tasks/ADD_TASK'
 const MINUS_TASK = 'tasks/MINUS_TASK'
+const TASK_COUNT = 'tasks/TASK_COUNT'
 
 
 const storeNewTask = (task) => {
@@ -45,6 +46,10 @@ const minusTask = () => {
 	return {
 		type: MINUS_TASK
 	}
+}
+
+const taskCountCurr = () => {
+	return {type: TASK_COUNT}
 }
 
 
@@ -123,10 +128,12 @@ export const getProjectTasks = (projectId) => async (dispatch) => {
 	if (response.ok) {
 		const allTasks = await response.json();
 
-		if (allTasks.length > 0) {
-			await dispatch(storeAllTasks(allTasks))
-			return allTasks;
-		}
+		// if (allTasks.length > 0) {
+			// await dispatch(taskCountCurr())
+			// 	return allTasks;
+			// }
+		await dispatch(storeAllTasks(allTasks))
+		await dispatch(taskCountCurr())
 		return allTasks;
 	} else {
 		const errorData = await response.json();
@@ -181,6 +188,11 @@ const tasksReducer = (state = initialState, action) => {
 				...state,
 				taskCount: state.taskCount - 1
 			}
+		case TASK_COUNT:
+		return {
+			...state,
+			taskCount: state.taskCount
+		}
 
         default:
             return state;
