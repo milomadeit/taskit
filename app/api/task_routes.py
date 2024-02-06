@@ -65,6 +65,34 @@ def UpdateTask(taskId):
             return jsonify(form.errors), 400
 	
 
+@task_routes.route('/<int:taskId>/is-complete', methods=['PUT'])
+@login_required
+def UpdateTaskIsCompleted(taskId):
+	try:
+		task = Task.query.filter_by(id=taskId).first()
+		project = Project.query.filter_by(id=task.project_id).first()
+
+		if not current_user:
+			return jsonify({'error': 'you must be logged in to create a task'}), 403
+		
+		if current_user.id != task.creator_id:
+			return jsonify({'error': 'you must be the task creator to update the task'}), 403
+		
+		task.is_completed = not task.is_completed
+
+		if task.is_completed == True:
+			project.task_count -= 1
+			db.session.commit()
+			return jsonify({'task': True}), 200
+		if task.is_completed == False:
+			project.task_count += 1
+			db.session.commit()
+			return jsonify({'task': False}), 200
+	except Exception as e: 
+		return jsonify({'error': str(e)}), 500
+	
+	
+
 
 @task_routes.route('/<int:projectId>', methods=['GET'])
 @login_required
@@ -91,6 +119,16 @@ def DeleteTask(taskId):
 
 	try:
 		project = Project.query.filter_by(id=task.project_id).first()
+		if project.task_count == 0:
+			db.session.delete(task)
+			db.session.commit()
+			return jsonify({'message': 'task deleted successfully'}), 200
+		
+		if task.is_completed:
+			db.session.delete(task)
+			db.session.commit()
+			return jsonify({'message': 'task deleted successfully'}), 200
+
 		project.task_count -= 1
 		db.session.delete(task)
 		db.session.commit()

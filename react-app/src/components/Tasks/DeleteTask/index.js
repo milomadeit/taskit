@@ -14,13 +14,16 @@ function DeleteTask({task, project}) {
 		closeModal()
 	
 	}
+
+	const handleCloseModal = () => {
+		closeModal()
+	}
 	
 	return (<div>
 		<p>Do you want to delete this task?</p>
 		<div>
 		<button onClick={() => handleOnClickDelete(task.id, project.id)}>Delete</button>
-		<button>Cancel</button>
-
+		<button onClick={() => handleCloseModal()}>No [Keep]</button>
 		</div>
 	</div>)
 }

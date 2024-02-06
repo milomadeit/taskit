@@ -39,6 +39,7 @@ function CreateProject() {
 		const formErrors = {}
 
 		if (!projectName || projectName.length < 1) formErrors.projectName = 'Project must have a name'
+		if (projectName.length > 50) formErrors.projectName = 'Project name cannot be longer than 50 characters'
 		if (!dueDate) formErrors.dueDate = 'Please select a due date for your project'
 
 		if (Object.keys(formErrors).length > 0) {
@@ -74,6 +75,9 @@ function CreateProject() {
 		setIsPublic(!isPublic)
 	}
 
+	const navigateToUserProjects = () => {
+		history.push('/projects/user')
+	}
 
     return (
         <div className='create-project-main-div'>
@@ -98,10 +102,12 @@ function CreateProject() {
                     <input type='checkbox' checked={isPublic} onChange={() => handleIsPublic()} />
                 </div>
 				<div>
-					<button className='submit-project-button'  type='submit'>Submit</button>
+					<button className='submit-project-button'  type='submit'>Create</button>
 				</div>
 				<div className='empty'>{}</div>
             </form>
+			<button onClick={() => navigateToUserProjects()} className='back-to-project-button'> Back To Projects </button>
+
         </div>
     );
 }

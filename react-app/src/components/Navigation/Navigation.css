@@ -64,7 +64,7 @@
   padding: 8px 8px;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.8s ease;
   background-color: #9994e9;
   height: 30px;
   margin-top: 0px;
@@ -93,7 +93,7 @@
   padding: 8px 8px;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.8s ease;
   height: 35px;
   background-color: transparent;
 }

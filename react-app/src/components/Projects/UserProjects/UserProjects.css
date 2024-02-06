@@ -20,6 +20,7 @@
     min-width: 250px;
     max-width: 250px;
     margin-top: 0;
+    height: 200px;
 }
 
 
@@ -44,18 +45,31 @@
     font-size: 1.5em;
     color: white;
     text-align: left;
+    text-wrap: wrap;
+	word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+	flex-grow: 1; 
+    margin-bottom: -100px
 }
 
 .user-project-detail {
     color: white;
     font-size: 1em;
-    margin-bottom: 5px;
+    text-wrap: wrap;
+	word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+	flex-grow: 1; 
+    margin-bottom: -20px
 }
 
 .user-project-date {
     color:  rgb(171, 164, 247);
     font-size: 1em;
-    margin-top: 100px;
+    margin-top: -20px;
     margin-bottom: -10px;
 }
 
@@ -83,7 +97,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
+    transition: background-color 0.8s, transform 0.5s;
     font-size: 10px;
     height: 20px; 
 }
@@ -125,12 +139,13 @@
     border: none; 
     border-radius: 5px; 
     cursor: pointer; 
-    transition: background-color 0.3s, transform 0.1s; 
+    transition: background-color 0.8s, transform 0.5s; 
 }
 
 .project-page-create-project-button:hover {
-    background-color: #fe7905; 
+    background-color: #7fb7f2;  
     transform: translateY(-2px); 
+    color:rgb(22, 27, 61);  
 }
 
 .project-page-create-project-button:active {

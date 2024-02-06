@@ -38,6 +38,7 @@
   .project-description {
 	font-size: 14px;
 	color: white;
+	text-align: center;
   }
   
   .project-name-div {
@@ -99,11 +100,6 @@
     justify-content: center;
 }
 
-  
-  .add-task-button:hover {
-	background-color: orange;
-	transform: translateY(-2px);  
-  }
 
   .project-details-actions {
 	display: flex;
@@ -117,7 +113,7 @@
 	border: none; 
 	border-radius: 5px; 
 	cursor: pointer; 
-	transition: background-color 0.3s, transform 0.1s; 
+	transition: background-color 0.8s, transform 0.5s; 
 	font-size: 10px;
 	height: 20px;
 	margin-bottom: 5px;
@@ -132,7 +128,7 @@
 }
 
 .nav-to-create:hover {
-	background-color: rgb(22, 166, 80);
+	background-color: #15cc1b;
     /* transform: translateY(-2px);  */
 }
 
@@ -169,13 +165,14 @@
 	margin-left: 5px;
 	margin-right: 5px;
 	width: 120px;
+	transition: background-color 0.8s, transform 0.5s; 
   }
   
   .add-task-button:hover {
 	  background-color: orange;
-	  transform: translateY(-2px);  
+	  transform: translateY(-2px); 
+	  color: white;
 	}
-
 .nav-back-to-user-proj {
 	padding: 10px 20px; 
 	color:  rgb(22, 27, 61);
@@ -184,7 +181,7 @@
 	border: none; 
 	border-radius: 5px; 
 	cursor: pointer; 
-	transition: background-color 0.3s, transform 0.1s; 
+	transition: background-color 0.8s, transform 0.5s; 
 	margin-top: 0px;
 	margin-left: 5px;
 	margin-right: 5px;
@@ -194,6 +191,7 @@
 .nav-back-to-user-proj:hover {
 	background-color: #6ca8e9; 
 	transform: translateY(-2px);
+	color: white;
 }
 
 
