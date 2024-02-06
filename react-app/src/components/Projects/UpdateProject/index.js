@@ -53,7 +53,7 @@ function UpdateProject() {
 		//   if (isMounted) setLoading(true);
 
 		  try {
-			const result = await dispatch(updateProject(project.id, formData));
+			const result = await dispatch(updateProject(formData, project.id));
 			if (result) {
 				history.push(`/projects/${project.id}`);
 			} else {
