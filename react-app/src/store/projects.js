@@ -55,7 +55,7 @@ export const createProject = (project) => async (dispatch) => {
 	}
 }
 
-export const updateProject = (project, projectIf) => async (dispatch) => {
+export const updateProject = (project, projectId) => async (dispatch) => {
 	const response = await fetch(`/api/projects/${projectId}`, {
 		method: "PUT",
 		body: project
