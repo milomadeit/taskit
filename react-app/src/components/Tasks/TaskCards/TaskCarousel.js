@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TaskCard from '.';
 import './TaskCarousel.css'; 
 
+
 function TaskCarousel({ task_array, project }) {
     const [currentIndex, setCurrentIndex] = useState(0);
 

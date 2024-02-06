@@ -1,18 +1,19 @@
 .project-card-div {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Creates a 3-column layout */
-    grid-gap: 12px; 
-    padding: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px; 
+    margin: 0 auto;
 }
 
 .user-project-card {
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    justify-content: space-between;
+    background-color: rgb(22, 27, 61);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 25px;
     padding: 20px;
     transition: box-shadow 0.3s;
     width: 250px;
@@ -20,6 +21,7 @@
     max-width: 250px;
     margin-top: 0;
 }
+
 
 .project-actions {
     position: absolute;
@@ -40,19 +42,34 @@
 
 .user-project-title {
     font-size: 1.5em;
-    color: #333;
+    color: white;
+    text-align: left;
 }
 
 .user-project-detail {
-    color: #666;
+    color: white;
     font-size: 1em;
     margin-bottom: 5px;
 }
 
+.user-project-date {
+    color:  rgb(171, 164, 247);
+    font-size: 1em;
+    margin-top: 100px;
+    margin-bottom: -10px;
+}
+
 .user-project-public {
-    color: #4CAF50;
+    color: #15cc1b;
     font-weight: bold;
 }
+
+.projects-task-count {
+    color: #f88900;
+    font-weight: bold;
+    margin-bottom: -10px;
+}
+
 
 
 .edit-project-button, .delete-project-button {
@@ -61,7 +78,6 @@
     justify-content: center;
     color: white;
     font-weight: bold;
-    /* margin: 5px; */
     margin-top: 5px;
     margin-bottom: 5px;
     border: none;
@@ -69,13 +85,13 @@
     cursor: pointer;
     transition: background-color 0.3s, transform 0.1s;
     font-size: 10px;
-    height: 20px;
-    
+    height: 20px; 
 }
+
 
 .edit-project-button {
     background-color: transparent; 
-    color: darkblue
+    color: white
 }
 
 .edit-project-button:hover {
@@ -85,12 +101,12 @@
 
 .delete-project-button {
     background-color:  transparent;
-    color: darkred
+    color: white
 }
 
 .delete-project-button:hover {
-    background-color: #da190b; 
-    color: whitesmoke
+    background-color: red; 
+    color: white;
 }
 
 
@@ -104,8 +120,8 @@
 .project-page-create-project-button {
     padding: 10px 20px; 
     margin: 25px 5px; 
-    background-color: #0f355d; 
-    color: white; 
+    background-color: rgb(22, 27, 61); 
+    color: white;
     border: none; 
     border-radius: 5px; 
     cursor: pointer; 
@@ -113,7 +129,7 @@
 }
 
 .project-page-create-project-button:hover {
-    background-color: #7fb7f2; 
+    background-color: #fe7905; 
     transform: translateY(-2px); 
 }
 
@@ -121,3 +137,8 @@
     transform: translateY(1px);
 
 }
+
+.project-card-component {
+    width: 900px;
+}
+

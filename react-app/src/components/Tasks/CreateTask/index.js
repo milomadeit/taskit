@@ -58,6 +58,7 @@ function CreateTask() {
 	}
 
 	return (
+		<div className='alignment'>
 		<div className='create-task-main-div'>
 			<form className='create-task-form' onSubmit={handleSubmit} encType="multipart/form-data">
 				<div className='task-form-inputs'>
@@ -71,6 +72,8 @@ function CreateTask() {
 				</div>
 					<button className='create-task-button' type='submit'>Add to project</button>
 			</form>
+		</div>
+
 		</div>
 	)
 }

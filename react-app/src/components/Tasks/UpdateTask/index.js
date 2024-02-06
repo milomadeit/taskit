@@ -60,19 +60,22 @@ function UpdateTask() {
 	}
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit} encType="multipart/form-data">
-				<div>
-				<label>Task</label>
-				<input type='text' placeholder='Task' value={taskName} onChange={(e) => setTaskName(e.target.value)}/>
-				{errors.taskName && (<p>{errors.taskName}</p>)}
+		<div className='alignment'>
+		<div className='create-task-main-div'>
+			<form className='create-task-form' onSubmit={handleSubmit} encType="multipart/form-data">
+				<div className='task-form-inputs'>
+					<label className='task-name-label'>Task</label>
+					<input type='text' placeholder='Task' value={taskName} onChange={(e) => setTaskName(e.target.value)}/>
+					{errors.taskName && (<p className='errors-p'>{errors.taskName}</p>)}
 				</div>
-				<div>
-					<label>Description</label>
+				<div className='task-form-inputs'>
+					<label className='task-description-label'>Description</label>
 					<textarea placeholder='description optional' value={description} onChange={(e) => setDescription(e.target.value)}/>
 				</div>
-					<button type='submit'>Update Task</button>
+					<button className='create-task-button' type='submit'>Add to project</button>
 			</form>
+		</div>
+
 		</div>
 	)
 }

@@ -50,7 +50,7 @@ function ProjectCard({projects}) {
 			<div onClick={() => navigateToProject(project.id, project)} key={project.id} className="user-project-card">
 				<h2 className="user-project-title">{project.name}</h2>
 				<p className="user-project-detail">{project.description}</p>
-				<p className="user-project-detail">{formatDate(project.due_date)}</p>
+				<p className="user-project-date">{formatDate(project.due_date)}</p>
 				{project.task_count > 0 && (<p className="projects-task-count" >{project.task_count} TASK{project.task_count > 1 ? 'S' : ''}</p>)}
 				{project.task_count === 0 && (<p className="projects-task-count" >NO TASKS</p>)}
 				<p className={`user-project-public ${project.is_public ? 'public' : 'private'}`}>

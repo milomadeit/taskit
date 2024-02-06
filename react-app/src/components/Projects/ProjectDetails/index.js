@@ -10,6 +10,7 @@ import PopOutMenu from '../../PopOutMenu';
 import OpenModalButton from '../../DeleteModalButton'
 import DeleteProject from '../DeleteProject';
 
+
 function ProjectDetails() {
 
   const history = useHistory();
@@ -21,6 +22,7 @@ function ProjectDetails() {
   const tasks = useSelector((state) => state.tasksReducer.projectTasks);
   const task_array = Object.values(tasks);
   const taskCount = useSelector(state => state.tasksReducer.taskCount)
+ 
   
 
   useEffect(() => {
@@ -88,8 +90,8 @@ function ProjectDetails() {
           </p>
           <div className='project-details-actions'>
 						<PopOutMenu>
-              <button className='nav-to-create' onClick={() => navigateToCreate()}>Create Project</button>
-					    <button className="nav-to-user-proj" onClick={() => navigateToUserProjects()}>Current Projects</button>
+              <button className='nav-to-create' onClick={() => navigateToCreate()}>New Project</button>
+					    <button className="nav-to-user-proj" onClick={() => navigateToUserProjects()}>My Projects</button>
 							<button className="edit-project-button" onClick={(e) => handleEdit(e, project.id)}>Edit</button>
 							<OpenModalButton  className="delete-project-button" buttonText="Delete" modalComponent={<DeleteProject projectId={project.id}/>} />
 						</PopOutMenu>
@@ -104,11 +106,13 @@ function ProjectDetails() {
       </div>
       <div className='project-details-center-div'>
         <div className='project-details-mid-div-1'>
-          <h4>Files</h4>
-          <p>No files uploaded</p>
+          <h4 className='files-h'>Files</h4>
+          <p className='files-p'>No files uploaded</p>
         </div>
         <div className='project-details-mid-div-2'>
-          <TaskCarousel key={task_array.length} task_array={task_array} project={project} />
+          {/* <TaskCarousel key={task_array.length} task_array={task_array} project={project} /> */}
+
+
         </div>
         <div className='project-details-mid-div-3'>
           {/* <h4>You havent invited anyone to collaborate yet!</h4>
@@ -119,9 +123,14 @@ function ProjectDetails() {
         <button className="add-task-button" onClick={() => navigateToCreateTask()}>
           Add Task
         </button>
-          
+        <button className="nav-back-to-user-proj" onClick={() => navigateToUserProjects()}>Back To Projects</button>
       </div>
     </div>
+      <div className='task-grid'>
+        {task_array.map((task) => (
+          <TaskCard key={task.id} task={task} project={project} />
+        ))}
+      </div>
 
 	</div>
   );

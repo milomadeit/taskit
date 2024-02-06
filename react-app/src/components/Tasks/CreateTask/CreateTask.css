@@ -1,16 +1,20 @@
 /* CreateTaskForm.css */
 .create-task-main-div {
     display: flex;
-    justify-content: center;
     align-items: center;
-	margin-top: 60px;
+    margin: 0px;
+    background-color: rgb(22, 27, 61);
+    width: 500px ;
+    margin-top: 40px;
+
+    border-radius: 8px;
 }
 
 .create-task-form {
     width: 100%;
     max-width: 500px;
     padding: 40px;
-    background: white;
+    background-color: rgb(22, 27, 61);
     border-radius: 12px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
     box-sizing: border-box;
@@ -25,7 +29,7 @@
     margin-bottom: 8px;
     font-size: 12px;
     font-weight: 600; 
-    color: #333; 
+    color: white;
 }
 
 .task-form-inputs input,
@@ -58,4 +62,12 @@
 
 .create-task-button:hover {
     background-color: orange;
+}
+
+
+.alignment {
+    display: flex;
+    align-items: flex;
+    justify-content: center;
+    
 }

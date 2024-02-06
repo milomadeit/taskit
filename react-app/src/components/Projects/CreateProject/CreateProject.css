@@ -9,11 +9,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-	padding: 40px;
-}
-
-.create-project-form {
     max-width: 600px;
 	width: 600px; 
 	height: 420px;
@@ -21,7 +16,15 @@
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
     border-radius: 8px; 
-    background: white; 
+    background-color:  rgb(22, 27, 61);;
+    margin-top: 50px;
+}
+
+.create-project-form {
+    max-width: 600px;
+	width: 600px; 
+	height: 420px;
+    background-color: transparent;
 }
 
 .project-form-inputs {
@@ -33,6 +36,7 @@
     margin-bottom: 10px;
     font-weight: 600; 
     margin-top: 10px;
+    color: white;
 }
 
 .project-form-inputs input,
@@ -56,7 +60,7 @@
     border: none;
     border-radius: 4px;
     background-color: #007bff;
-    color: white;
+    color:  rgb(22, 27, 61);;
     cursor: pointer;
     font-size: 12px;
 	transition: background-color 0.3s, transform 0.1s;

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { deleteTask, getProjectTasks } from '../../../store/tasks';
 
 
-function DeleteTask({curr_task, project}) {
+function DeleteTask({task, project}) {
 	const { closeModal } = useModal();
 	const dispatch = useDispatch();
 	
@@ -18,7 +18,7 @@ function DeleteTask({curr_task, project}) {
 	return (<div>
 		<p>Do you want to delete this task?</p>
 		<div>
-		<button onClick={() => handleOnClickDelete(curr_task.id, project.id)}>Delete</button>
+		<button onClick={() => handleOnClickDelete(task.id, project.id)}>Delete</button>
 		<button>Cancel</button>
 
 		</div>

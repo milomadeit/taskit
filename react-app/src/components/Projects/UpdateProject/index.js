@@ -54,7 +54,7 @@ function UpdateProject() {
 		  try {
 			const result = await dispatch(updateProject(project.id, formData));
 			if (result) {
-				history.push("/projects/user");
+				history.push(`/projects/${project.id}`);
 			} else {
 			  	return result.data
 	  
