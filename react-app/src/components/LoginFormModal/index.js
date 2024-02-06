@@ -11,6 +11,7 @@ function LoginFormModal() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -21,36 +22,50 @@ function LoginFormModal() {
     }
   };
 
+  const handDemoSubmit = async (e) => {
+    const data = await dispatch(login("demo@aa.io", "password"));
+    if (data) {
+      setErrors(data);
+    } else {
+      closeModal();
+    }
+
+  }
+
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
+    <div className="login-form-div">
+      <form className="login-form" onSubmit={handleSubmit}>
+      <h2>Log In</h2>
+        <label className="login-email-label">
           Email
           <input
+            className="login-email-input"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
-        <label>
+        <label className='login-password-label'>
           Password
           <input
+            className="login-password-input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button className="submit-login-button" type="submit">Log In</button>
       </form>
-    </>
+        <button className="demo-login-button" onClick={handDemoSubmit}>Demo User</button>
+        {errors && errors["email"] && (
+        <p className="p-error">{errors["email"]}</p>
+      )}
+      {errors && errors["password"] && (
+        <p className="p-error">{errors["password"]}</p>
+      )}
+    </div>
   );
 }
 

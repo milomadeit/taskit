@@ -36,6 +36,7 @@ function UpdateProject() {
 		const formErrors = {}
 
 		if (!projectName || projectName.length < 1) formErrors.projectName = 'Project must have a name'
+		if (projectName.length > 25) formErrors.projectName = 'Please choose a short project name! Less than 25 characters.'
 		if (!dueDate) formErrors.dueDate = 'Please select a due date for your project'
 
 		if (Object.keys(formErrors).length > 0) {
@@ -54,7 +55,7 @@ function UpdateProject() {
 		  try {
 			const result = await dispatch(updateProject(project.id, formData));
 			if (result) {
-				history.push("/projects/user");
+				history.push(`/projects/${project.id}`);
 			} else {
 			  	return result.data
 	  
@@ -68,6 +69,10 @@ function UpdateProject() {
 
 	const handleIsPublic = () => {
 		setIsPublic(!isPublic)
+	}
+
+	const navigateToProject = () => {
+		history.push(`/projects/${project.id}`)
 	}
 
 
@@ -97,7 +102,8 @@ function UpdateProject() {
 					<button className='submit-project-button'  type='submit'>Submit</button>
 				</div>
 				<div className='empty'>{}</div>
-            </form>
+            </form> 
+			<button onClick={() => navigateToProject()} className='back-to-project-button'> Back To Project </button>
         </div>
     );
 }

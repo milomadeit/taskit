@@ -3,9 +3,13 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './ProjectDetails.css';
 import { getProjectTasks } from '../../../store/tasks';
-// import TaskCard from '../../Tasks/TaskCards';
+import TaskCard from '../../Tasks/TaskCards';
 import TaskCarousel from '../../Tasks/TaskCards/TaskCarousel';
 import { getUserProjects } from '../../../store/projects';
+import PopOutMenu from '../../PopOutMenu';
+import OpenModalButton from '../../DeleteModalButton'
+import DeleteProject from '../DeleteProject';
+
 
 function ProjectDetails() {
 
@@ -18,6 +22,7 @@ function ProjectDetails() {
   const tasks = useSelector((state) => state.tasksReducer.projectTasks);
   const task_array = Object.values(tasks);
   const taskCount = useSelector(state => state.tasksReducer.taskCount)
+ 
   
 
   useEffect(() => {
@@ -58,6 +63,12 @@ function ProjectDetails() {
     history.push(`/projects/tasks/${project.id}/new`);
   };
 
+  const handleEdit = (e, projectId) => {
+		e.stopPropagation();
+        // navigate to edit page with projectId
+        history.push(`/projects/${projectId}/update`);
+    };
+
   return (
 	<div className='project-container'>
     <div className="main-project-details-div">
@@ -77,6 +88,16 @@ function ProjectDetails() {
           <p className={`project-public ${project.is_public ? 'public' : 'private'}`}>
               {project.is_public ? 'Public' : 'Private'}
           </p>
+          <div className='project-details-actions'>
+						<PopOutMenu>
+              <button className='nav-to-create' onClick={() => navigateToCreate()}>New Project</button>
+					    <button className="nav-to-user-proj" onClick={() => navigateToUserProjects()}>My Projects</button>
+							<button className="edit-project-button" onClick={(e) => handleEdit(e, project.id)}>Edit</button>
+							<OpenModalButton  className="delete-project-button" buttonText="Delete" modalComponent={<DeleteProject projectId={project.id}/>} />
+						</PopOutMenu>
+
+          </div>
+				
         </div>
 
       </div>
@@ -85,11 +106,13 @@ function ProjectDetails() {
       </div>
       <div className='project-details-center-div'>
         <div className='project-details-mid-div-1'>
-          <h4>Files</h4>
-          <p>No files uploaded</p>
+          <h4 className='files-h'>Files</h4>
+          <p className='files-p'>No files uploaded</p>
         </div>
         <div className='project-details-mid-div-2'>
-          <TaskCarousel key={task_array.length} task_array={task_array} project={project} />
+          {/* <TaskCarousel key={task_array.length} task_array={task_array} project={project} /> */}
+
+
         </div>
         <div className='project-details-mid-div-3'>
           {/* <h4>You havent invited anyone to collaborate yet!</h4>
@@ -100,14 +123,14 @@ function ProjectDetails() {
         <button className="add-task-button" onClick={() => navigateToCreateTask()}>
           Add Task
         </button>
-        <button className='nav-to-create' onClick={() => navigateToCreate()}>
-					Create Project
-					</button>
-					{/* <OpenModalButton className='button' modalComponent={<CreateProject/>} buttonText='Create A Project' /> */}
-					<button className="nav-to-user-proj" onClick={() => navigateToUserProjects()}>Current Projects</button>
-
+        <button className="nav-back-to-user-proj" onClick={() => navigateToUserProjects()}>Back To Projects</button>
       </div>
     </div>
+      <div className='task-grid'>
+        {task_array.map((task) => (
+          <TaskCard key={task.id} task={task} project={project} />
+        ))}
+      </div>
 
 	</div>
   );

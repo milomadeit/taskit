@@ -1,0 +1,89 @@
+.login-form-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 300px; 
+	background-color:  rgb(22, 27, 61); 
+	border-radius: 8px;
+	padding: 20px;
+  }
+  
+  .login-form {
+	padding-left: 20px;
+	padding-right: 20px;
+	background: transparent;
+	border-radius: 12px;
+	max-width: 400px;
+	width: 100%;
+  }
+  
+  h2 {
+	color: white;
+	margin-bottom: 20px;
+	text-align: center;
+  }
+  
+  
+  .errors-p {
+	color: red; 
+	font-size: 14px;
+  }
+  
+  .login-email-label , .login-password-label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: 600;
+	color: white;
+  }
+  
+  .login-email-input, .login-password-input {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin-top: 5px; 
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-sizing: border-box;
+	font-size: 14px;
+  }
+  
+  .submit-login-button {
+	display: block;
+	width: 100%;
+	padding: 12px 20px;
+	background-color: #007bff; 
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	margin-top: 20px; 
+	transition: background-color 0.8s ease-in-out;
+  }
+  
+  .submit-login-button:hover {
+	background-color: #0056b3; 
+  }
+
+  .demo-login-button {
+	display: block;
+	width: 100%;
+	padding: 12px 20px;
+	background-color: darkorange;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	margin-top: 20px; 
+	transition: background-color 0.8s ease-in-out;
+
+  }
+  
+  .demo-login-button:hover {
+	background-color: orange;
+  }
+

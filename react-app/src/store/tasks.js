@@ -3,6 +3,9 @@ const NEW_TASK = 'tasks/NEW_TASK';
 const UPDATE_TASK = 'tasks/UPDATE_TASK';
 const GET_TASKS = 'tasks/GET_TASKS'
 const DELETE_TASK = 'tasks/DELETE_TASK'
+const ADD_TASK = 'tasks/ADD_TASK'
+const MINUS_TASK = 'tasks/MINUS_TASK'
+
 
 const storeNewTask = (task) => {
 	return {
@@ -32,6 +35,19 @@ const storeDeleteTask = (taskId) => {
 	}
 }
 
+const addTask = () => {
+	return {
+		type: ADD_TASK
+	}
+}
+
+const minusTask = () => {
+	return {
+		type: MINUS_TASK
+	}
+}
+
+
 export const createTask = (task, projectId) => async (dispatch) => {
 	const response = await fetch(`/api/tasks/${projectId}/new`, {
 		method: 'POST',
@@ -54,11 +70,34 @@ export const updateTask = (task, taskId) => async (dispatch) => {
 	})
 	if (response.ok) {
 		const task = await response.json();
+		
 		dispatch(storeUpdateTask(task))
 		return { ok: true, data: task };
 	} else {
 		const errorData = await response.json();
 		return { ok: false, data: errorData};
+	}
+}
+
+export const updateIsCompleted = (taskId, projectId) => async (dispatch) => {
+	const response = await fetch(`/api/tasks/${taskId}/is-complete`, {
+		method: 'PUT'
+	})
+	if (response.ok)  {
+		const data = await response.json()
+		if (data.task) {
+			dispatch(addTask())
+		}
+		else { 
+			dispatch(minusTask())
+		}
+
+		dispatch(getProjectTasks, projectId)
+		return data
+	} else {
+		const errorData = await response.json()
+		console.log(taskId, 'yooooo')
+		return errorData
 	}
 }
 
@@ -85,7 +124,7 @@ export const getProjectTasks = (projectId) => async (dispatch) => {
 		const allTasks = await response.json();
 
 		if (allTasks.length > 0) {
-			dispatch(storeAllTasks(allTasks))
+			await dispatch(storeAllTasks(allTasks))
 			return allTasks;
 		}
 		return allTasks;
@@ -132,6 +171,16 @@ const tasksReducer = (state = initialState, action) => {
                 projectTasks: allTasks,
                 taskCount: action.tasks.length,
             };
+		case ADD_TASK:
+			return {
+				...state,
+				taskCount: state.taskCount + 1
+			}
+		case MINUS_TASK:
+			return {
+				...state,
+				taskCount: state.taskCount - 1
+			}
 
         default:
             return state;

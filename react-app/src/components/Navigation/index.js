@@ -6,7 +6,7 @@ import "./Navigation.css";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import cclogo from './images/2.png'
+import cclogo from './images/taskit1.png'
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
 

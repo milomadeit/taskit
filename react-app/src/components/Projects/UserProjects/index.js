@@ -34,13 +34,13 @@ function UserProjects() {
 
 
 	return (
-		<div>
+		<div className="main-project-car-div">
 			<div className="projects-page-create-project-button">
 				<button className='project-page-create-project-button' onClick={() => navigateToCreate()}>
 						Create New Project
 				</button>
 			</div>
-			<ProjectCard projects={projects} />
+			<ProjectCard className='project-card-component' projects={projects} />
 		</div>
 	);
 	

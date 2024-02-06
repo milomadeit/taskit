@@ -15,31 +15,41 @@
 
 
 .main-home-div > h1 {
-    margin-top: -25px;
+    margin-top: -15px;
     font-size: 2.5rem;
     color: #31183d;
 }
 
 
-.button {
+.nav-to-user-proj-home, .nav-to-create-home  {
     padding: 10px 20px; 
-    margin: 10px 5px; 
-    background-color: #0f355d; 
+    background-color:  rgb(22, 27, 61);; 
     color: white; 
     border: none; 
     border-radius: 5px; 
     cursor: pointer; 
-    transition: background-color 0.3s, transform 0.1s; 
+    transition: background-color 0.8s, transform 0.5s; 
+    margin-top: -10px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
-.button:hover {
+.nav-to-user-proj-home:hover, .nav-to-create-home:hover  {
     background-color: #7fb7f2; 
-    transform: translateY(-2px); 
+    transform: translateY(-2px);
+    color: rgb(22, 27, 61);  
 }
 
-.button:active {
+..nav-to-user-proj-home:active, .nav-to-create-home:active  {
     transform: translateY(1px);
+    color: rgb(22, 27, 61); ;
 
 }
 
 
+.home-page-img {
+    height: 200px;
+    width: 200px;
+    margin-bottom: 20px;
+    margin-right: -25px;
+}

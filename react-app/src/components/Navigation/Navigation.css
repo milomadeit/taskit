@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #09213a;
+  background-color:  rgb(22, 27, 61);
   height: 40px;
   padding: 0 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
@@ -18,7 +18,7 @@
 }
 
 .navigation-link:hover, .navigation-home-button:hover {
-  box-shadow: 0 2px 4px rgba(0. 0. 0. 0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
   transform: scale(1.02)
 }
 
@@ -38,6 +38,9 @@
   border-radius: 25px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   z-index: 100;
+  margin-top: -15px;
+  width: 100px;
+  background-color:  rgb(22, 27, 61);
 }
 
 .profile-dropdown li {
@@ -47,10 +50,11 @@
   padding: 8px;
   margin-right: 40px;
   list-style-type: none;
+  color: white
 }
 
 .profile-dropdown li:hover {
- cursor: pointer;
+ cursor: arrow;
 }
 
 .dropdown-logout{
@@ -60,13 +64,15 @@
   padding: 8px 8px;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.8s ease;
   background-color: #9994e9;
-  height: 35px;
+  height: 30px;
+  margin-top: 0px;
+  width: 100px;
 }
 
 .dropdown-logout:hover {
-  background-color: darkred;
+  background-color: red;
 }
 
 
@@ -87,10 +93,11 @@
   padding: 8px 8px;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  background-color: #9994e9;
+  transition: background-color 0.8s ease;
   height: 35px;
+  background-color: transparent;
 }
+
 
 .main-modal-button:hover, .signout-btn:hover {
   background-color: #43a047; 

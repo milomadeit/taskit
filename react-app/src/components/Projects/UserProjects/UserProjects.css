@@ -1,24 +1,28 @@
 .project-card-div {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    gap: 12px; 
+    margin: 0 auto;
 }
 
 .user-project-card {
-    position: relative; /* Add this line */
+    position: relative;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    justify-content: space-between;
+    background-color: rgb(22, 27, 61);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 16px;
     padding: 20px;
     transition: box-shadow 0.3s;
-    width: 700px;
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
     margin-top: 0;
+    height: 200px;
 }
+
 
 .project-actions {
     position: absolute;
@@ -39,19 +43,47 @@
 
 .user-project-title {
     font-size: 1.5em;
-    color: #333;
+    color: white;
+    text-align: left;
+    text-wrap: wrap;
+	word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+	flex-grow: 1; 
+    margin-bottom: -100px
 }
 
 .user-project-detail {
-    color: #666;
+    color: white;
     font-size: 1em;
-    margin-bottom: 5px;
+    text-wrap: wrap;
+	word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+	flex-grow: 1; 
+    margin-bottom: -20px
+}
+
+.user-project-date {
+    color:  rgb(171, 164, 247);
+    font-size: 1em;
+    margin-top: -20px;
+    margin-bottom: -10px;
 }
 
 .user-project-public {
-    color: #4CAF50;
+    color: #15cc1b;
     font-weight: bold;
 }
+
+.projects-task-count {
+    color: #f88900;
+    font-weight: bold;
+    margin-bottom: -10px;
+}
+
 
 
 .edit-project-button, .delete-project-button {
@@ -60,21 +92,20 @@
     justify-content: center;
     color: white;
     font-weight: bold;
-    /* margin: 5px; */
     margin-top: 5px;
     margin-bottom: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
+    transition: background-color 0.8s, transform 0.5s;
     font-size: 10px;
-    height: 20px;
-    
+    height: 20px; 
 }
+
 
 .edit-project-button {
     background-color: transparent; 
-    color: darkblue
+    color: white
 }
 
 .edit-project-button:hover {
@@ -84,12 +115,12 @@
 
 .delete-project-button {
     background-color:  transparent;
-    color: darkred
+    color: white
 }
 
 .delete-project-button:hover {
-    background-color: #da190b; 
-    color: whitesmoke
+    background-color: red; 
+    color: white;
 }
 
 
@@ -103,20 +134,26 @@
 .project-page-create-project-button {
     padding: 10px 20px; 
     margin: 25px 5px; 
-    background-color: #0f355d; 
-    color: white; 
+    background-color: rgb(22, 27, 61); 
+    color: white;
     border: none; 
     border-radius: 5px; 
     cursor: pointer; 
-    transition: background-color 0.3s, transform 0.1s; 
+    transition: background-color 0.8s, transform 0.5s; 
 }
 
 .project-page-create-project-button:hover {
-    background-color: #7fb7f2; 
+    background-color: #7fb7f2;  
     transform: translateY(-2px); 
+    color:rgb(22, 27, 61);  
 }
 
 .project-page-create-project-button:active {
     transform: translateY(1px);
 
 }
+
+.project-card-component {
+    width: 900px;
+}
+

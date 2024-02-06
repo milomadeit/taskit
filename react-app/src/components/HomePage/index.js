@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import cc from './images/cocreate.png'
+import cc from './images/TaskItLogo1.png'
 import './HomePage.css'
 import {useHistory} from "react-router-dom"
 import { getAllProjects } from "../../store/projects";
@@ -30,18 +30,18 @@ function HomePage () {
 	return (
 		<div>
 		<div className="main-home-div">
-			<img src={cc} alt='cocreate'/>
+			<img  className='home-page-img'src={cc} alt='cocreate'/>
 			<h1>
-			CoCreate
+			TaskIt
 			</h1>
 			<div className="home-buttons">
 				{currentUser && (
 					<>
-					<button className='nav-to-create button' onClick={() => navigateToCreate()}>
+					<button className='nav-to-create-home' onClick={() => navigateToCreate()}>
 					Create Project
 					</button>
 					{/* <OpenModalButton className='button' modalComponent={<CreateProject/>} buttonText='Create A Project' /> */}
-					<button className="nav-to-user-proj button" onClick={() => navigateToUserProjects()}>Current Projects</button>
+					<button className="nav-to-user-proj-home" onClick={() => navigateToUserProjects()}>Current Projects</button>
 					</>
 				)}
 			</div>

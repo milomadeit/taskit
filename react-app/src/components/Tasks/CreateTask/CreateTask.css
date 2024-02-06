@@ -1,0 +1,73 @@
+/* CreateTaskForm.css */
+.create-task-main-div {
+    display: flex;
+    align-items: center;
+    margin: 0px;
+    background-color: rgb(22, 27, 61);
+    width: 500px ;
+    margin-top: 40px;
+
+    border-radius: 8px;
+}
+
+.create-task-form {
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    background-color: rgb(22, 27, 61);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+.task-form-inputs {
+    margin-bottom: 20px;
+}
+
+.task-form-inputs label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600; 
+    color: white;
+}
+
+.task-form-inputs input,
+.task-form-inputs textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    box-sizing: border-box; 
+    font-size: 14px; 
+}
+
+.task-form-inputs textarea {
+    height: 120px;
+    resize: none; 
+}
+
+.create-task-button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #007bff; /* Bootstrap primary blue */
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.8s ease-in-out;
+}
+
+.create-task-button:hover {
+    background-color: orange;
+}
+
+
+.alignment {
+    display: flex;
+    align-items: flex;
+    justify-content: center;
+    
+}

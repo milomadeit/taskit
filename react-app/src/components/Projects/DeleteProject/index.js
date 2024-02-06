@@ -2,18 +2,21 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../../context/Modal'
 import { deleteProject, getUserProjects } from '../../../store/projects';
+import { useHistory } from 'react-router-dom';
 
 
 function DeleteProject({projectId}) {
 
 	const { closeModal } = useModal();
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 
 	const handleOnClickDelete = async (projectId) => {
 		await dispatch(deleteProject(projectId))
 		await dispatch(getUserProjects())
 		closeModal()
+		history.push(`/projects/user`)
 	
 	
 	}
