@@ -22,6 +22,7 @@ function ProjectDetails() {
   const tasks = useSelector((state) => state.tasksReducer.projectTasks);
   const task_array = Object.values(tasks);
   const taskCount = useSelector(state => state.tasksReducer.taskCount)
+  
  
   
 

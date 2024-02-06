@@ -60,11 +60,12 @@
 	border-radius: 8px;
 	cursor: pointer;
 	margin-top: 20px; 
-	transition: background-color 0.8s ease-in-out;
+	transition: background-color, color 0.5s ease-in-out;
   }
   
   .submit-login-button:hover {
-	background-color: #0056b3; 
+	background-color:  #7fb7f2;
+	color: rgb(22, 27, 61);
   }
 
   .demo-login-button {
@@ -79,11 +80,12 @@
 	border-radius: 8px;
 	cursor: pointer;
 	margin-top: 20px; 
-	transition: background-color 0.8s ease-in-out;
+	transition: background-color, color 0.5s ease-in-out;
 
   }
   
   .demo-login-button:hover {
 	background-color: orange;
+	color: rgb(22, 27, 61);
   }
 

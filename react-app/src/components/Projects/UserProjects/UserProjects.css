@@ -1,8 +1,17 @@
-.project-card-div {
+.projects-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 12px; 
+    margin-top: -45px;
+}
+
+.project-card-div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    justify-content: center;
+    grid-gap: 32px; 
+    padding: 48px;
     margin: 0 auto;
 }
 
@@ -16,9 +25,9 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     transition: box-shadow 0.3s;
-    width: 250px;
-    min-width: 250px;
-    max-width: 250px;
+    width: 260px;
+    min-width: 260px;
+    max-width: 260px;
     margin-top: 0;
     height: 200px;
 }
@@ -129,17 +138,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .project-page-create-project-button {
     padding: 10px 20px; 
-    margin: 25px 5px; 
+    margin: 18px 5px; 
     background-color: rgb(22, 27, 61); 
     color: white;
     border: none; 
     border-radius: 5px; 
     cursor: pointer; 
-    transition: background-color 0.8s, transform 0.5s; 
+    transition: background-color 0.8s, transform 0.5s ease-in-out; 
+    z-index: 100;
 }
 
 .project-page-create-project-button:hover {

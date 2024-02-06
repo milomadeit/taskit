@@ -40,7 +40,10 @@ function UserProjects() {
 						Create New Project
 				</button>
 			</div>
+			<div className="projects-container">
+
 			<ProjectCard className='project-card-component' projects={projects} />
+			</div>
 		</div>
 	);
 	

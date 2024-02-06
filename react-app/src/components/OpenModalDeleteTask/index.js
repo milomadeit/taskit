@@ -16,7 +16,7 @@ function OpenModalButton({
   };
 
   return (
-    <button className='task-edit-button' onClick={onClick}>{buttonText}</button>
+    <button className='task-delete-button' onClick={onClick}>{buttonText}</button>
   );
 }
 
