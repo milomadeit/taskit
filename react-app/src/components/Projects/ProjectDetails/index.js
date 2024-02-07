@@ -73,6 +73,8 @@ function ProjectDetails() {
   return (
 	<div className='project-container'>
     <div className="main-project-details-div">
+      <div className='info-grid'>
+
       <div className="project-info">
 		
         <div className='project-name-div'>
@@ -101,6 +103,7 @@ function ProjectDetails() {
 				
         </div>
 
+      </div>
       </div>
       <div className='project-description-div'>
 	  <p className="project-description">{project.description}</p>
