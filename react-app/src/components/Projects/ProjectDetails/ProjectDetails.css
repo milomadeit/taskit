@@ -20,68 +20,80 @@
 	width: 920px;
 
   }
+  .info-grid {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: -50px;
+  }
 
   .project-info {
-	display: flex;
-	position: absolute;
-	flex-direction: row;
-	margin-top: -5px;
-
+	display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+	grid-gap:545px;
+	align-items: flex-start;
+	justify-content: center;
+	text-align: left; 
   }
-  
+
+
   .project-name {
 	font-size: 20px;
 	color: white;
 	text-align: left;
-	margin-right: 95px;
-  }
-  
-  .project-description {
-	font-size: 14px;
-	color: white;
-	text-align: center;
+	width: 320px;
   }
   
   .project-name-div {
-	  display: flex;
-	  flex-direction: column;
-	  justify-content: center;
-	  align-items: flex-start;
-	  margin-top: -30px;
-	  margin-left: 0px;
-	  margin-right: 600px;
+	margin-top: 20px; 
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+  }
+  
+  
+  .project-description {
+	  font-size: 14px;
+	  color: white;
+	  text-align: center;
 	}
 	
 	.project-public {
 		font-size: 12px;
 		font-weight: bold;
-		margin-top: -10px;
 		text-align: right;
+		margin-top: -10px;
 	}
-	
 	.task-count {
 		font-size: 12px;
 		color: white;
-		margin-top: -20px
-	}
-	
+		margin-top: -20px;
+		align-self: flex-start;
+	  }
 	
 	.detail-span {
-		margin-top: -15px;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-		justify-content: center;
-	}
-	.project-detail {
-	  font-size: 12px;
-	  color: #f88900;
-	  text-align: right; 
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end; 
+	justify-content: center;
+	margin-top: 60px;
 	}
 
-  .project-public {
-	color: #15cc1b;
-  }
+
+	.project-detail {
+	font-size: 12px;
+	color: #f88900;
+	text-align: right;
+	margin-top: -20px;
+	}
+
+	.project-public {
+		font-size: 12px;
+		font-weight: bold;
+		color: #15cc1b;
+	  }
 
   .task-count { 
 	color: #f88900;
