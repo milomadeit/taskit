@@ -13,11 +13,10 @@ function ProjectCard({projects}) {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const currentUser = useSelector((state) => state.session.user)
-	const projects_2 = useSelector((state) => state.projectReducer.userProjects)
+	// const projects_2 = useSelector((state) => state.projectReducer.userProjects)
 	const [loading, setLoading] = useState('true')
 	
 	useEffect(() => {
-		dispatch(getUserProjects())
 		setLoading(!loading)
 
 	}, [dispatch])

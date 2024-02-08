@@ -5,7 +5,8 @@ import {useHistory} from "react-router-dom"
 import { getAllProjects } from "../../store/projects";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-
+import OpenModalButton from '../OpenModalHomePage'
+import LoginFormModal from "../LoginFormModal";
 
 
 
@@ -27,6 +28,10 @@ function HomePage () {
 		history.push('/projects/new')
 	}
 
+	const navigateToPublic = () => {
+		history.push('/projects/public')
+	}
+
 	return (
 		<div>
 		<div className="main-home-div">
@@ -35,13 +40,27 @@ function HomePage () {
 			TaskIt
 			</h1>
 			<div className="home-buttons">
+				{!currentUser && (
+					<>
+					<button onClick={() => navigateToPublic()} className="public-projects-button">Public Projects</button>
+					<OpenModalButton
+						buttonText="Sign In"
+						modalComponent={<LoginFormModal
+							className='nav-sign-in-up-btn nav-sign-in-btn'
+					
+					/>
+					}
+					/>
+					</>
+				)}
 				{currentUser && (
 					<>
 					<button className='nav-to-create-home' onClick={() => navigateToCreate()}>
 					Create Project
 					</button>
+					<button onClick={() => navigateToPublic()}  className="public-projects-button">Public Projects</button>
 					{/* <OpenModalButton className='button' modalComponent={<CreateProject/>} buttonText='Create A Project' /> */}
-					<button className="nav-to-user-proj-home" onClick={() => navigateToUserProjects()}>Current Projects</button>
+					<button className="nav-to-user-proj-home" onClick={() => navigateToUserProjects()}>My Projects</button>
 					</>
 				)}
 			</div>

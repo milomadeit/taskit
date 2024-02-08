@@ -95,14 +95,13 @@ def UpdateTaskIsCompleted(taskId):
 
 
 @task_routes.route('/<int:projectId>', methods=['GET'])
-@login_required
 def GetUserTasks(projectId):
-	all_tasks = Task.query.filter_by(project_id=projectId, creator_id=current_user.id)
+	all_tasks = Task.query.filter_by(project_id=projectId)
 
 	task_list = [{'id': task.id, 'name': task.name, 'description': task.description, 'creator_id': task.creator_id, 'is_completed': task.is_completed, 'project_id': task.project_id } for task in all_tasks]
 
-	if len(task_list) < 1:
-			return jsonify([]), 200
+	# if len(task_list) < 1:
+	# 		return jsonify([]), 200
 
 	return jsonify(task_list), 200
 

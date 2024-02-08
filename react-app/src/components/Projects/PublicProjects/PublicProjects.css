@@ -1,0 +1,15 @@
+.main-publix-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.main-public-back{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;	
+	margin-top: 15px;
+	margin-bottom: 25px;
+}

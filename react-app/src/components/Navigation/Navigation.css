@@ -15,6 +15,7 @@
   text-decoration: none;
   color: #cccccc; 
   padding: 0 16px;
+  z-index: 50;
 }
 
 .navigation-link:hover, .navigation-home-button:hover {

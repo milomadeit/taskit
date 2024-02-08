@@ -6,6 +6,26 @@
 	justify-content: center;
 }
 
+.modal.button, .public-projects-button {
+    padding: 10px 20px; 
+    background-color:  rgb(22, 27, 61);; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.8s, transform 0.5s; 
+    margin-top: -10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 130px;
+}
+
+.modal.button:hover, .public-projects-button:hover {
+    background-color: #7fb7f2; 
+    transform: translateY(-2px);
+    color: rgb(22, 27, 61);  
+
+}
 
 
 .button {
@@ -32,6 +52,7 @@
     margin-top: -10px;
     margin-left: 5px;
     margin-right: 5px;
+    width: 130px
 }
 
 .nav-to-user-proj-home:hover, .nav-to-create-home:hover  {

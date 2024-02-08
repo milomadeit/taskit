@@ -35,7 +35,7 @@
     color: white;
     margin-bottom: 15px; 
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: clip;
     display: -webkit-box;
     -webkit-line-clamp: 3; /* shows a  max 3 lines to keeep cards cleannn */
     -webkit-box-orient: vertical;
