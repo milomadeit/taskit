@@ -50,7 +50,10 @@
   padding: 8px;
   margin-right: 40px;
   list-style-type: none;
-  color: white
+  color: white;
+  text-align: center;
+  font-size: 10px;
+  width: 100px;
 }
 
 .profile-dropdown li:hover {

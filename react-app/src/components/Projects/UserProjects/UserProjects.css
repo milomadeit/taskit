@@ -61,6 +61,7 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 	flex-grow: 1; 
+    margin-top: -5px;
     margin-bottom: -100px
 }
 

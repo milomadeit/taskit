@@ -19,11 +19,12 @@ function DeleteTask({task, project}) {
 		closeModal()
 	}
 	
-	return (<div>
+	return (
+	<div className='delete-project-modal'>
 		<p>Do you want to delete this task?</p>
-		<div>
-		<button onClick={() => handleOnClickDelete(task.id, project.id)}>Delete</button>
-		<button onClick={() => handleCloseModal()}>No [Keep]</button>
+		<div className='delete-modal-buttons'>
+		<button className='delete-modal-button delete' onClick={() => handleOnClickDelete(task.id, project.id)}>Yes [Delet]e</button>
+		<button className='delete-modal-button keep' onClick={() => handleCloseModal()}>No [Keep]</button>
 		</div>
 	</div>)
 }

@@ -1,0 +1,51 @@
+.delete-project-modal {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+
+	height: 100px;
+	width: 250px;
+	padding: 20px;
+}
+
+.delete-project-modal > p {
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	font-size: 14px;
+}
+
+.delete-modal-buttons {
+	display: flex;
+	margin-top: 10px;
+	font-size: 10px;
+}
+
+.delete-modal-button {
+	border: none;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 10px 20px; 
+    background-color:  #7fb7f2;  
+    color: white; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.8s, transform 0.5s; 
+    margin-top: -10px;
+    width: 130px;
+}
+
+.delete-modal-button.delete:hover {
+	background-color: red;
+	transform: translateY(-2px);
+	color: rgb(22, 27, 61)
+}
+
+.delete-modal-button.keep:hover {
+	background-color: #15cc1b;
+	transform: translateY(-2px);
+	color: rgb(22, 27, 61)
+
+}

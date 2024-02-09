@@ -80,12 +80,16 @@ def UpdateTaskIsCompleted(taskId):
 		
 		task.is_completed = not task.is_completed
 
+		project = Project.query.filter_by(id=task.project_id).first()
+
 		if task.is_completed == True:
 			project.task_count -= 1
+			current_user.tasks_completed += 1
 			db.session.commit()
 			return jsonify({'task': True}), 200
 		if task.is_completed == False:
 			project.task_count += 1
+			current_user.tasks_completed -= 1
 			db.session.commit()
 			return jsonify({'task': False}), 200
 	except Exception as e: 

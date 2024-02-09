@@ -13,6 +13,7 @@ import ProjectDetails from "./components/Projects/ProjectDetails";
 import CreateTask from "./components/Tasks/CreateTask";
 import UpdateTask from "./components/Tasks/UpdateTask";
 import PublicProjects from "./components/Projects/PublicProjects";
+import UserProfile from "./components/Profile/UserProfile";
 
 
 function App() {
@@ -37,6 +38,11 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+
+          {sessionUser && (<Route path="/profile/user">
+            <UserProfile />
+          </Route>
+          )}
 
           <Route path='/projects/public'>
             <PublicProjects />
