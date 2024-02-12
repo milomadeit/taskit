@@ -1,0 +1,90 @@
+.user-profile-dashboard {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+  }
+  
+  .user-stats, .user-projects, .user-collaborations, .user-badges {
+	background-color: rgb(22, 27, 61);
+	padding: 20px;
+	margin-top: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	width: 920px;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+  
+  .user-stats p, .user-projects ul, .user-collaborations div, .user-badges div {
+	margin: 10px 0;
+  }
+  
+  .user-projects h3, .user-collaborations h3, .user-badges h3 {
+	color: #9e8efb;
+	margin-bottom: 15px;
+  }
+  
+  .user-projects {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+  }
+
+  
+  .project-list-main {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	flex-flow: row-wrap;
+	justify-content: center;
+	align-items: center;
+	list-style: none;
+	padding: 0;
+	width: 800px;
+	margin-top: 20px;
+  }
+  
+  .project-list-main > p {
+	background-color: rgba(255, 255, 255, 0.1);
+	padding: 10px;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+	cursor: pointer;
+	flex: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin: 5px;
+	min-width: 120px; 
+	max-width: 120px
+  }
+  
+  .user-projects div p:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .nav-back-to-user-proj:hover, .collab-button:hover {
+	background-color: #7fb7f2;
+	color: white;
+  }
+  
+  @media (max-width: 768px) {
+	.user-profile-dashboard, .user-stats, .user-projects, .user-collaborations, .user-badges {
+	  width: auto;
+	  padding: 20px;
+	}
+  }
+  
+  @media (max-width: 480px) {
+	.user-profile-dashboard, .user-stats, .user-projects, .user-collaborations, .user-badges {
+	  flex-direction: column;
+	  align-items: center;
+	}
+  }
+  

@@ -5,6 +5,24 @@ from ..forms import TaskForm
 
 task_routes = Blueprint('tasks', __name__)
 
+
+@task_routes.route('/user/count', methods=['GET'])
+@login_required
+def TaskCount():
+	task_count = current_user.tasks_completed
+	tasks = current_user.tasks
+	projects = current_user.projects
+
+	payload = {
+    "task_count": task_count,
+    "tasks": [task.to_dict() for task in tasks], 
+    "projects": [project.to_dict() for project in projects]
+	}
+
+
+	return jsonify(payload), 200
+
+
 @task_routes.route('/<int:projectId>/new', methods=['POST'])
 @login_required
 def CreateTask(projectId):
@@ -93,7 +111,6 @@ def UpdateTaskIsCompleted(taskId):
 			db.session.commit()
 			return jsonify({'task': False}), 200
 	except Exception as e:
-		print(e, 'yooooo my eeeeeee')
 		return jsonify({'error': str(e)}), 500
 	
 	
