@@ -101,7 +101,7 @@ export const updateIsCompleted = (taskId, projectId) => async (dispatch) => {
 		return data
 	} else {
 		const errorData = await response.json()
-		console.log(taskId, 'yooooo')
+		console.log(errorData, 'yooooo, error data')
 		return errorData
 	}
 }

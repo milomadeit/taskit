@@ -52,7 +52,7 @@ function TaskCard({task, project}) {
 				<Toggle className='toggle-component' isChecked={isChecked} handleToggleCheck={() => handleToggleCheck(task.id, project.id)} />
 				</span>
 				<div>
-				<button className='task-edit-button' onClick={() => handleEditTask(task.id)}><i class="fa-regular fa-pen-to-square"></i></button>
+				<button className='task-edit-button' onClick={() => handleEditTask(task.id)}><i className="fa-regular fa-pen-to-square"></i></button>
 				<OpenModalButton className='modal-delete-task'
               	buttonText={
                 <i className="fas fa-trash-alt"></i>

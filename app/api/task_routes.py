@@ -92,7 +92,8 @@ def UpdateTaskIsCompleted(taskId):
 			current_user.tasks_completed -= 1
 			db.session.commit()
 			return jsonify({'task': False}), 200
-	except Exception as e: 
+	except Exception as e:
+		print(e, 'yooooo my eeeeeee')
 		return jsonify({'error': str(e)}), 500
 	
 	

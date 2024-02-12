@@ -22,7 +22,6 @@ function ProjectDetails() {
   const {projectId} = useParams();
 
   const project = useSelector((state) => selectProjectById(state, projectId));  // const project = location.state.project
-  console.log(project, 'yoooo')
 
   const [loading, setLoading] = useState(false);
   const tasks = useSelector((state) => state.tasksReducer.projectTasks);
@@ -118,11 +117,14 @@ function ProjectDetails() {
 		
         <div className='project-name-div'>
             <h2 className="project-name">{project.name}</h2>
+            {project.task_count === 0 ?( <p className='task-count'>No tasks to complete</p>) : (
             <p className="task-count">
-              {project.task_count < 1
-                ? 'No tasks to complete'
+              {project.task_count < 2
+                ? '1 task to complete'
                 : project.task_count + ' tasks to complete'}
             </p>
+
+            ) }
         </div>
 
         <div className='detail-span'>
