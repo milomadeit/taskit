@@ -41,9 +41,22 @@ function UserProfile() {
         history.push('/projects/user')
     }
 
+    const navigateToBack = () => {
+		history.goBack()
+	}
+
+	const navigateToPublic = () => {
+		history.push('/projects/public')
+	}
+
     return (
         <div className="user-profile-dashboard">
             <h2>Hello, {user.username}</h2>
+            <div className='main-profile-back'>
+			<button className='main-public-back-button' onClick={() => navigateToBack()}>Back</button>
+			<button className="main-public-back-button" onClick={() => navigateToPublic()}>Public Projects</button>
+
+		</div>
             <div className="user-stats">
                 <p>Tasks Completed: {taskCount}</p>
                 <p>Projects Completed: {projects_list.filter(project => project.is_completed).length} out of {projects_list.length}</p>
@@ -63,7 +76,7 @@ function UserProfile() {
 
             </div>
             <div className="user-collaborations">
-                <h3>Collaborations</h3>
+                <h3>Collaboration Requests</h3>
                 <div className='grid-container'>
                 <div className='collab-grid-div'>
                 {collab_list.map((collab) => (

@@ -21,11 +21,17 @@ function PublicProjects() {
 		history.goBack()
 	}
 
+	const navigateToDash = () => {
+		history.push('/profile/user')
+	}
+
 	return (
 	
 	<div className='main-public-div'>
 		<div className='main-public-back'>
 			<button className='main-public-back-button' onClick={() => navigateToBack()}>Back</button>
+			<button className="main-public-back-button" onClick={() => navigateToDash()}> Dashboard</button>
+
 		</div>
 	<div className='projects-container'>
 		<ProjectCard className='project-card-component' projects={allProjects} />

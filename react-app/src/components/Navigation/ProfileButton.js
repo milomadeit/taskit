@@ -58,7 +58,7 @@ function ProfileButton({ user }) {
               <button className='dropdown-logout'onClick={handleLogout}>Log Out</button>
             </li>
             <li>
-            <button className="dropdown-profile" onClick={handleProfile}>Profile</button>
+            <button className="dropdown-profile" onClick={handleProfile}>Dashboard</button>
 
             </li>
           </>

@@ -32,6 +32,10 @@ function UserProjects() {
 		history.push('/projects/new')
 	}
 
+	const navigateToDash = () => {
+		history.push('/profile/user')
+	}
+
 
 	return (
 		<div className="main-project-car-div">
@@ -39,6 +43,7 @@ function UserProjects() {
 				<button className='project-page-create-project-button' onClick={() => navigateToCreate()}>
 						Create New Project
 				</button>
+				<button className="project-page-create-project-button" onClick={() => navigateToDash()}> Dashboard</button>
 			</div>
 			<div className="projects-container">
 

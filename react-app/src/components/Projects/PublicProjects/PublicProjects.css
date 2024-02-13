@@ -7,7 +7,7 @@
 
 .main-public-back{
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;	
 	margin-top: 15px;
@@ -27,6 +27,7 @@
 	width: 100px;
 	margin-top: 5px;
 	margin-bottom: -10px;
+	width: 180px;
 }
 
 .main-public-back-button:hover {

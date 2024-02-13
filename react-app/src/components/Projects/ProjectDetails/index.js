@@ -104,14 +104,11 @@ function ProjectDetails() {
       const response = await dispatch(newRequest(projectId))
       
       
-      if (!requestToJoin) {
+  
         setRequestToJoin(true)
         if (response.error) {
           console.log(response.error)
-          setErrors({errorReq: "You've already sent a request!"})
-  
-        }
-
+          setErrors({errorReq: response.error})
       }
     
   }

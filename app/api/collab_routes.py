@@ -31,15 +31,34 @@ def request_collab(projectId):
 	return jsonify(new_request.to_dict());
 
 
-@collab_routes.route('/<int:requestId>/', methods=['PUT'])
+@collab_routes.route('/<int:requestId>', methods=['PUT'])
 @login_required
 def update_collab(requestId):
 
-	collab_request = CollabRequest.query.filter_by(id=requestId)
+	collab_request = CollabRequest.query.filter_by(id=requestId).first()
+      
+	if not collab_request: return jsonify({"error": 'cant find request'}), 404
+    
+	collab_request.status = 'collaborator'
+	db.session.commit()
+      
+	collab_list = [{
+        "id": collab_request.id,
+        "sender_id": collab_request.sender_id,
+        "receiver_id": collab_request.receiver_id,
+        "project_id": collab_request.project_id,
+        "status": collab_request.status,
+        "sender": {
+            "id": collab_request.sender.id,
+            "username": collab_request.sender.username
+        },
+        "project": {
+            "id": collab_request.project.id,
+            "name": collab_request.project.name,
+        }
+    }]
 
-	data = request.json
-
-	print(data)
+	return jsonify(collab_list)
 
 @collab_routes.route('/<int:requestId>', methods=['DELETE'])
 @login_required 
@@ -63,7 +82,7 @@ def delete_collab(requestId):
 @collab_routes.route('/<int:userId>', methods=['GET'])
 @login_required
 def get_collabs(userId):
-    requests = CollabRequest.query.filter_by(receiver_id=userId).all()
+    requests = CollabRequest.query.filter_by(receiver_id=userId, status='pending').all()
 
     requests_list = [{
         "id": request.id,

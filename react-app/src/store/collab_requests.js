@@ -1,5 +1,5 @@
 const NEW_REQUEST = 'requests/NEW_REQUEST'
-// const UPDATE_REQUEST = 'requests/UPDATE_REQUEST'
+const UPDATE_REQUEST = 'requests/UPDATE_REQUEST'
 const GET_REQUESTS = 'request/GET_REQUESTS'
 const DELETE_REQUEST = 'requests/DELETE_REQUEST'
 
@@ -10,12 +10,12 @@ const storeNewRequest = (request) => {
 	}
 }
 
-// const storeUpdateRequest = (request) => {
-// 	return {
-// 		type: UPDATE_REQUEST,
-// 		request
-// 	}
-// }
+const storeUpdateRequest = (request) => {
+	return {
+		type: UPDATE_REQUEST,
+		request
+	}
+}
 
 const storeGetRequests = (requests) => {
 	return {
@@ -53,6 +53,23 @@ export const getRequests = (userId) => async (dispatch) => {
 
 }
 
+export const updateRequest = (requestId) => async (dispatch) => {
+	const response = await fetch(`/api/request/${requestId}`, {
+		method: 'PUT'
+	});
+
+	if (response.ok) {
+		const request = await response.json();
+		dispatch(storeUpdateRequest(requestId))
+		return request
+	} else {
+		const errorData = await response.json();
+		
+		return errorData
+	}
+
+}
+
 
 export const DeleteRequest = (requestId) => async (dispatch) => {
 	const response = await fetch(`/api/request/${requestId}`, {
@@ -61,7 +78,7 @@ export const DeleteRequest = (requestId) => async (dispatch) => {
 
 	if (response.ok) {
 		const request = await response.json();
-		dispatch(storeDeleteRequest(requestId))
+		dispatch(storeDeleteRequest(request))
 		return request
 	} else {
 		const errorData = await response.json();
@@ -107,6 +124,21 @@ export default function collabReducer(state = initialState, action) {
 				}
 			};
 		}
+		case UPDATE_REQUEST: {
+			const {request} = action
+
+			const newCurrentRequests = {...state.currentRequests}
+			newCurrentRequests[action.id] = request.action
+
+
+
+			return {
+				...state,
+				...state.currentRequests = newCurrentRequests,
+				...state.collabRequests = newCurrentRequests,
+				
+			}
+		}
 		case GET_REQUESTS: {
 			const requests = action.requests.reduce((acc, request) => {
 				acc[request.id] = request;
@@ -125,7 +157,8 @@ export default function collabReducer(state = initialState, action) {
 
 			return {
 				...state,
-				currentRequests: newCurrentRequests
+				currentRequests: newCurrentRequests,
+				
 			}
 		}
 		default:
