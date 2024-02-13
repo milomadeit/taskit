@@ -22,7 +22,7 @@ function TaskCard({task, project}) {
 
 	useEffect(() => {
 		dispatch(getProjectTasks(project?.id))
-	}, [dispatch, curr_task.is_completed])
+	}, [dispatch, curr_task.is_completed, project?.id])
 
 	const handleToggleCheck =  async (taskId, projectId) => {
 		await dispatch(updateIsCompleted(taskId, projectId))

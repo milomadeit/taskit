@@ -32,14 +32,16 @@
     margin-left: 0px;
     margin-right: 0px;
     z-index: 0;
+   padding-bottom: 0px;
 }
 
 
 .project-actions {
     position: absolute;
-    bottom: 25px; 
+    bottom: 12px; 
     right: 20px; 
     display: flex;
+    
 }
 .project-actions > button {
     margin-left: 5px;

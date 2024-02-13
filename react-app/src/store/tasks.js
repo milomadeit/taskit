@@ -68,7 +68,6 @@ export const TaskCount = () => async (dispatch) => {
 
 	if (response.ok) {
 		const tasksInfo = await response.json();
-		console.log(tasksInfo,' yooooooo')
 		dispatch(updateTaskCount(tasksInfo.task_count))
 		return { ok: true, data: tasksInfo };
 	} else {

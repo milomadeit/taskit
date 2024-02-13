@@ -9,6 +9,7 @@ const rootReducer = combineReducers({
   session,
   projectReducer,
   tasksReducer,
+  collabReducer,
 });
 
 let enhancer;

@@ -42,28 +42,51 @@ def update_collab(requestId):
 	print(data)
 
 @collab_routes.route('/<int:requestId>/', methods=['DELETE'])
-@login_required
+# @login_required
 def delete_collab(requestId):
+    
 
-	collab_request = CollabRequest.query.filter_by(id=requestId)
+    collab_request = CollabRequest.query.filter_by(id=requestId).first()
+    # if not current_user:
+    #       return jsonify({'error': 'you must be logged in'}), 403
+    # if current_user.id != (collab_request.receiver_id or collab_request.sender_id):
+    #       return jsonify({'error': 'you must be logged in'}), 403
+          
 
-	try:
-		db.session.delete(collab_request)
-		db.session.commit()
-		return jsonify({'message': 'request deleted successfully'}), 200
-
-	except Exception as e:
-		db.session.rollback()
-		return jsonify({'error': 'An error occurred during deletion'}), 500
+    if collab_request:
+        try:
+            db.session.delete(collab_request)
+            db.session.commit()
+            return jsonify({'message': 'Request deleted successfully'}), 200
+        except Exception as e:
+            db.session.rollback()
+            return jsonify({'error': 'An error occurred during deletion'}), 500
+    else:
+        return jsonify({'error': 'CollabRequest not found'}), 404
 	
 
-@collab_routes.route('/<int:projectId>/requests', methods=['GET'])
+@collab_routes.route('/<int:userId>', methods=['GET'])
 @login_required
-def get_collabs(projectId):
+def get_collabs(userId):
+    requests = CollabRequest.query.filter_by(receiver_id=userId).all()
 
-	project = Project.query.filter_by(id=project.id)
+    requests_list = [{
+        "id": request.id,
+        "sender_id": request.sender_id,
+        "receiver_id": request.receiver_id,
+        "project_id": request.project_id,
+        "status": request.status,
+        "sender": {
+            "id": request.sender.id,
+            "username": request.sender.username
+        },
+		"project": {
+			"id": request.project.id,
+			"name": request.project.name,
+		}
+    } for request in requests]
 
-	collab_requests = project.collabs
-
-	print(collab_requests)
-	return jsonify(collab_requests), 200
+    payload = {
+        "request": requests_list
+    }
+    return jsonify(payload), 200
