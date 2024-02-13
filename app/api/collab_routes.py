@@ -41,28 +41,23 @@ def update_collab(requestId):
 
 	print(data)
 
-@collab_routes.route('/<int:requestId>/', methods=['DELETE'])
-# @login_required
+@collab_routes.route('/<int:requestId>', methods=['DELETE'])
+@login_required 
 def delete_collab(requestId):
-    
-
     collab_request = CollabRequest.query.filter_by(id=requestId).first()
-    # if not current_user:
-    #       return jsonify({'error': 'you must be logged in'}), 403
-    # if current_user.id != (collab_request.receiver_id or collab_request.sender_id):
-    #       return jsonify({'error': 'you must be logged in'}), 403
-          
-
-    if collab_request:
-        try:
-            db.session.delete(collab_request)
-            db.session.commit()
-            return jsonify({'message': 'Request deleted successfully'}), 200
-        except Exception as e:
-            db.session.rollback()
-            return jsonify({'error': 'An error occurred during deletion'}), 500
-    else:
+    if not collab_request:
         return jsonify({'error': 'CollabRequest not found'}), 404
+
+    if current_user.id != collab_request.receiver_id and current_user.id != collab_request.sender_id:
+        return jsonify({'error': 'Unauthorized'}), 403
+
+    try:
+        db.session.delete(collab_request)
+        db.session.commit()
+        return jsonify({'message': 'Request deleted successfully'}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': 'An error occurred during deletion'}), 500
 	
 
 @collab_routes.route('/<int:userId>', methods=['GET'])
