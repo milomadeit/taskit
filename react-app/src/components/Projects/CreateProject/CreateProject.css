@@ -33,6 +33,10 @@
     margin-bottom: 16px; 
 }
 
+.project-form-inputs.public-private {
+    margin-left: 20px;
+}
+
 .project-form-inputs label {
     display: block;
     margin-bottom: 10px;
@@ -82,8 +86,13 @@
 .public-private {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    
+    justify-content: space-between;
+    align-items: center;
+}
+
+.public-private label {
+    margin-left: ;
+    flex: 0;
 }
 
 .public-private > input {
@@ -109,4 +118,11 @@
 .back-to-project-button:hover {
     background-color:#15cc1b;
 	color:  rgb(22, 27, 61);; ;
+}
+
+
+@media (max-width: 480px) {
+    .create-project-main-div, .create-project-form {
+        width: 300px
+    }
 }

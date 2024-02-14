@@ -3,6 +3,7 @@
 	margin-top: -10px;
 }
 
+
 .user-profile-dashboard {
 	display: flex;
 	flex-direction: column;
@@ -163,79 +164,38 @@
 	margin-bottom: 5px;
   }
   @media (max-width: 768px) {
-	.user-profile-dashboard, .user-stats, .user-projects, .user-collaborations, .user-badges {
-	  width: auto;
-	  padding: 20px;
-	}
-
-	.project-list-main {
+    .user-profile-dashboard, .user-stats, .user-projects, .user-collaborations, .user-badges {
+        width: 90%; /* Adjust to use the full available width, or set a specific width */
+        padding: 20px;
+		box-sizing: border-box;
 		display: flex;
-		flex-direction: column;
-		flex-wrap: wrap;
-		flex-flow: row-wrap;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		padding: 0;
-		width: 235px;
+		margin: auto;
 		margin-top: 20px;
-	  }
+    }
 
-	  .collab-grid-div {
-	
-		grid-template-columns: repeat(2, 1fr); 
-	  }
-  }
+    .project-list-main, .collab-grid-div {
+        width: 100%; /* Ensure these containers also adjust to match the parent width */
+    }
+}
 
-  .edit-collab-div {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 350px;
-	height: 120px;
-	color: white
-  }
+@media (max-width: 480px) {
+    .user-profile-dashboard, .user-stats, .user-projects, .user-collaborations, .user-badges {
+        width: 90%; /* Provide some margin on the sides */
+        box-sizing: border-box; /* Include padding in the element's total width and height */
+        margin: 10px auto; /* Center the elements within the viewport */
+    }
 
-  .edit-collab-div-buttons {
-	margin-top: 20px;
-	display: flex;
-	flex-direction: row;
-  }
-
-  .edit-collab-div-buttons > button {
-	margin-left: 5px;
-	margin-right: 5px;
-	border: none;
-	margin-left: 5px;
-	margin-right: 5px;
-	padding: 10px 20px; 
-    background-color:  #7fb7f2;  
-    color: white; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    transition: background-color 0.8s, transform 0.5s; 
-    margin-top: -10px;
-    width: 130px;
-  }
-
-  .edit-collab-div-buttons-accept:hover {
-	background-color: #15cc1b;
-	transform: translateY(-2px);
-	color: rgb(22, 27, 61)
-  }
-
-  .edit-collab-div-buttons-delete:hover {
-	background-color: red;
-	transform: translateY(-2px);
-	color: rgb(22, 27, 61)
-
-  }
-  
-  @media (max-width: 480px) {
-	.user-profile-dashboard, .user-stats, .user-projects, .user-collaborations, .user-badges {
-	  flex-direction: column;
-	  align-items: center;
+    .project-list-main, .collab-grid-div {
+        width: 100%; /* Adjust if necessary for the content */
+        flex-direction: column; /* Stack items vertically if they were in a row */
+    }
+	.user-stats {
+		margin-top: 40px;
 	}
-  }
-  
+
+	.main-public-back-button {
+
+		width: 155px
+	
+	}
+}

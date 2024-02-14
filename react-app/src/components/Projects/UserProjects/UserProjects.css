@@ -181,10 +181,19 @@
 
 
 
-@media (max-width: 780px) {
+@media (max-width: 480px) {
 	.project-card-div {
-	  grid-template-columns: 1fr;
+        display: flex;
+	    grid-template-columns: 1fr;
+        flex-grow: 1;
 	}
+
+    .projects-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
 }
 
