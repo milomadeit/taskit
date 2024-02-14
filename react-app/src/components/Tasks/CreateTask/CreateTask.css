@@ -1,23 +1,38 @@
-/* CreateTaskForm.css */
+.alignment {
+    margin-top: 50px;
+}
+.create-task-main-div {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(22, 27, 61);
+    width: 500px ;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(22, 27, 61);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    border-radius: 8px;
+
+}
+
+.tasks-create {
+    border-radius: 8px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
 .create-task-main-div {
     display: flex;
     align-items: center;
     margin: 0px;
-    background-color: rgb(22, 27, 61);
-    width: 500px ;
-    margin-top: 40px;
-
-    border-radius: 8px;
 }
 
 .create-task-form {
     width: 100%;
     max-width: 500px;
-    padding: 40px;
-    background-color: rgb(22, 27, 61);
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-    box-sizing: border-box;
+  
 }
 
 .task-form-inputs {
@@ -49,7 +64,7 @@
 
 .create-task-button {
     width: 100%;
-    padding: 12px 20px;
+    padding: 12px 10px;
     background-color: #007bff; /* Bootstrap primary blue */
     color: white;
     font-size: 12px;

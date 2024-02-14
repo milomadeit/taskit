@@ -15,10 +15,11 @@
 	height: 420px;
     margin: auto;
     padding: 20px;
+    padding-bottom: 30px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
     border-radius: 8px; 
     background-color:  rgb(22, 27, 61);;
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 .create-project-form {

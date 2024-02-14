@@ -58,6 +58,10 @@ function CreateTask() {
 
 	}
 
+	const navigateToUserProjects = () => {
+		history.push('/projects/user')
+	}
+
 	return (
 		<div className='alignment'>
 		<div className='create-task-main-div'>
@@ -73,6 +77,7 @@ function CreateTask() {
 				</div>
 					<button className='create-task-button' type='submit'>Add to project</button>
 			</form>
+		<button onClick={() => navigateToUserProjects()} className='back-to-project-button tasks-create'> Back To Projects </button>
 		</div>
 
 		</div>
