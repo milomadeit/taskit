@@ -1,0 +1,37 @@
+.main-publix-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.main-public-back{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;	
+	margin-top: 15px;
+	margin-bottom: 25px;
+}
+
+.main-public-back-button {
+	padding: 10px 20px; 
+    margin: 18px 5px; 
+    background-color: rgb(22, 27, 61); 
+    color: white;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.8s, transform 0.5s ease-in-out; 
+    z-index: 100;
+	width: 100px;
+	margin-top: 5px;
+	margin-bottom: -10px;
+	width: 180px;
+}
+
+.main-public-back-button:hover {
+	background-color: #7fb7f2;  
+    transform: translateY(-2px); 
+    color:rgb(22, 27, 61);  
+}

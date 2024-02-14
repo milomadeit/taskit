@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, useLocation } from 'react-router-dom';
 // import { createProject } from '../../../store/projects';
 // import { useModal } from '../../../context/Modal';
 import './CreateTask.css'
@@ -15,7 +15,8 @@ function CreateTask() {
 	const [errors, setErrors] = useState({})
 	const {projectId} = useParams();
 	const user = useSelector((state) => state.session.user)
-
+	const location = useLocation();
+	const project = location.state.project
 	useEffect(() => {
 		// SOMETHING
 	}, [])
@@ -42,7 +43,7 @@ function CreateTask() {
 			if (result.ok) {
 			  history.push({
 				pathname: `/projects/${projectId}`,
-				state: {projectId}
+				state: {project:project}
 			});
 			} else {
 			  return result.data
@@ -55,6 +56,10 @@ function CreateTask() {
 		  }
 
 
+	}
+
+	const navigateToUserProjects = () => {
+		history.push('/projects/user')
 	}
 
 	return (
@@ -72,6 +77,7 @@ function CreateTask() {
 				</div>
 					<button className='create-task-button' type='submit'>Add to project</button>
 			</form>
+		<button onClick={() => navigateToUserProjects()} className='back-to-project-button tasks-create'> Back To Projects </button>
 		</div>
 
 		</div>

@@ -4,33 +4,48 @@ import { useDispatch, useSelector } from 'react-redux';
 import './ProjectDetails.css';
 import { getProjectTasks } from '../../../store/tasks';
 import TaskCard from '../../Tasks/TaskCards';
-import TaskCarousel from '../../Tasks/TaskCards/TaskCarousel';
-import { getUserProjects } from '../../../store/projects';
+import { getUserProjects, getAllProjects } from '../../../store/projects';
 import PopOutMenu from '../../PopOutMenu';
 import OpenModalButton from '../../DeleteModalButton'
 import DeleteProject from '../DeleteProject';
+import { newRequest } from '../../../store/collab_requests';
+import selectProjectById from './selector';
 
 
 function ProjectDetails() {
 
   const history = useHistory();
   const dispatch = useDispatch();
+
   const {projectId} = useParams();
 
-  const project = useSelector((state) => state.projectReducer.userProjects[parseInt(projectId)]);
+  const project = useSelector((state) => selectProjectById(state, projectId));  // const project = location.state.project
+
   const [loading, setLoading] = useState(false);
   const tasks = useSelector((state) => state.tasksReducer.projectTasks);
   const task_array = Object.values(tasks);
-  const taskCount = useSelector(state => state.tasksReducer.taskCount)
+  const taskCount = useSelector((state) => state.tasksReducer.taskCount)
+  const [requestToJoin, setRequestToJoin] = useState('false')
+  const [errors, setErrors] = useState({});
+  const user = useSelector((state) => state.session.user)
   
  
   
 
   useEffect(() => {
-    setLoading(true);
-    dispatch(getUserProjects())
-    dispatch(getProjectTasks(project?.id))
-    setLoading(false)
+    async function fetchData() {
+      setLoading(true);
+
+
+      await dispatch(getAllProjects());
+      await dispatch(getUserProjects());
+      await dispatch(getProjectTasks(project?.id));
+
+      setLoading(false);
+  }
+
+  fetchData();
+  setLoading(false)
 	
   }, [dispatch, project?.id, taskCount]);
 
@@ -38,6 +53,8 @@ function ProjectDetails() {
   if (!project || loading) {
 	return (<div>Loading...</div>)
   }
+
+
 
   const formatDate = (dateString) => {
     const options = {
@@ -56,12 +73,24 @@ function ProjectDetails() {
   const navigateToUserProjects = () => {
 		history.push('/projects/user')
 	}
+
+  const navigateToUserDashboard = () => {
+		history.push('/profile/user')
+	}
 	const navigateToCreate = () => {
 		history.push('/projects/new')
 	}
 
+
+  const navigateToBack = () => {
+		history.goBack()
+	}
+
   const navigateToCreateTask = () => {
-    history.push(`/projects/tasks/${project.id}/new`);
+    history.push({
+      pathname: `/projects/tasks/${project.id}/new`,
+      state: {project:project}
+    });
   };
 
   const handleEdit = (e, projectId) => {
@@ -69,6 +98,20 @@ function ProjectDetails() {
         // navigate to edit page with projectId
         history.push(`/projects/${projectId}/update`);
     };
+
+
+  const handleRequestClick = async (projectId) => {
+      const response = await dispatch(newRequest(projectId))
+      
+      
+  
+        setRequestToJoin(true)
+        if (response.error) {
+          console.log(response.error)
+          setErrors({errorReq: response.error})
+      }
+    
+  }
 
   return (
 	<div className='project-container'>
@@ -79,11 +122,14 @@ function ProjectDetails() {
 		
         <div className='project-name-div'>
             <h2 className="project-name">{project.name}</h2>
+            {project.task_count === 0 ?( <p className='task-count'>No tasks to complete</p>) : (
             <p className="task-count">
-              {project.task_count < 1
-                ? 'No tasks to complete'
+              {project.task_count < 2
+                ? '1 task to complete'
                 : project.task_count + ' tasks to complete'}
             </p>
+
+            ) }
         </div>
 
         <div className='detail-span'>
@@ -92,12 +138,15 @@ function ProjectDetails() {
               {project.is_public ? 'Public' : 'Private'}
           </p>
           <div className='project-details-actions'>
+            {project.creator_id === user?.id && (
 						<PopOutMenu>
+					    <button className="nav-to-user-proj" onClick={() => navigateToUserDashboard()}>Dashboard</button>
               <button className='nav-to-create' onClick={() => navigateToCreate()}>New Project</button>
-					    <button className="nav-to-user-proj" onClick={() => navigateToUserProjects()}>My Projects</button>
 							<button className="edit-project-button" onClick={(e) => handleEdit(e, project.id)}>Edit</button>
 							<OpenModalButton  className="delete-project-button" buttonText="Delete" modalComponent={<DeleteProject projectId={project.id}/>} />
 						</PopOutMenu>
+
+            )}
 
           </div>
 				
@@ -109,25 +158,50 @@ function ProjectDetails() {
 	  <p className="project-description">{project.description}</p>
       </div>
       <div className='project-details-center-div'>
+        {!user ? "": (
+
         <div className='project-details-mid-div-1'>
-          <h4 className='files-h'>Files</h4>
-          <p className='files-p'>No files uploaded</p>
+          { project.creator_id !== user?.id && (
+            <>
+            
+              <h4 className='collab-header'>Become a collaborator!</h4>
+              <button className='collab-button' onClick={() => handleRequestClick(project.id)}>Request</button>
+              {errors.errorReq && (<p className='errors-p project-collab-error'>{errors.errorReq}</p>)}
+            </>
+
+
+) }
         </div>
-        <div className='project-details-mid-div-2'>
+
+        ) }
+          <div className='project-details-mid-div-2'>
+            
+      
           {/* <TaskCarousel key={task_array.length} task_array={task_array} project={project} /> */}
 
 
         </div>
         <div className='project-details-mid-div-3'>
-          {/* <h4>You havent invited anyone to collaborate yet!</h4>
-          <button>invite a friend to create with you</button> */}
+          {project.creator_id === user?.id && (
+            <>
+            <h4 className='files-h'>Files</h4>
+              <p className='files-p'>No files uploaded</p>
+            </>
+          )}
         </div>
       </div>
       <div className='project-details-buttons'>
+      {project.creator_id === user?.id  && (
+      <>
         <button className="add-task-button" onClick={() => navigateToCreateTask()}>
           Add Task
         </button>
         <button className="nav-back-to-user-proj" onClick={() => navigateToUserProjects()}>Back To Projects</button>
+      </>
+      )}
+        {project.creator_id !== user?.id && (
+          <button className="nav-back-to-user-proj" onClick={() => navigateToBack()}>Go Back</button>
+        )}
       </div>
     </div>
       <div className='task-grid'>

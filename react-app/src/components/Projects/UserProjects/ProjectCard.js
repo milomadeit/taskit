@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import './UserProjects.css'
-import { getUserProjects } from "../../../store/projects";
 import OpenModalButton from "../../DeleteModalButton"
 import DeleteProject from "../DeleteProject";
 // import { deleteProject } from "../../../store/projects";
@@ -13,11 +12,10 @@ function ProjectCard({projects}) {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const currentUser = useSelector((state) => state.session.user)
-	const projects_2 = useSelector((state) => state.projectReducer.userProjects)
+	// const projects_2 = useSelector((state) => state.projectReducer.userProjects)
 	const [loading, setLoading] = useState('true')
 	
 	useEffect(() => {
-		dispatch(getUserProjects())
 		setLoading(!loading)
 
 	}, [dispatch])

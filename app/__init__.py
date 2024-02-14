@@ -11,6 +11,7 @@ from .seeds import seed_commands
 from .config import Config
 from .api.project_routes import project_routes
 from .api.task_routes import task_routes
+from .api.collab_routes import collab_routes
 
 
 
@@ -34,6 +35,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(project_routes, url_prefix='/api/projects')
 app.register_blueprint(task_routes, url_prefix='/api/tasks')
+app.register_blueprint(collab_routes, url_prefix='/api/request')
 db.init_app(app)
 Migrate(app, db)
 

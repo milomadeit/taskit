@@ -3,12 +3,13 @@ import thunk from "redux-thunk";
 import session from "./session";
 import projectReducer from "./projects";
 import tasksReducer from "./tasks";
-
+import collabReducer from "./collab_requests";
 
 const rootReducer = combineReducers({
   session,
   projectReducer,
   tasksReducer,
+  collabReducer,
 });
 
 let enhancer;

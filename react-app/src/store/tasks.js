@@ -6,6 +6,7 @@ const DELETE_TASK = 'tasks/DELETE_TASK'
 const ADD_TASK = 'tasks/ADD_TASK'
 const MINUS_TASK = 'tasks/MINUS_TASK'
 const TASK_COUNT = 'tasks/TASK_COUNT'
+const TASK_COUNT_UPDATE = 'tasks/TASK_COUNT_UPDATE'
 
 
 const storeNewTask = (task) => {
@@ -52,6 +53,30 @@ const taskCountCurr = () => {
 	return {type: TASK_COUNT}
 }
 
+const updateTaskCount = (taskCount) => {
+	return {
+		type: TASK_COUNT_UPDATE,
+		taskCount
+	}
+}
+
+
+export const TaskCount = () => async (dispatch) => {
+	const response = await fetch(`/api/tasks/user/count`, {
+		method: 'GET',
+	})
+
+	if (response.ok) {
+		const tasksInfo = await response.json();
+		dispatch(updateTaskCount(tasksInfo.task_count))
+		return { ok: true, data: tasksInfo };
+	} else {
+		const errorData = await response.json();
+		console.log(errorData, 'yooo thhhunk')
+		return { ok: false, data: errorData};
+	}	
+
+}
 
 export const createTask = (task, projectId) => async (dispatch) => {
 	const response = await fetch(`/api/tasks/${projectId}/new`, {
@@ -101,7 +126,6 @@ export const updateIsCompleted = (taskId, projectId) => async (dispatch) => {
 		return data
 	} else {
 		const errorData = await response.json()
-		console.log(taskId, 'yooooo')
 		return errorData
 	}
 }
@@ -192,6 +216,12 @@ const tasksReducer = (state = initialState, action) => {
 		return {
 			...state,
 			taskCount: state.taskCount
+		}
+		case TASK_COUNT_UPDATE: {
+			return {
+				...state,
+				taskCount: action.taskCount
+			}
 		}
 
         default:

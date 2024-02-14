@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useModal } from '../../../context/Modal'
 import { deleteProject, getUserProjects } from '../../../store/projects';
 import { useHistory } from 'react-router-dom';
-
+import './DeleteProject.css'
 
 function DeleteProject({projectId}) {
 
@@ -25,11 +25,11 @@ function DeleteProject({projectId}) {
 	}
 
 	return (
-		<div>
+		<div className='delete-project-modal'>
 			<p>Are you sure you want to delete your project?</p>
-			<div>
-				<button onClick={() => handleOnClickDelete(projectId)}>Yes [Delete]</button>
-				<button onClick={() => handleCloseModal()}>No [Keep]</button>
+			<div className='delete-modal-buttons'>
+				<button className='delete-modal-button delete' onClick={() => handleOnClickDelete(projectId)}>Yes [Delete]</button>
+				<button className='delete-modal-button keep' onClick={() => handleCloseModal()}>No [Keep]</button>
 			</div>
 		</div>
 	)

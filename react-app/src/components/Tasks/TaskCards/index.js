@@ -8,18 +8,21 @@ import Toggle from '../toggle/toggle';
 import { updateIsCompleted } from '../../../store/tasks';
 import { useDispatch } from 'react-redux';
 import { getProjectTasks } from '../../../store/tasks';
+import { useSelector } from 'react-redux';
 
 
 function TaskCard({task, project}) {
 	const history = useHistory();
 	const [isChecked, setIsChecked] = useState(task.is_completed);
 	const dispatch = useDispatch();
+	const user = useSelector((state) => state.session.user)
+
 	
 	const curr_task = task;
 
 	useEffect(() => {
-
-	}, [dispatch, curr_task.is_completed])
+		dispatch(getProjectTasks(project?.id))
+	}, [dispatch, curr_task.is_completed, project?.id])
 
 	const handleToggleCheck =  async (taskId, projectId) => {
 		await dispatch(updateIsCompleted(taskId, projectId))
@@ -42,13 +45,14 @@ function TaskCard({task, project}) {
 		
 			<p className='task-card-task-description'>{task?.description}</p>
 			</div>
+			{task?.creator_id === user?.id && (
 			<div className='task-details-bottom-div'>
 				<span className='task-toggle'>
 				<p className='task-card-task-finished'>{task?.is_completed ? "Completed" : "Not Done"}</p>
 				<Toggle className='toggle-component' isChecked={isChecked} handleToggleCheck={() => handleToggleCheck(task.id, project.id)} />
 				</span>
 				<div>
-				<button className='task-edit-button' onClick={() => handleEditTask(task.id)}><i class="fa-regular fa-pen-to-square"></i></button>
+				<button className='task-edit-button' onClick={() => handleEditTask(task.id)}><i className="fa-regular fa-pen-to-square"></i></button>
 				<OpenModalButton className='modal-delete-task'
               	buttonText={
                 <i className="fas fa-trash-alt"></i>
@@ -60,6 +64,8 @@ function TaskCard({task, project}) {
 				{/* <button className='task-delete-button'>Delete</button>	 */}
 				{/* <button className='task-delete-button'><i className="fa fa-ellipsis"></i></button> */}
 			</div>
+
+			)}
 		</div>
 
 	)

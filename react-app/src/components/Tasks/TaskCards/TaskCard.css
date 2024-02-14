@@ -11,12 +11,12 @@
 	width: 300px;
 	height: 200px;
 	box-sizing: border-box;
-	transition: transform 0.8s ease, box-shadow 0.5 ease-in-out;
+	transition: transform 0.8s ease-in-out, box-shadow 0.5 ease-in-out;
 }
 
 .task-card-div:hover {
 	transform: translateY(-2px);
-	box-shadow: 0 10px 15px rgba(255, 255, 255, 0.25);
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.468);
 }
 
 .task-card-task-name {
@@ -35,7 +35,7 @@
     color: white;
     margin-bottom: 15px; 
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: clip;
     display: -webkit-box;
     -webkit-line-clamp: 3; /* shows a  max 3 lines to keeep cards cleannn */
     -webkit-box-orient: vertical;

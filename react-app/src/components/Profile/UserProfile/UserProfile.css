@@ -1,0 +1,241 @@
+.main-profile-back {
+	display: flex;
+	margin-top: -10px;
+}
+
+.user-profile-dashboard {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+  }
+  
+  .user-stats, .user-projects, .user-collaborations, .user-badges {
+	background-color: rgb(22, 27, 61);
+	padding: 20px;
+	margin-top: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	width: 920px;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+
+
+  
+  .user-stats p, .user-projects ul, .user-collaborations div, .user-badges div {
+	margin: 10px 0;
+  }
+  
+  .user-collaborations h3, .user-badges h3 {
+	color: #9e8efb;
+	margin-bottom: 15px;
+  }
+  
+  .user-projects {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+  }
+
+  .projects-h3 {
+	cursor: pointer;
+	color: rgb(22, 27, 61);
+	padding: 10px;
+	border-radius: 8px;
+	background-color: rgba(255, 255, 255, 0.1);
+	color: white
+  }
+
+  .projects-h3:hover {
+	color: rgb(22, 27, 61);
+	background-color:#9e8efb;
+  }
+
+  
+  .project-list-main {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	flex-flow: row-wrap;
+	justify-content: center;
+	align-items: center;
+	list-style: none;
+	padding: 0;
+	width: 800px;
+	margin-top: 20px;
+  }
+  
+  .project-list-main > p {
+	background-color: rgba(255, 255, 255, 0.1);
+	padding: 10px;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+	cursor: pointer;
+	flex: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin: 5px;
+	min-width: 120px; 
+	max-width: 120px;
+	height: 20px;
+	font-size: 12px;
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+	white-space: nowrap;
+  }
+  
+  .user-projects div p:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .nav-back-to-user-proj:hover, .collab-button:hover {
+	background-color: #7fb7f2;
+	color: white;
+  }
+  .grid-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+  }
+  .collab-grid-div {
+	/* display: grid;
+	grid-template-columns: repeat(4, 1fr);  */
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	grid-gap: 12px;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+
+  }
+
+  .user-collab-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 8px;
+	width: 200px;
+	padding: 5px;
+	box-sizing: border-box;
+	margin: 20px;
+	transition: background-color 0.3s ease;
+  }
+
+  .user-collab-div:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+	cursor: pointer;
+  }
+
+  .project-p, .status-p {
+	margin-top: -10px;
+
+  }
+
+  .user-icon {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	background-color: orange;
+  }
+  .username-p {
+	margin-top: 10px;
+  }
+  
+  .modal.button.request {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 10px;
+	width: 50px;
+	height: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+  }
+  @media (max-width: 768px) {
+	.user-profile-dashboard, .user-stats, .user-projects, .user-collaborations, .user-badges {
+	  width: auto;
+	  padding: 20px;
+	}
+
+	.project-list-main {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		flex-flow: row-wrap;
+		justify-content: center;
+		align-items: center;
+		list-style: none;
+		padding: 0;
+		width: 235px;
+		margin-top: 20px;
+	  }
+
+	  .collab-grid-div {
+	
+		grid-template-columns: repeat(2, 1fr); 
+	  }
+  }
+
+  .edit-collab-div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 350px;
+	height: 120px;
+	color: white
+  }
+
+  .edit-collab-div-buttons {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+  }
+
+  .edit-collab-div-buttons > button {
+	margin-left: 5px;
+	margin-right: 5px;
+	border: none;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 10px 20px; 
+    background-color:  #7fb7f2;  
+    color: white; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.8s, transform 0.5s; 
+    margin-top: -10px;
+    width: 130px;
+  }
+
+  .edit-collab-div-buttons-accept:hover {
+	background-color: #15cc1b;
+	transform: translateY(-2px);
+	color: rgb(22, 27, 61)
+  }
+
+  .edit-collab-div-buttons-delete:hover {
+	background-color: red;
+	transform: translateY(-2px);
+	color: rgb(22, 27, 61)
+
+  }
+  
+  @media (max-width: 480px) {
+	.user-profile-dashboard, .user-stats, .user-projects, .user-collaborations, .user-badges {
+	  flex-direction: column;
+	  align-items: center;
+	}
+  }
+  

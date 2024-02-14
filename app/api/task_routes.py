@@ -5,6 +5,24 @@ from ..forms import TaskForm
 
 task_routes = Blueprint('tasks', __name__)
 
+
+@task_routes.route('/user/count', methods=['GET'])
+@login_required
+def TaskCount():
+	task_count = current_user.tasks_completed
+	tasks = current_user.tasks
+	projects = current_user.projects
+
+	payload = {
+    "task_count": task_count,
+    "tasks": [task.to_dict() for task in tasks], 
+    "projects": [project.to_dict() for project in projects]
+	}
+
+
+	return jsonify(payload), 200
+
+
 @task_routes.route('/<int:projectId>/new', methods=['POST'])
 @login_required
 def CreateTask(projectId):
@@ -80,29 +98,32 @@ def UpdateTaskIsCompleted(taskId):
 		
 		task.is_completed = not task.is_completed
 
+		project = Project.query.filter_by(id=task.project_id).first()
+
 		if task.is_completed == True:
 			project.task_count -= 1
+			current_user.tasks_completed += 1
 			db.session.commit()
 			return jsonify({'task': True}), 200
 		if task.is_completed == False:
 			project.task_count += 1
+			current_user.tasks_completed -= 1
 			db.session.commit()
 			return jsonify({'task': False}), 200
-	except Exception as e: 
+	except Exception as e:
 		return jsonify({'error': str(e)}), 500
 	
 	
 
 
 @task_routes.route('/<int:projectId>', methods=['GET'])
-@login_required
 def GetUserTasks(projectId):
-	all_tasks = Task.query.filter_by(project_id=projectId, creator_id=current_user.id)
+	all_tasks = Task.query.filter_by(project_id=projectId)
 
 	task_list = [{'id': task.id, 'name': task.name, 'description': task.description, 'creator_id': task.creator_id, 'is_completed': task.is_completed, 'project_id': task.project_id } for task in all_tasks]
 
-	if len(task_list) < 1:
-			return jsonify([]), 200
+	# if len(task_list) < 1:
+	# 		return jsonify([]), 200
 
 	return jsonify(task_list), 200
 

@@ -18,12 +18,12 @@ const storeUpdateProject = (project) => {
 	}
 }
 
-// const storeProjects = (projects) => {
-// 	return {
-// 		type: ALL_PROJECTS,
-// 		projects
-// 	}
-// }
+const storeProjects = (projects) => {
+	return {
+		type: ALL_PROJECTS,
+		projects
+	}
+}
 
 const storeUserProjects = (projects) => {
 	return {
@@ -82,7 +82,7 @@ export const getAllProjects = () => async (dispatch) => {
 	if (response.ok) {
 		const projects = await response.json()
 		if (projects.length > 0 ) {
-			dispatch(storeUserProjects(projects))
+			dispatch(storeProjects(projects))
 			return projects;	
 		} 
 		return projects;
