@@ -10,15 +10,17 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
     justify-content: center;
-    grid-gap: 32px; 
+    grid-gap: 36px; 
     padding-bottom: 128px;
     margin: 0 auto;
     margin-top: 40px;
+    z-index: 0;
 }
 
 .user-project-card {
     position: relative;
-    display: flex;
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
     flex-direction: column;
     justify-content: space-between;
     background-color: rgb(22, 27, 61);
@@ -32,7 +34,7 @@
     margin-left: 0px;
     margin-right: 0px;
     z-index: 0;
-   padding-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 
@@ -65,26 +67,33 @@
     -webkit-box-orient: vertical;
 	flex-grow: 1; 
     margin-top: -5px;
-    margin-bottom: -100px
+    margin-bottom: -100px;
+    height: 40px;   
 }
 
 .user-project-detail {
+    position: relative;
     color: white;
     font-size: 1em;
     text-wrap: wrap;
-	word-break: break-word;
+    word-break: break-word;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-	flex-grow: 1; 
+    -webkit-line-clamp: 5; /* Limit to 5 lines */
+    overflow: hidden; /* Ensure the overflow text is hidden */
+    flex-grow: 1; 
+    height: 75px;
     margin-bottom: -20px;
-    margin-top: 30px;
+    width: 260px;
+    top: 10px;
 }
+
 
 .user-project-date {
     color:  rgb(171, 164, 247);
     font-size: 1em;
     margin-top: -20px;
-    margin-bottom: -10px;
+    margin-bottom: -20px;
 }
 
 .user-project-public {
@@ -96,6 +105,7 @@
     color: #f88900;
     font-weight: bold;
     margin-bottom: -10px;
+    margin-top: 0px;
 }
 
 
@@ -111,20 +121,22 @@
     justify-content: center;
     color: white;
     font-weight: bold;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 5;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.8s, transform 0.5s;
     font-size: 10px;
-    height: 20px; 
+    height: 20px;
 }
 
 
 .edit-project-button {
     background-color: transparent; 
-    color: white
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  
 }
 
 .edit-project-button:hover {
@@ -134,7 +146,9 @@
 
 .delete-project-button {
     background-color:  transparent;
-    color: white
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .delete-project-button:hover {

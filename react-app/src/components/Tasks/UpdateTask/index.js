@@ -76,7 +76,7 @@ function UpdateTask() {
 					<label className='task-description-label'>Description</label>
 					<textarea placeholder='description optional' value={description} onChange={(e) => setDescription(e.target.value)}/>
 				</div>
-					<button className='create-task-button' type='submit'>Add to project</button>
+					<button className='create-task-button' type='submit'>Update Task</button>
 			</form>
 			<button onClick={() => navigateToUserProjects()} className='back-to-project-button tasks-create'> Back To Projects </button>
 
