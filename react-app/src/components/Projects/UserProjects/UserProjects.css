@@ -196,13 +196,13 @@
         justify-content: center;
     }
     .project-page-create-project-button {
-        padding: 5px 10px; 
-        width: 120px;
-        font-size: 10px;
-        height: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 0;
+        font-size: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 143px
     }
 }
