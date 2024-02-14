@@ -1,17 +1,19 @@
-.main-div {
+
+.main-div-easter {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+	flex-direction: row;
   }
   
   .traitsMaster {
 	overflow-y: auto;
-	height: 350px;
+	height: 310px;
 	width: 300px; 
 	position: fixed; 
 	left: 150px; 
-	top: 100px; 
+	top: 110px; 
 	padding: 20px;
 	background-color: white;
 	z-index: 1;
@@ -30,6 +32,7 @@
 	margin-left: 350px; 
 	width: calc(100% - 320px);
 	margin-bottom: 100px;
+	position: fixed;
   
   }
   
@@ -41,3 +44,38 @@
   body {
 	margin: 0px auto;
   }
+
+
+  @media (max-width: 768px) {
+
+	.traitsMaster {
+		position: relative;
+		top: 10px;
+		left: 0;
+	}
+
+	.alignment-easter {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.main-div-easter {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.mainImage {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: auto;
+		width: fit-content;
+		margin-bottom: 100px;
+		margin-top: 40px;
+		
+	  
+	  }
+   }

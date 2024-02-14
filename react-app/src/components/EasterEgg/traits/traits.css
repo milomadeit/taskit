@@ -57,15 +57,15 @@
 
   /* Styles for the scrollbar track (the background) */
 .traitsMaster::-webkit-scrollbar-track {
-  background-color: #f0f0f0; /* Light grey track */
-  border-radius: 10px; /* Optional: adds roundness to the track */
+  background-color: #f0f0f0; 
+  border-radius: 50px;
 }
 
 /* Styles for the scrollbar handle */
 .traitsMaster::-webkit-scrollbar-thumb {
-  background-color: #888; /* Darker grey handle */
-  border-radius: 10px; /* Roundness of the handle */
-  border: 10px solid #f0f0f0; /* Optional: adds border around the handle */
+  background-color: #888; 
+  border-radius: 10px; 
+  border: 10px solid #f0f0f0; 
 }
 
 /* For other browsers like Firefox */

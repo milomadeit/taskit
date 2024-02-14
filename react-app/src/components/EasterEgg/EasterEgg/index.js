@@ -10,7 +10,8 @@ import "./index.css";
 
 function EasterEgg() {
   return (
-    <div className='main-div'>
+    <div className="alignment-easter">
+    <div className='main-div-easter'>
       <div className='traitsMaster'>
         <section className='Sections'><Backgrounds /></section>
         <section className='Sections'><BodyType /></section>
@@ -23,6 +24,8 @@ function EasterEgg() {
       <div className='mainImage'>
         <MainImage />
       </div>
+    </div>
+
     </div>
   );
 }

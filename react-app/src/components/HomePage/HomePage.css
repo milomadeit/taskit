@@ -74,3 +74,20 @@
     margin-bottom: 20px;
     margin-right: -25px;
 }
+
+
+@media (max-width: 480px) {
+    
+    .home-buttons {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+    
+    }
+
+    .home-buttons > button {
+        margin: 10px;
+    }
+
+
+}

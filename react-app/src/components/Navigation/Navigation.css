@@ -154,3 +154,16 @@
   color: lightblue;
   transition: color 0.3s ease;
 }
+
+
+@media (max-width: 480px) {
+
+  .navigation-home-button {
+    margin-left: -40px;
+  }
+
+  .profile-button {
+    margin-right: -25px;
+  }
+
+}

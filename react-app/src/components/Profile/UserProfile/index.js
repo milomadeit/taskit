@@ -58,7 +58,7 @@ function UserProfile() {
 			<button className='main-public-back-button' onClick={() => navigateToBack()}>Back</button>
 			<button className="main-public-back-button" onClick={() => navigateToPublic()}>Public Projects</button>
 
-		</div>
+		    </div>
             <div className="user-stats">
                 <p>Tasks Completed: {taskCount}</p>
                 <p>Projects Completed: {projects_list.filter(project => project.is_completed).length} out of {projects_list.length}</p>
