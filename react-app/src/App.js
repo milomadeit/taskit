@@ -14,6 +14,7 @@ import CreateTask from "./components/Tasks/CreateTask";
 import UpdateTask from "./components/Tasks/UpdateTask";
 import PublicProjects from "./components/Projects/PublicProjects";
 import UserProfile from "./components/Profile/UserProfile";
+import EasterEgg from "./components/EasterEgg/EasterEgg/index"
 
 
 function App() {
@@ -38,6 +39,10 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          {sessionUser && (<Route path="/projects/easteregg">
+          <EasterEgg />
+        </Route>
+        )} 
 
           {sessionUser && (<Route path="/profile/user">
             <UserProfile />
@@ -77,6 +82,7 @@ function App() {
           <Route exact path="/projects/:projectId/">
               <ProjectDetails />
             </Route>
+
   
 
           <Route exact path="/">

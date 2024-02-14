@@ -1,88 +1,97 @@
 .alignment {
-    margin-top: 50px;
-}
-.create-task-main-div {
     display: flex;
     flex-direction: column;
-    background-color: rgb(22, 27, 61);
-    width: 500px ;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 40px;
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 20px;
+    width: 600px; 
+    height: 400px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    border-radius: 8px; 
     background-color: rgb(22, 27, 61);
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-    box-sizing: border-box;
-    border-radius: 8px;
-
 }
 
-.tasks-create {
-    border-radius: 8px;
-    font-weight: bold;
-    margin-bottom: 0px;
-}
 .create-task-main-div {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin: 0px;
+    max-width: 600px;
+    width: 100%;
+    background-color: transparent;
+
 }
 
 .create-task-form {
     width: 100%;
-    max-width: 500px;
-  
+    max-width: 600px;
+    padding: 20px;
+    background-color: transparent;
+    margin-top: -20px;
+    margin-bottom: -20px;
 }
 
 .task-form-inputs {
-    margin-bottom: 20px;
+    margin-bottom: 16px; 
 }
 
 .task-form-inputs label {
     display: block;
-    margin-bottom: 8px;
-    font-size: 12px;
-    font-weight: 600; 
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-weight: 600;
     color: white;
 }
 
 .task-form-inputs input,
 .task-form-inputs textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc; 
-    border-radius: 8px; 
-    box-sizing: border-box; 
-    font-size: 14px; 
+    width: 100%; 
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 .task-form-inputs textarea {
-    height: 120px;
-    resize: none; 
+    height: 120px; /* Adjusted for consistency */
+    resize: vertical;
 }
 
-.create-task-button {
+.create-task-button, .back-to-project-button {
     width: 100%;
-    padding: 12px 10px;
-    background-color: #007bff; /* Bootstrap primary blue */
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
+    padding: 10px;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
     cursor: pointer;
-    transition: background-color 0.8s ease-in-out;
+    font-size: 12px;
+    transition: background-color 0.8s, transform 0.5s;
+    align-self: center;
 }
 
-.create-task-button:hover {
+..create-task-button {
+    width: 100%;
+    margin-top: -10px;
+}
+
+.create-task-button:hover, .back-to-project-button:hover {
     background-color: orange;
+    color: rgb(22, 27, 61);
 }
 
+.errors-p {
+    color: red;
+    font-size: 10px;
+    margin-top: 0px;
+}
 
-.alignment {
-    display: flex;
-    align-items: flex;
-    justify-content: center;
-    
+@media (max-width: 480px) {
+    .alignment, .create-task-form {
+        width: 300px; /* Ensures responsiveness on smaller screens */
+    }
 }
