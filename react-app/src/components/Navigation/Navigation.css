@@ -156,6 +156,32 @@
 }
 
 
+@media (max-width: 375px) {
+
+
+  .navigation-home-button {
+    margin-left: -40px;
+  }
+
+  .profile-button {
+    margin-right: -25px;
+  }
+
+  .main-modal-button {
+    font-size: 12px;
+    width: 100px;
+    margin: 0 auto;
+    margin-left: -20px;
+  }
+
+  .cclogo {
+    height: 20px;
+    margin-left: -10px;
+  }
+
+
+}
+
 @media (max-width: 480px) {
 
   .navigation-home-button {
@@ -166,4 +192,11 @@
     margin-right: -25px;
   }
 
+  .main-modal-button {
+    font-size: 12px;
+    width: 100px;
+    margin: 0 auto;
+    margin-left: -20px;
+  }
+ 
 }

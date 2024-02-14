@@ -41,17 +41,18 @@ function HomePage () {
 			</h1>
 			<div className="home-buttons">
 				{!currentUser && (
-					<>
+					<div className='home-buttons'>
 					<button onClick={() => navigateToPublic()} className="public-projects-button">Public Projects</button>
+					<div className="sep-div">
 					<OpenModalButton
 						buttonText="Sign In"
-						modalComponent={<LoginFormModal
+						modalComponent={<LoginFormModal />}
 							className='nav-sign-in-up-btn nav-sign-in-btn'
+					/>
+						
+					</div>
 					
-					/>
-					}
-					/>
-					</>
+					</div>
 				)}
 				{currentUser && (
 					<>

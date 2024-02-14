@@ -3,6 +3,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin: auto;
 	
 
 	height: 100px;
@@ -48,4 +49,14 @@
 	transform: translateY(-2px);
 	color: rgb(22, 27, 61)
 
+}
+
+
+@media (max-width: 375px) { 
+
+	.delete-project-modal {
+		position: absolute;
+		right: -150px;
+		top: -700px
+	}
 }
