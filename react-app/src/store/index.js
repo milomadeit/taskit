@@ -4,12 +4,17 @@ import session from "./session";
 import projectReducer from "./projects";
 import tasksReducer from "./tasks";
 import collabReducer from "./collab_requests";
+import traitsReducer from "./traits"
+
 
 const rootReducer = combineReducers({
   session,
   projectReducer,
   tasksReducer,
   collabReducer,
+  traits: traitsReducer,
+
+
 });
 
 let enhancer;

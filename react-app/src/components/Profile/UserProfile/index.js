@@ -21,7 +21,9 @@ function UserProfile() {
     const collab_list = Object.values(collab_requests)
 
     useEffect(() => {
-        
+    if (!user) {
+        history.push('/')
+    }
 
     dispatch(getRequests(user.id))
     dispatch(getUserProjects());

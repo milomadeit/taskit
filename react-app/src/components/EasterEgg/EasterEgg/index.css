@@ -1,0 +1,43 @@
+.main-div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+  }
+  
+  .traitsMaster {
+	overflow-y: auto;
+	height: 350px;
+	width: 300px; 
+	position: fixed; 
+	left: 150px; 
+	top: 100px; 
+	padding: 20px;
+	background-color: white;
+	z-index: 1;
+	border-radius: 8px;
+	box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  .traitsMaster:hover {
+	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .mainImage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 350px; 
+	width: calc(100% - 320px);
+	margin-bottom: 100px;
+  
+  }
+  
+  .Sections {
+	margin-bottom: 10px;
+  }
+  
+  
+  body {
+	margin: 0px auto;
+  }

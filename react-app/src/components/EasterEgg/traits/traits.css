@@ -1,0 +1,75 @@
+.Container {
+    display: flex;
+    flex-wrap:wrap;
+    gap: 5px;
+    width: 200px;
+    margin-left: 25px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+  }
+
+  .Thumbnail {
+    width: 50px; /* Adjust based on your desired thumbnail size */
+    height: auto;
+    cursor: pointer;
+    border: 1px solid grey;
+    transition: border-color 0.3s;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .Thumbnail:hover {
+    border-color: #007BFF; /* Change to your desired highlight color */
+    box-shadow: 2px 2px 2px #007BFF; ;
+  }
+
+  .traitName {
+    font-family: monospace, monospace;
+    font-weight: bold;
+    text-decoration: underline;
+    color: black;
+    text-align: center;
+  }
+
+  .traitName:hover {
+    color:#007BFF;
+    cursor: pointer;
+  }
+
+  .accessory-name {
+    font-size: 8px;
+    text-align: center;
+    width: 50px;
+    margin-top: 5px;
+  }
+
+  .trait-div {
+    display: flex;
+    flex-direction: column;
+    align-items:  center;
+  }
+
+
+
+
+  /* Styles for the scrollbar track (the background) */
+.traitsMaster::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* Light grey track */
+  border-radius: 10px; /* Optional: adds roundness to the track */
+}
+
+/* Styles for the scrollbar handle */
+.traitsMaster::-webkit-scrollbar-thumb {
+  background-color: #888; /* Darker grey handle */
+  border-radius: 10px; /* Roundness of the handle */
+  border: 10px solid #f0f0f0; /* Optional: adds border around the handle */
+}
+
+/* For other browsers like Firefox */
+.traitsMaster {
+  scrollbar-width: thin;/* 'auto', 'thin', or 'none' */
+  scrollbar-color: #888 #f0f0f0; /* thumb and track color */
+}
