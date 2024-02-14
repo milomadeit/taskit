@@ -26,6 +26,7 @@
 	align-items: center;
 	justify-content: center;
 	margin-top: -50px;
+	width: 100%;
   }
 
   .project-info {
@@ -35,6 +36,14 @@
 	align-items: flex-start;
 	justify-content: center;
 	text-align: left; 
+	background-color: rgba(255, 255, 255, 0.1);
+	margin-top: 40px;
+	height: 60px;
+	border-radius: 8px;
+	padding-bottom: 15px;
+	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
   }
 
 
@@ -43,15 +52,16 @@
 	color: white;
 	text-align: left;
 	width: 320px;
-	margin-left: 5px;
+	margin-right: -155px;
   }
   
   .project-name-div {
-	margin-top: 20px; 
+	margin-top: -15px; 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	margin-left: -15px;
   }
   
   
@@ -79,13 +89,14 @@
 	flex-direction: column;
 	align-items: flex-end; 
 	justify-content: center;
-	margin-top: 60px;
+	margin-top: 25px;
+	margin-right: 10px;
 	}
 
 
 	.project-detail {
 	font-size: 12px;
-	color: #f88900;
+	color: rgb(171, 164, 247);
 	text-align: right;
 	margin-top: -20px;
 	}
@@ -98,7 +109,7 @@
 
   .task-count { 
 	color: #f88900;
-	margin-left: 5px;
+	margin-left: 21px;
   }
 	
   .project-description-div {
@@ -118,11 +129,16 @@
 
   .project-details-actions {
 	display: flex;
-	margin-top: -10px;
+	margin-top: 0px;
   }
 
 
 .nav-to-create, .nav-to-user-proj {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	justify-self: center;
 	background-color: transparent; 
 	color: darkblue; 
 	border: none; 
@@ -278,17 +294,34 @@ h4 {
 		align-items: center;
 		justify-content: center;
 		text-align: center; 
+		height: 100px;
 	  }
+	  
 	  .project-name {
+		margin-right: 0px;
+		margin-left: 0px;
 		text-align: center;
-	  }
+	}
 	  .task-count {
 		align-self: center;
+		margin-left: 0px;
+	  }
+
+	  .project-description-div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-top: 20px;
+	}
+
+	  .project-description {
+		margin-top: 40px;
 	  }
 
 	  .detail-span {
 		align-items: center; 
-		margin-top: 15px;
+		margin-top: 10px;
 	  }
 
 	  .project-details-center-div {
@@ -361,8 +394,39 @@ h4 {
 	  grid-template-columns: 1fr; 
 	}
 
+	.project-description-div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-top: 20px;
+	}
+	.project-description {
+		width: 200px
+	}
+
+	.popout-menu-container {
+		margin-top: -10px;
+	}
+
+	.project-name {
+		margin-right: 0px;
+		margin-left: 0px;
+		text-align: center;
+	}
+
+	.task-count {
+		margin-left: 0px;
+	}
+
 	
 	.project-info {
 		flex-direction: column;
+		height: 100px;
+	} 
+
+	.add-task-button, .nav-back-to-user-proj {
+		padding: 5px;
+		width: 100px
 	}
 }

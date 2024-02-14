@@ -1,10 +1,11 @@
 .popout-menu-container {
     position: relative;
     display: inline-block;
-    z-index: 1;
+    z-index: 100;
 }
 
 .popout-menu {
+    display: inline-block;
     position: absolute;
     right: 0px;
     background-color:  rgb(22, 27, 61);
@@ -14,16 +15,17 @@
     top: 0px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     min-width: 150px;
-    margin-top: 5px;
+    margin-top: 0px;
     margin-right: 25px;
+    z-index: 100;
 }
 
 .popout-menu button {
-    display: inline-block;
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 8px;
+    padding: 0px;
     border: none;
     cursor: pointer;
 }

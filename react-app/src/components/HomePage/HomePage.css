@@ -27,6 +27,12 @@
 
 }
 
+.home-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 .button {
 	margin-left: 5px;
