@@ -81,13 +81,16 @@
     .home-buttons {
         display: flex;
         flex-direction: column;
-        margin: 10px;
-    
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     .home-buttons > button {
-        margin: 10px;
+        margin-top: 10px;
     }
-
+    .sep-div {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
 
 }
