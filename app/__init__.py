@@ -13,9 +13,6 @@ from .api.project_routes import project_routes
 from .api.task_routes import task_routes
 from .api.collab_routes import collab_routes
 from .flask_socket.socketio import socketio
-import eventlet
-eventlet.monkey_patch()
-
 
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
@@ -104,5 +101,5 @@ def not_found(e):
     return app.send_static_file('index.html')
 
 
-if __name__ == '__main__':
-    socketio.run(app)
+
+socketio.run(app)
