@@ -3,9 +3,7 @@ from flask_socketio import SocketIO, emit
 
 # create your SocketIO instance
 if os.environ.get("FLASK_ENV") == "production":
-    origins = [
-        "*",
-    ]
+    origins = "*"
 else:
     origins = "*"
 
