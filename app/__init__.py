@@ -101,5 +101,5 @@ def not_found(e):
     return app.send_static_file('index.html')
 
 
-
-socketio.run(app)
+if __name__ == '__main__':
+    socketio.run(app)
