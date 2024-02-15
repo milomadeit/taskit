@@ -11,7 +11,7 @@ import DeleteProject from '../DeleteProject';
 import { newRequest } from '../../../store/collab_requests';
 import selectProjectById from './selector';
 import Chat from '../../Chat/index';
-import PopOutMessage from '../../Chat/PopOutMessage';
+import PopOutMessage from '../..//Chat/index'
 
 
 function ProjectDetails() {
