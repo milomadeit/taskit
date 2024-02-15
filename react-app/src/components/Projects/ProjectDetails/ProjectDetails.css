@@ -1,4 +1,6 @@
-
+.collab-button.clicked {
+	background-color: green;
+}
 
 .project-container {
 	display: flex;
@@ -197,10 +199,15 @@
 	transform: translateY(-2px); 
 	color: rgb(22, 27, 61);
 }
-
+.join-p {
+	font-size: 8px;
+	color: green;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
 .project-collab-error {
 	font-size: 8px;
-	margin-top: 5px;
+	margin-top: 0px;
 	margin-bottom: 2px;
 	color: red;
 }
@@ -343,6 +350,39 @@ h4 {
 		width: 150px
 	}
 
+	.project-details-mid-div-1 {
+		display: flex; 
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-top: 100px;
+	}
+	.collab-div {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 50px;
+	}
+
+	.collab-div > * {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	} 
+	.collab-header{
+		align-self: center;
+		text-align: center;
+
+	}
+	h4 {
+		margin: 0 auto;
+	}
+
+	.collab-button {
+		align-self: center;
+		margin-top: 5px;
+	}
 	.files-h, .files-p {
 		align-self: center;
 		color: #9e8efb; 

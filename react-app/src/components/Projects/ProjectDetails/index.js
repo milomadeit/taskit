@@ -24,7 +24,7 @@ function ProjectDetails() {
   const tasks = useSelector((state) => state.tasksReducer.projectTasks);
   const task_array = Object.values(tasks);
   const taskCount = useSelector((state) => state.tasksReducer.taskCount)
-  const [requestToJoin, setRequestToJoin] = useState('false')
+  const [requestToJoin, setRequestToJoin] = useState(false)
   const [errors, setErrors] = useState({});
   const user = useSelector((state) => state.session.user)
   const [userCollab, setUserCollab] = useState(false)
@@ -173,12 +173,13 @@ function ProjectDetails() {
 
         <div className='project-details-mid-div-1'>
           {  (project?.collaborator_id !== user?.id && project.creator_id !== user?.id) && (
-            <>
+            <div className='collab-div'>
             
               <h4 className='collab-header'>Become a collaborator!</h4>
-              <button className='collab-button' onClick={() => handleRequestClick(project.id)}>Request</button>
-              {errors.errorReq && (<p className='errors-p project-collab-error'>{errors.errorReq}</p>)}
-            </>
+              <button className={requestToJoin ? `collab-button clicked` : `collab-button` } onClick={() => handleRequestClick(project.id)}>Request</button>
+              {requestToJoin && (<p className='join-p'>request sent</p>)}
+              {errors.errorReq && (<p className='project-collab-error'>{errors.errorReq}</p>)}
+            </div>
 
 
 ) }
