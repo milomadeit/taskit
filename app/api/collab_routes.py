@@ -82,7 +82,7 @@ def delete_collab(requestId):
 @collab_routes.route('/<int:userId>', methods=['GET'])
 @login_required
 def get_collabs(userId):
-    requests = CollabRequest.query.filter_by(receiver_id=userId, status='pending').all()
+    requests = CollabRequest.query.filter_by(receiver_id=userId).all()
 
     requests_list = [{
         "id": request.id,

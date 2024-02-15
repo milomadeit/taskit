@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import './ProjectDetails.css';
 import { getProjectTasks } from '../../../store/tasks';
 import TaskCard from '../../Tasks/TaskCards';
@@ -20,7 +20,6 @@ function ProjectDetails() {
   const {projectId} = useParams();
 
   const project = useSelector((state) => selectProjectById(state, projectId));  // const project = location.state.project
-
   const [loading, setLoading] = useState(false);
   const tasks = useSelector((state) => state.tasksReducer.projectTasks);
   const task_array = Object.values(tasks);
@@ -28,6 +27,7 @@ function ProjectDetails() {
   const [requestToJoin, setRequestToJoin] = useState('false')
   const [errors, setErrors] = useState({});
   const user = useSelector((state) => state.session.user)
+  const [userCollab, setUserCollab] = useState(false)
   
  
   
@@ -40,6 +40,12 @@ function ProjectDetails() {
       await dispatch(getAllProjects());
       await dispatch(getUserProjects());
       await dispatch(getProjectTasks(project?.id));
+      const isUserOrCollab = () => {
+        if (project.collaborator_id === user.id) {
+          setUserCollab(true)
+        }
+        setUserCollab(false)
+      }
 
       setLoading(false);
   }
@@ -47,7 +53,7 @@ function ProjectDetails() {
   fetchData();
   setLoading(false)
 	
-  }, [dispatch, project?.id, taskCount]);
+  }, [dispatch, project?.id, taskCount, user?.id]);
 
 
   if (!project || loading) {
@@ -113,6 +119,8 @@ function ProjectDetails() {
     
   }
 
+ 
+
   return (
 	<div className='project-container'>
     <div className="main-project-details-div">
@@ -137,8 +145,9 @@ function ProjectDetails() {
           <p className={`project-public ${project.is_public ? 'public' : 'private'}`}>
               {project.is_public ? 'Public' : 'Private'}
           </p>
+          {!user ? (<></>) : (
           <div className='project-details-actions'>
-            {project.creator_id === user?.id && (
+            {( project.collaborator_id === user?.id || project.creator_id === user?.id) && (
 						<PopOutMenu>
 					    <button className="nav-to-user-proj" onClick={() => navigateToUserDashboard()}>Dashboard</button>
               <button className='nav-to-create' onClick={() => navigateToCreate()}>New Project</button>
@@ -149,6 +158,8 @@ function ProjectDetails() {
             )}
 
           </div>
+              
+          )}
 				
         </div>
 
@@ -161,7 +172,7 @@ function ProjectDetails() {
         {!user ? "": (
 
         <div className='project-details-mid-div-1'>
-          { project.creator_id !== user?.id && (
+          {  (project?.collaborator_id !== user?.id && project.creator_id !== user?.id) && (
             <>
             
               <h4 className='collab-header'>Become a collaborator!</h4>
@@ -190,8 +201,10 @@ function ProjectDetails() {
           )}
         </div>
       </div>
+      {!user ? (<></>): (
+
       <div className='project-details-buttons'>
-      {project.creator_id === user?.id  && (
+      {(project.creator_id === user?.id || project?.collaborator_id === user?.id)  && (
       <>
         <button className="add-task-button" onClick={() => navigateToCreateTask()}>
           Add Task
@@ -203,6 +216,8 @@ function ProjectDetails() {
           <button className="nav-back-to-user-proj" onClick={() => navigateToBack()}>Go Back</button>
         )}
       </div>
+
+      )}
     </div>
       <div className='task-grid'>
         {task_array.map((task) => (

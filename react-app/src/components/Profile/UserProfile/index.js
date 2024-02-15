@@ -78,7 +78,7 @@ function UserProfile() {
 
             </div>
             <div className="user-collaborations">
-                <h3>Collaboration Requests</h3>
+                <h3>Collaborators</h3>
                 <div className='grid-container'>
                 <div className='collab-grid-div'>
                 {collab_list.map((collab) => (

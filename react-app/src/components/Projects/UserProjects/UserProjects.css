@@ -37,6 +37,10 @@
     padding-bottom: 0px;
 }
 
+.collaboration-project {
+    background-color: #3e3166; /* Example green color for collaboration projects */
+}
+
 
 .project-actions {
     position: absolute;
@@ -174,7 +178,7 @@
     border-radius: 5px; 
     cursor: pointer; 
     transition: background-color 0.8s, transform 0.5s ease-in-out; 
-    z-index: 100;
+    z-index: 50;
     width: 180px;
 }
 
@@ -193,6 +197,14 @@
     width: 900px;
 }
 
+@media (max-width: 720px) {
+    .project-card-div {
+        display: grid;
+	    grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        align-items: center;
+	}
+}
 
 
 @media (max-width: 480px) {

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
-from ..models import db, Task, Project
+from ..models import db, Task, Project, CollabRequest
 from ..forms import TaskForm
 
 task_routes = Blueprint('tasks', __name__)
