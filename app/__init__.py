@@ -15,7 +15,6 @@ from .api.collab_routes import collab_routes
 from .flask_socket.socketio import socketio
 
 
-
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
 # Setup login manager
@@ -102,5 +101,5 @@ def not_found(e):
     return app.send_static_file('index.html')
 
 
-if __name__ == '__main__':
-    socketio.run(app)
+
+socketio.run(app)
