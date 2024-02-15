@@ -12,6 +12,7 @@ from .config import Config
 from .api.project_routes import project_routes
 from .api.task_routes import task_routes
 from .api.collab_routes import collab_routes
+from .flask_socket.socketio import socketio
 
 
 
@@ -38,6 +39,8 @@ app.register_blueprint(task_routes, url_prefix='/api/tasks')
 app.register_blueprint(collab_routes, url_prefix='/api/request')
 db.init_app(app)
 Migrate(app, db)
+socketio.init_app(app)
+
 
 # Application Security
 CORS(app)
@@ -97,3 +100,7 @@ def react_root(path):
 @app.errorhandler(404)
 def not_found(e):
     return app.send_static_file('index.html')
+
+
+if __name__ == '__main__':
+    socketio.run(app)

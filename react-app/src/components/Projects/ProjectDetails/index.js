@@ -10,6 +10,8 @@ import OpenModalButton from '../../DeleteModalButton'
 import DeleteProject from '../DeleteProject';
 import { newRequest } from '../../../store/collab_requests';
 import selectProjectById from './selector';
+import Chat from '../../Chat/index';
+import PopOutMessage from '../../Chat/PopOutMessage';
 
 
 function ProjectDetails() {
@@ -124,6 +126,7 @@ function ProjectDetails() {
   return (
 	<div className='project-container'>
     <div className="main-project-details-div">
+     
       <div className='info-grid'>
 
       <div className="project-info">
@@ -180,18 +183,11 @@ function ProjectDetails() {
               {requestToJoin && (<p className='join-p'>request sent</p>)}
               {errors.errorReq && (<p className='project-collab-error'>{errors.errorReq}</p>)}
             </div>
-
-
-) }
+        )}
         </div>
-
-        ) }
+        )}
           <div className='project-details-mid-div-2'>
-            
-      
           {/* <TaskCarousel key={task_array.length} task_array={task_array} project={project} /> */}
-
-
         </div>
         <div className='project-details-mid-div-3'>
           {project.creator_id === user?.id && (
@@ -225,7 +221,11 @@ function ProjectDetails() {
           <TaskCard key={task.id} task={task} project={project} />
         ))}
       </div>
-
+      <div className='project-chat-div'>
+        <PopOutMessage>
+          <Chat />
+        </PopOutMessage>
+    </div>
 	</div>
   );
 }
