@@ -13,6 +13,8 @@ from .api.project_routes import project_routes
 from .api.task_routes import task_routes
 from .api.collab_routes import collab_routes
 from .flask_socket.socketio import socketio
+import eventlet
+eventlet.monkey_patch()
 
 
 
