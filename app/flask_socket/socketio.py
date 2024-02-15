@@ -4,7 +4,7 @@ from flask_socketio import SocketIO, emit
 # create your SocketIO instance
 if os.environ.get("FLASK_ENV") == "production":
     origins = [
-        "https://cocreate-x0xh.onrender.com",
+        "*",
     ]
 else:
     origins = "*"
