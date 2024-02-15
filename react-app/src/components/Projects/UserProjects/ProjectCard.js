@@ -45,26 +45,34 @@ function ProjectCard({projects}) {
 	return (
 		<div className="project-card-div">
 		{Object.values(projects).map((project) => (
-			<div onClick={() => navigateToProject(project.id, project)} key={project.id} className="user-project-card">
-				<h2 className="user-project-title">{project.name}</h2>
-				<p className="user-project-detail">{project.description}</p>
-				<p className="user-project-date">{formatDate(project.due_date)}</p>
-				{project.task_count > 0 && (<p className="projects-task-count" >{project.task_count} TASK{project.task_count > 1 ? 'S' : ''}</p>)}
-				{project.task_count === 0 && (<p className="projects-task-count" >NO TASKS</p>)}
-				<p className={`user-project-public ${project.is_public ? 'public' : 'private'}`}>
-					{project.is_public ? 'Public' : 'Private'}
-				</p>
-				{currentUser && currentUser.id === project.creator_id && (
-					<div onClick={(e) => e.stopPropagation()} className="project-actions">
-						<PopOutMenu>
-							<button className="edit-project-button" onClick={(e) => handleEdit(e, project.id)}>Edit</button>
-							<OpenModalButton  className="delete-project-button" buttonText="Delete" modalComponent={<DeleteProject projectId={project.id}/>} />
+	<div 
+		onClick={() => navigateToProject(project.id, project)} 
+		key={project.id} 
+		className={ !currentUser ? "user-project-card" :`user-project-card ${project.collaborator_id === currentUser?.id ? 'collaboration-project' : ''}`}
+	>
+		<h2 className="user-project-title">{project.name}</h2>
+		<p className="user-project-detail">{project.description}</p>
+		<p className="user-project-date">{formatDate(project.due_date)}</p>
+		{project.task_count > 0 && (<p className="projects-task-count" >{project.task_count} TASK{project.task_count > 1 ? 'S' : ''}</p>)}
+		{project.task_count === 0 && (<p className="projects-task-count" >NO TASKS</p>)}
+		<p className={`user-project-public ${project.is_public ? 'public' : 'private'}`}>
+			{project.is_public ? 'Public' : 'Private'}
+		</p>
+		{!currentUser ? (<></>) : (<>
+			{(currentUser?.id === project.creator_id || currentUser?.id === project?.collaborator_id) && (
+				<div onClick={(e) => e.stopPropagation()} className="project-actions">
+					<PopOutMenu>
+						<button className="edit-project-button" onClick={(e) => handleEdit(e, project.id)}>Edit</button>
+						<OpenModalButton  className="delete-project-button" buttonText="Delete" modalComponent={<DeleteProject projectId={project.id}/>} />
+					</PopOutMenu>
+				</div>
+			)}
+		
+		</>	
+		)}
+	</div>
+))}
 
-						</PopOutMenu>
-					</div>
-				)}
-			</div>
-			))}
 		</div>
 	);
 	

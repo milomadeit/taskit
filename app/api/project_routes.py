@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user
-from ..models import db, Project
+from ..models import db, Project, CollabRequest
 from ..forms.project_form import ProjectForm
+
 
 
 
@@ -55,8 +56,19 @@ def UpdateProject(projectId):
 		
 		project = Project.query.filter_by(id=projectId).first()
 
-		if current_user.id != project.creator_id:
-			return jsonify({'error': 'you did not create this project'}), 403
+		user_collabs = CollabRequest.query.filter_by(sender_id=current_user.id, status='collaborator', project_id=projectId).all()
+	
+		if not current_user:
+			return jsonify({'error': 'you must be logged in to delete projects'}), 403
+		
+		# Check if the current user is the creator
+		is_creator = current_user.id == project.creator_id
+
+		# Check if the current user is a collaborator
+		is_collaborator = any(request.sender_id == current_user.id for request in user_collabs)
+
+		if not (is_creator or is_collaborator):
+			return jsonify({'error': 'you are not the creator or a collaborator of this project'}), 403
 		
 		form = ProjectForm(request.form);
 		form['csrf_token'].data = request.cookies['csrf_token']
@@ -72,7 +84,6 @@ def UpdateProject(projectId):
 				typeBool = False
 
 			project.name = request.form.get('name') or project.name 
-			project.creator_id = current_user.id or project.creator_id 
 			project.description = request.form.get('description') or project.description 
 			project.due_date = request.form.get('due_date') or project.due_date
 			project.is_public = typeBool
@@ -100,32 +111,51 @@ def AllUserProjects():
 	if not current_user:
 		return jsonify({'error': 'you must be logged in to view these projects'}), 403 
 	
+	try:
+		user_projects = Project.query.filter_by(creator_id=current_user.id).all()
 
-	user_projects = Project.query.filter_by(creator_id=current_user.id).all()
 
-	# if current_user.id != user_projects[0].creator_id:
-	# 	return jsonify({'error': ' you did not create these projects'}), 403
+		user_collabs = CollabRequest.query.filter_by(sender_id=current_user.id, status='collaborator').all()
+		collab_project_list = [{
+			"id": request.project.id,
+			"name": request.project.name,
+			 'creator_id':request.project.creator_id,
+			'description': request.project.description,
+			'due_date': request.project.due_date,
+			'is_public': request.project.is_public,
+			'task_count': request.project.task_count,
+			"collaborator_id": request.sender_id,
+		} for request in user_collabs]
 
-	if user_projects:
+		
 		project_list = [{'id': project.id, 'name': project.name, 'creator_id':project.creator_id, 'description': project.description, 'due_date': project.due_date, 'is_public': project.is_public, 'task_count': project.task_count } for project in user_projects]
+
+		project_list += collab_project_list
 
 		if len(project_list) < 1:
 			return jsonify([]), 200
-	
-		return jsonify(project_list), 200
-	
-	return jsonify({'error': 'could not get projects'})
 
+		return jsonify(project_list), 200
+	except Exception as e:
+		return jsonify({'error': 'An error occurred getting projects'}), 500
 
 @project_routes.route('/<int:projectId>', methods=['DELETE'])
 def DeleteProject(projectId):
 	project = Project.query.filter_by(id=projectId).first()
-
+	
+	user_collabs = CollabRequest.query.filter_by(sender_id=current_user.id, status='collaborator', project_id=projectId).all()
+	
 	if not current_user:
 		return jsonify({'error': 'you must be logged in to delete projects'}), 403
 	
-	if current_user.id != project.creator_id:
-		return jsonify({'error': 'you are not the creator of this project'}), 403
+	# Check if the current user is the creator
+	is_creator = current_user.id == project.creator_id
+
+	# Check if the current user is a collaborator
+	is_collaborator = any(request.sender_id == current_user.id for request in user_collabs)
+
+	if not (is_creator or is_collaborator):
+		return jsonify({'error': 'you are not the creator or a collaborator of this project'}), 403
 	
 	try:
 		db.session.delete(project)

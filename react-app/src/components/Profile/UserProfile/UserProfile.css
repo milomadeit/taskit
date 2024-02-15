@@ -50,6 +50,7 @@
 	padding: 10px;
 	border-radius: 8px;
 	background-color: rgba(255, 255, 255, 0.1);
+	transition: background-color 0.8s, transform 0.5s; 
 	color: white
   }
 
@@ -76,7 +77,6 @@
 	background-color: rgba(255, 255, 255, 0.1);
 	padding: 10px;
 	border-radius: 5px;
-	transition: background-color 0.3s ease;
 	cursor: pointer;
 	flex: 2;
 	display: flex;
@@ -91,6 +91,7 @@
 	overflow: hidden; 
 	text-overflow: ellipsis; 
 	white-space: nowrap;
+	transition: background-color 0.8s, transform 0.5s; 
   }
   
   .user-projects div p:hover {

@@ -14,6 +14,7 @@ function Edit({collabId}) {
 
 	const handleDelete = async (collabId) => {
 		await dispatch(DeleteRequest(collabId))
+		await dispatch(getRequests(user.id));
 		closeModal();
 	}
 

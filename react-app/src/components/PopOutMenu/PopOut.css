@@ -1,7 +1,7 @@
 .popout-menu-container {
     position: relative;
     display: inline-block;
-    z-index: 100;
+   
 }
 
 .popout-menu {
@@ -17,7 +17,6 @@
     min-width: 150px;
     margin-top: 0px;
     margin-right: 25px;
-    z-index: 100;
 }
 
 .popout-menu button {
@@ -37,6 +36,7 @@
     color: darkblue;
     border-radius: 50%;
     box-shadow: 0px 0.5px 1px 1px rgba(0, 0, 0, 0.137);
+    z-index: 0;
 }
 
 .togggle-pop-out-button:hover {
