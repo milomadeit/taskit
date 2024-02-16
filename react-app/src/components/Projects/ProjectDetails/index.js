@@ -221,11 +221,14 @@ function ProjectDetails() {
           <TaskCard key={task.id} task={task} project={project} />
         ))}
       </div>
-      <div className='project-chat-div'>
-        <PopOutMessage>
-          <Chat />
-        </PopOutMessage>
-    </div>
+      {(project.creator_id === user?.id || project?.collaborator_id === user?.id) && (
+        <div className='project-chat-div'>
+          <PopOutMessage>
+            <Chat project={project}/>
+          </PopOutMessage>
+      </div>
+
+      )}
 	</div>
   );
 }
