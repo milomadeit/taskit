@@ -54,7 +54,7 @@
 	color: white;
 	text-align: left;
 	width: 320px;
-	margin-right: -155px;
+	margin-right: -150px;
   }
   
   .project-name-div {
@@ -63,7 +63,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	margin-left: -15px;
+	margin-left: -20px;
   }
   
   
@@ -92,7 +92,7 @@
 	align-items: flex-end; 
 	justify-content: center;
 	margin-top: 25px;
-	margin-right: 10px;
+	margin-right: 0px;
 	}
 
 
@@ -111,7 +111,7 @@
 
   .task-count { 
 	color: #f88900;
-	margin-left: 21px;
+	margin-left: 20px;
   }
 	
   .project-description-div {
@@ -293,7 +293,19 @@ h4 {
 	position: fixed;
 	bottom: 0;
 }
-  
+ 
+@media (max-width: 1000px) {
+	.project-chat-div {
+		right: 540px;
+	}
+}
+
+	@media (max-width: 850px) {
+		.project-chat-div {
+			right: 540px;
+		}
+	}
+
 
 	/* small window */
   @media (max-width: 768px) {
@@ -428,7 +440,7 @@ h4 {
 		max-width: 300px;
 	}
 	.project-chat-div {
-		right: 500px;
+		right: 540px;
 	}
 }
   
