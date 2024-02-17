@@ -72,7 +72,7 @@ def UpdateTask(taskId):
 		task.name = request.form.get('name') or task.name
 		task.description = request.form.get('description') or task.description
 		task.project_id = request.form.get('project_id') or task.project_id
-		task.creator_id = current_user.id or task.creator_id
+		# task.creator_id = current_user.id or task.creator_id
 
 		db.session.commit()
 

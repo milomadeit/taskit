@@ -73,7 +73,7 @@ function UserProfile() {
 					<div className='project-list-main'>
 						{projects_list.map((project) => (
 							<p onClick={() => navigateToProject(project.id, project)} key={project.id}>
-                                {truncateText(project.name, 14)}
+                                {truncateText(project.name, 15)}
 							</p>
 						))}
 					</div>
