@@ -88,7 +88,7 @@
 	max-width: 120px;
 	height: 20px;
 	font-size: 12px;
-	overflow: hidden; 
+	overflow:hidden;
 	text-overflow: ellipsis; 
 	white-space: nowrap;
 	transition: background-color 0.8s, transform 0.5s; 
