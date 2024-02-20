@@ -65,7 +65,8 @@ function UserProfile() {
 		    </div>
             <div className="user-stats">
                 <p>Tasks Completed: {taskCount}</p>
-                <p>Projects Completed: {projects_list.filter(project => project.is_completed).length} out of {projects_list.length}</p>
+                {/* {projects_list.filter(project => project.is_completed).length} */}
+                <p>Number Of Projects: {projects_list.length}</p>
             </div>
             <div className="user-projects">
                 <h3 className='projects-h3' onClick={() => navigateToUserProjects()}>Your Projects</h3>
