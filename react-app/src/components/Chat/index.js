@@ -45,10 +45,14 @@ function Chat({project}) {
 
 	return (user && (
         <div className='chat-div'>
+			<div className='chat-name-p'>
 			<p className='chat-project-name'>{project.name} Chat</p>
+
+			</div>
             <div className='chat-messages'>
                 {messages.map((message, ind) => (
-                    <div className={message.user.id === user.id ? "users-message" : 'others-message'} key={ind}>{`${message.user.username}: ${message.msg}`}</div>
+					
+                    <div key={ind} className={message.user.id === user.id ? "users-message" : 'others-message'}>{`${message.user.username}: ${message.msg}`}</div>
                 ))}
 				<p className='space-filler' ref={lastMessage}>space</p>
             </div>

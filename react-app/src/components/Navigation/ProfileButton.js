@@ -55,11 +55,11 @@ function ProfileButton({ user }) {
             <li></li>
             <li>Hello, {user.username}</li>
             <li>
-              <button className='dropdown-logout'onClick={handleLogout}>Log Out</button>
-            </li>
-            <li>
             <button className="dropdown-profile" onClick={handleProfile}>Dashboard</button>
 
+            </li>
+            <li>
+              <button className='dropdown-logout'onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (

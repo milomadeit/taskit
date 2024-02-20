@@ -51,6 +51,10 @@ function UserProfile() {
 		history.push('/projects/public')
 	}
 
+    const truncateText = (text, length) => {
+        return text.length > length ? text.substring(0, length) + '...' : text;
+    };
+
     return (
         <div className="user-profile-dashboard">
             <h2>Hello, {user.username}</h2>
@@ -61,7 +65,8 @@ function UserProfile() {
 		    </div>
             <div className="user-stats">
                 <p>Tasks Completed: {taskCount}</p>
-                <p>Projects Completed: {projects_list.filter(project => project.is_completed).length} out of {projects_list.length}</p>
+                {/* {projects_list.filter(project => project.is_completed).length} */}
+                <p>Number Of Projects: {projects_list.length}</p>
             </div>
             <div className="user-projects">
                 <h3 className='projects-h3' onClick={() => navigateToUserProjects()}>Your Projects</h3>
@@ -69,10 +74,11 @@ function UserProfile() {
 					<div className='project-list-main'>
 						{projects_list.map((project) => (
 							<p onClick={() => navigateToProject(project.id, project)} key={project.id}>
-								{project.name}
+                                {truncateText(project.name, 15)}
 							</p>
 						))}
 					</div>
+                            
 
 				</div>
 
