@@ -22,7 +22,6 @@ s3 = boto3.client(
    aws_secret_access_key=os.environ.get("S3_SECRET")
 )
 
-
 # functions for song upload and removal
 def get_unique_filename(filename):
     ext = filename.rsplit(".", 1)[1].lower()

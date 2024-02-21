@@ -25,6 +25,7 @@ function LoginFormModal() {
   const handDemoSubmit = async (e) => {
     const data = await dispatch(login("demo@aa.io", "password"));
     if (data) {
+      console.log(data)
       setErrors(data);
     } else {
       closeModal();
