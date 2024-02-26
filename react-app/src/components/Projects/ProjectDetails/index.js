@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './ProjectDetails.css';
 import { getProjectTasks } from '../../../store/tasks';
 import TaskCard from '../../Tasks/TaskCards';
@@ -55,7 +55,7 @@ function ProjectDetails() {
   fetchData();
   setLoading(false)
 	
-  }, [dispatch, project?.id, taskCount, user?.id]);
+  }, [dispatch, project?.id, taskCount, user?.id, project.collaborator_id]);
 
 
   if (!project || loading) {

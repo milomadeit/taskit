@@ -25,12 +25,10 @@ function UserProfile() {
         history.push('/')
     }
 
-    dispatch(getRequests(user.id))
-    dispatch(getUserProjects());
-    dispatch(TaskCount());
-       
+    dispatch(getRequests(user.id)).then( dispatch(getUserProjects())).then(dispatch(TaskCount()))
    
-    }, [dispatch, user.id]);
+   
+    }, [dispatch, user, history]);
 
 
 	const navigateToProject = (projectId, project) => {
