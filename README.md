@@ -25,7 +25,7 @@ TaskIt was built using the following technologies:
 
 ## Features
 
-Two main features are following full CRUD features:
+Two main features following full CRUD:
 -Project Feature: a user can create and update projects as well as delete and view all of their current projects and public projects.
 -Tasks Feature: a user can create tasks for their project, update them, mark them as complete, or delete them.
 
