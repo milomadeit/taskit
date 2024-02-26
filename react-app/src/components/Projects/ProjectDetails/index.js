@@ -58,7 +58,7 @@ function ProjectDetails() {
   }, [dispatch, project?.id, taskCount, user?.id, project.collaborator_id]);
 
 
-  if (!project || loading) {
+  if (!project) {
 	return (<div>Loading...</div>)
   }
 
