@@ -27,8 +27,10 @@ function App() {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+  const appKey = sessionUser ? `user-${sessionUser.id}` : 'no-user';
+
   return (
-    <>
+    <div key={appKey}>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -91,7 +93,7 @@ function App() {
         </Switch>
 
       )}
-    </>
+    </div>
   );
 }
 
