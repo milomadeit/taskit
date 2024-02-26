@@ -6,23 +6,24 @@ import tasksReducer from "./tasks";
 import collabReducer from "./collab_requests";
 import traitsReducer from "./traits"
 
-const appReducer = combineReducers({
+
+const rootReducer = combineReducers({
   session,
   projectReducer,
   tasksReducer,
   collabReducer,
   traits: traitsReducer,
-  // any other reducers
+
+
 });
+// const rootReducer = (state, action) => {
+//   if (action.type === 'session/REMOVE_USER') {
+//     state = {};
+//   }
 
+//   return appReducer(state, action);
+// };
 
-const rootReducer = (state, action) => {
-  if (action.type === 'session/REMOVE_USER') {
-    state = {};
-  }
-
-  return appReducer(state, action);
-};
 
 let enhancer;
 
