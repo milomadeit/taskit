@@ -1,0 +1,49 @@
+.edit-collab-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	color: white;
+}
+
+.edit-collab-div > p {
+	margin-bottom: 20px;
+}
+
+.edit-collab-div-buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+
+}
+
+.edit-collab-div-buttons-accept, .edit-collab-div-buttons-delete {
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color:  #7fb7f2;  
+    color: white; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.8s, transform 0.5s; 
+    margin-top: -10px;
+    width: 100px;
+	height: 30px;
+	font-size: 10px;
+	border: none;
+
+}
+
+.edit-collab-div-buttons-delete:hover {
+	background-color: red;
+	transform: translateY(-2px);
+	color: rgb(22, 27, 61)
+
+}
+
+.edit-collab-div-buttons-accept:hover {
+	background-color: #15cc1b;
+	transform: translateY(-2px);
+	color: rgb(22, 27, 61)
+
+} 
