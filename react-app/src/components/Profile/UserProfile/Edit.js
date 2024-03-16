@@ -3,6 +3,7 @@ import { useModal } from '../../../context/Modal'
 import { DeleteRequest } from '../../../store/collab_requests';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateRequest, getRequests } from '../../../store/collab_requests';
+import './Edit.css'
 
 function Edit({collabId}) {
 	const user = useSelector((state) => state.session.user);
